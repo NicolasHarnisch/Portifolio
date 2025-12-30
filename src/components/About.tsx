@@ -14,19 +14,19 @@ const About = () => {
           
           <div className="space-y-6">
             <h3 className="text-2xl md:text-3xl font-bold">
-              Transformo ideias em experiências digitais
+              Transformando linhas de código em experiências de aprendizado e design
             </h3>
             
             <p className="text-muted-foreground leading-relaxed">
-              Acredito que <span className="text-gradient font-semibold">tecnologia e design caminham juntos para impulsionar negócios</span> e conectar marcas ao seu público de forma autêntica.
+              Busco excelência técnica não apenas para desenvolver sistemas, mas para criar soluções que ampliem a visão do usuário através de <span className="text-gradient font-semibold">criatividade e tecnologia</span>. Atualmente, divido minha rotina entre a graduação na <span className="text-gradient font-semibold">UFC</span> (Campus Russas) e na <span className="text-gradient font-semibold">UniAteneu</span>, o que me proporciona uma visão ampla de arquitetura e desenvolvimento de software.
             </p>
             
             <p className="text-muted-foreground leading-relaxed">
-              Minha missão é <span className="text-gradient font-semibold">simplificar processos complexos e entregar soluções digitais</span> que unem estética, performance e usabilidade. Cada detalhe é pensado para valorizar sua marca e criar interfaces que encantam.
+              Minha trajetória é marcada pelo envolvimento em <span className="text-gradient font-semibold">projetos de extensão universitária</span>, onde aplico gamificação e desenvolvimento front-end para resolver problemas reais e educar novos talentos.
             </p>
             
             <p className="text-muted-foreground leading-relaxed">
-              Mais do que desenvolver, ajudo sua marca a ganhar voz, traduzindo visão e valores em uma presença digital única e marcante.
+              Fora das telas de código, trago a experiência em <span className="text-gradient font-semibold">design gráfico</span> para garantir que a usabilidade e a estética caminhem juntas em cada projeto.
             </p>
           </div>
         </div>

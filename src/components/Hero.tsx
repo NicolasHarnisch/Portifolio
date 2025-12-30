@@ -24,12 +24,16 @@ const Hero = () => {
 
         <div className="max-w-4xl mx-auto text-center md:text-left md:mx-0">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 animate-fade-up">
-            Desenvolvedor<br />
-            <span className="text-gradient">Full Stack</span> Sênior
+            Nícolas Gomes<br />
+            <span className="text-gradient">Harnisch</span>
           </h1>
           
+          <p className="text-xl md:text-2xl font-medium text-foreground mb-4 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+            Desenvolvedor Full Stack & Designer
+          </p>
+          
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            Desenvolvedor Full Stack com 5 anos de mercado e graduação superior em Sistemas para Internet pela Fatec.
+            Estudante de Ciência da Computação (UFC) e Engenharia de Software (UniAteneu), focado em unir a base teórica sólida com a criação de interfaces modernas e funcionais.
           </p>
           
           <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
