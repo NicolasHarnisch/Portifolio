@@ -124,3 +124,21 @@
     opacity: 1;
   }
 }
+
+/* Personalização da Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b; /* Cor de fundo escura (igual ao site) */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4c1d95; /* Roxo escuro */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed; /* Roxo mais claro ao passar o mouse */
+}

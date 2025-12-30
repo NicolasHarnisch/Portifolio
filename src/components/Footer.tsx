@@ -1,5 +1,5 @@
-import { Instagram, Linkedin, Github, Mail, MapPin } from "lucide-react";
-import logoIcon from "@/assets/icon.svg";
+import { Instagram, Linkedin, Github, Mail, MapPin, Terminal } from "lucide-react";
+// Removi o import da imagem logoIcon pois não vamos mais usar
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,9 +8,19 @@ const Footer = () => {
     <footer className="py-12 border-t border-border/50">
       <div className="container">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Logo e nome */}
+          
+          {/* --- LOGO ATUALIZADO (Igual à Navbar) --- */}
           <div className="flex items-center gap-4">
-            <img src={logoIcon} alt="Logo" className="h-10 w-10" />
+            {/* Caixa Neon Roxa */}
+            <div className="
+                flex items-center justify-center w-12 h-12 rounded-xl 
+                bg-primary/10 border border-primary/20 
+                shadow-[0_0_15px_rgba(168,85,247,0.3)] 
+                transition-all duration-300"
+            >
+              <Terminal className="h-6 w-6 text-primary" />
+            </div>
+
             <div>
               <p className="font-bold text-lg">Nícolas Harnisch</p>
               <p className="text-sm text-muted-foreground">
@@ -37,7 +47,7 @@ const Footer = () => {
             <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">Social</h4>
             <div className="flex items-center gap-2">
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/nick.harnisch_/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-full hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
@@ -45,7 +55,7 @@ const Footer = () => {
                 <Instagram className="h-5 w-5" />
               </a>
               <a 
-                href="https://www.linkedin.com/in/nicolas-harnisch/" 
+                href="https://www.linkedin.com/in/nicolasharnisch/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 rounded-full hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"

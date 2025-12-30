@@ -18,9 +18,6 @@ const Hero = () => {
       <div className="absolute bottom-20 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
 
       <div className="container relative z-10 pt-20 pb-12">
-        <nav className="absolute top-8 left-0 right-0 flex items-center justify-between px-6">
-          <img src={logoIcon} alt="Logo" className="h-10 w-10" />
-        </nav>
 
         <div className="max-w-4xl mx-auto text-center md:text-left md:mx-0">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 animate-fade-up">
@@ -37,14 +34,20 @@ const Hero = () => {
           </p>
           
           <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+            <a 
+              href="/curriculo.pdf"
+              download="Nicolas-Gomes-Harnisch-Curriculo.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-              Baixar currículo
-            </Button>
+              <Button 
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-75 transition-all duration-300 group shadow-lg shadow-primary/20"
+              >
+                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                Baixar currículo
+              </Button>
+            </a>
           </div>
         </div>
       </div>

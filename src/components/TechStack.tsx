@@ -1,67 +1,75 @@
-import { Code2, Server, Wrench } from "lucide-react";
+import { Code2, Database, Wrench, Layout, Server, Settings } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
-const techCategories = [
+const stack = [
   {
-    icon: Code2,
     title: "Frontend",
-    techs: ["JavaScript", "TypeScript", "HTML5", "CSS3", "React.js", "Vue.js"],
+    icon: <Layout className="h-6 w-6 text-primary" />,
+    description: "Criação de interfaces responsivas e interativas.",
+    skills: ["JavaScript", "TypeScript", "React.js", "Vue.js", "HTML5", "CSS3"]
   },
   {
-    icon: Server,
     title: "Backend",
-    techs: ["C", "C++", "Python", "Java", "POO"],
+    icon: <Server className="h-6 w-6 text-primary" />,
+    description: "Lógica de servidor robusta e escalável.",
+    skills: ["Node.js", "Java", "Python", "C", "C++"]
   },
   {
-    icon: Wrench,
     title: "Ferramentas",
-    techs: ["Git", "GitHub", "Figma", "Prettier"],
-  },
+    icon: <Settings className="h-6 w-6 text-primary" />,
+    description: "DevOps e utilitários para produtividade.",
+    skills: ["Git", "GitHub", "Figma", "Apidog"]
+  }
 ];
 
 const TechStack = () => {
   return (
-    <section id="stack" className="py-24 relative">
-      <div 
-        className="absolute inset-0 opacity-20"
-        style={{
-          background: "radial-gradient(ellipse 50% 50% at 50% 50%, hsl(262 100% 71% / 0.15), transparent)"
-        }}
-      />
+    <section id="stack" className="py-24 bg-card/5 relative overflow-hidden">
+      {/* Background Decorativo */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       
       <div className="container relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
           <span className="text-sm uppercase tracking-widest text-muted-foreground">
             Tecnologias
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
             Minha Stack Tecnológica
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            Trabalho com ferramentas modernas para entregar performance e design
+          <p className="text-muted-foreground">
+            Trabalho com ferramentas modernas para entregar performance e design de alta qualidade em cada projeto.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {techCategories.map((category) => (
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {stack.map((category, index) => (
             <div 
-              key={category.title}
-              className="p-6 rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 group"
+              key={index}
+              // Adicionei 'group' aqui para controlar o hover dos filhos
+              className="group p-8 rounded-2xl border border-white/5 bg-card/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <category.icon className="h-6 w-6" />
+              {/* Cabeçalho do Card */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                  {category.icon}
                 </div>
-                <h3 className="text-xl font-bold">{category.title}</h3>
+                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                  {category.title}
+                </h3>
               </div>
-              
+
+              {/* Lista de Skills */}
               <div className="flex flex-wrap gap-2">
-                {category.techs.map((tech) => (
-                  <span 
-                    key={tech}
-                    className="px-3 py-1.5 text-sm rounded-full border border-primary/20 text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors"
+                {category.skills.map((skill) => (
+                  <Badge 
+                    key={skill} 
+                    variant="secondary"
+                    // MUDANÇA AQUI:
+                    // Adicionei os 'group-hover' para acenderem quando o mouse estiver no card
+                    className="bg-white/5 border border-white/10 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/50 transition-colors duration-300 cursor-default"
                   >
-                    {tech}
-                  </span>
+                    {skill}
+                  </Badge>
                 ))}
               </div>
             </div>
