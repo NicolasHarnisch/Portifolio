@@ -56,7 +56,7 @@ const Projects = () => {
             Clientes reais
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">
-            Cases entregues
+            Projetos desenvolvidos
           </h2>
         </div>
         
