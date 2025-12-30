@@ -11,14 +11,14 @@ const Footer = () => {
           <div className="flex items-center gap-4">
             <img src={logoIcon} alt="Logo" className="h-8 w-8" />
             <div>
-              <p className="font-semibold">Iuri Silva</p>
-              <p className="text-sm text-muted-foreground">
-                © {currentYear} <span className="text-primary">iuricode.com</span>
-              </p>
+              <p className="font-semibold">Nícolas Harnisch</p>
+            <p className="text-sm text-muted-foreground">
+              © {currentYear} Nícolas Harnisch
+            </p>
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 mr-16">
             <span className="text-sm text-muted-foreground mr-4">Social</span>
             <a 
               href="https://instagram.com" 
