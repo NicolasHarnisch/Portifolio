@@ -2,40 +2,16 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "EA4 Mobilidade",
-    description: "Gestão inteligente de transporte corporativo para empresas.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    tags: ["Design", "Programação"],
+    title: "Aerofix",
+    description: "Aplicação desenvolvida em C++ que simula um sistema de reserva de lugares, oferecendo uma experiência imersiva e intuitiva.",
+    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop",
+    tags: ["Backend", "C++"],
   },
   {
-    title: "Box299",
-    description: "Serviços especializados de estética automotiva premium.",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&h=400&fit=crop",
-    tags: ["Design", "Programação"],
-  },
-  {
-    title: "WP Builders",
-    description: "Gestão completa e organizada de projetos de reforma.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    tags: ["Design", "Programação"],
-  },
-  {
-    title: "Tecnousp",
-    description: "Serviços ágeis de manutenção em residências e condomínios.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop",
-    tags: ["Design", "Programação"],
-  },
-  {
-    title: "Hair Skin",
-    description: "Produto físico inovador de beleza para cuidados capilares.",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=400&fit=crop",
-    tags: ["Design", "Programação"],
-  },
-  {
-    title: "Riqueza Planejada",
-    description: "Infoproduto sobre estabilidade e educação financeira.",
-    image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&h=400&fit=crop",
-    tags: ["Design", "Programação"],
+    title: "Engremaq-web",
+    description: "Projeto de desenvolvimento web focado na criação de um site simulado de comércio eletrônico de peças de tratores, aplicando HTML, CSS e JavaScript.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop",
+    tags: ["Web", "HTML/CSS/JS"],
   },
 ];
 
@@ -52,10 +28,7 @@ const Projects = () => {
       
       <div className="container relative z-10">
         <div className="mb-12">
-          <span className="text-sm uppercase tracking-widest text-muted-foreground">
-            Clientes reais
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">
+          <h2 className="text-3xl md:text-4xl font-bold">
             Projetos desenvolvidos
           </h2>
         </div>
