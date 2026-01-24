@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 # ⚡ Portfólio Profissional - Nícolas Harnisch
+=======
+# ⚡ Portfólio - Nícolas Harnisch
+>>>>>>> a0ffe4fc8acd9ca871e6fdd7d86a59f52bf0700d
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
