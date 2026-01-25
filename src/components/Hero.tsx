@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { FileText, Github, Linkedin, Mail } from "lucide-react"; // 1. Import atualizado
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 
 const Hero = () => {
@@ -9,12 +9,11 @@ const Hero = () => {
     delay: 800,
   });
 
-  // Configure seus links aqui
   const links = {
-    curriculo: "https://seu-link-do-drive-aqui.com", 
-    github: "https://github.com/seu-usuario",
-    linkedin: "https://linkedin.com/in/seu-usuario",
-    email: "mailto:seu-email@exemplo.com"
+    curriculo: "https://drive.google.com/file/d/1y6GDWAJMyIpAZW49UwM49GMbY5C0aiU8/view?usp=sharing",
+    github: "https://github.com/NicolasHarnisch",
+    linkedin: "https://www.linkedin.com/in/nicolasharnisch/",
+    email: "mailto:nicolasgomeshar@gmail.com"
   };
 
   return (
@@ -62,8 +61,9 @@ const Hero = () => {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 transition-all duration-300 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base"
               >
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                Baixar currículo
+                {/* 2. Ícone de Arquivo com efeito de zoom */}
+                <FileText className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+                Visualizar Currículo
               </Button>
             </a>
 
