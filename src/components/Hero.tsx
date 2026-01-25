@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Github, Linkedin, Mail } from "lucide-react";
 import { useTypingEffect } from "@/hooks/useTypingEffect";
 
 const Hero = () => {
@@ -8,6 +8,14 @@ const Hero = () => {
     speed: 60,
     delay: 800,
   });
+
+  // Configure seus links aqui
+  const links = {
+    curriculo: "https://seu-link-do-drive-aqui.com", 
+    github: "https://github.com/seu-usuario",
+    linkedin: "https://linkedin.com/in/seu-usuario",
+    email: "mailto:seu-email@exemplo.com"
+  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden px-4 sm:px-6">
@@ -40,21 +48,45 @@ const Hero = () => {
             Estudante de Ciência da Computação (UFC) e Engenharia de Software (UniAteneu), focado em unir a base teórica sólida com a criação de interfaces modernas e funcionais.
           </p>
           
-          <div className="animate-fade-up" style={{ animationDelay: "0.4s" }}>
+          {/* Container dos Botões */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-up mx-auto md:mx-0 w-full sm:w-auto justify-center md:justify-start" style={{ animationDelay: "0.4s" }}>
+            
+            {/* Botão Principal - Currículo */}
             <a 
-              href="/curriculo.pdf"
-              download="Nicolas-Gomes-Harnisch-Curriculo.pdf"
+              href={links.curriculo}
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
               <Button 
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-75 transition-all duration-300 group shadow-lg shadow-primary/20 w-full sm:w-auto"
+                className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 transition-all duration-300 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base"
               >
-                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                 Baixar currículo
               </Button>
             </a>
+
+            {/* Botões Sociais */}
+            <div className="flex gap-3">
+              {[
+                { icon: Github, href: links.github, label: "GitHub" },
+                { icon: Linkedin, href: links.linkedin, label: "LinkedIn" },
+                { icon: Mail, href: links.email, label: "Email" }
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="p-3 rounded-lg bg-background/50 border border-input transition-all duration-300 hover:bg-white hover:text-primary hover:-translate-y-1 shadow-sm"
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
+
           </div>
         </div>
       </div>

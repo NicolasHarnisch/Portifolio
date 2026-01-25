@@ -8,7 +8,6 @@ const projects = [
   {
     title: "Sistema de Triagem",
     description: "Sistema Desktop desenvolvido em Java Swing utilizando o Protocolo de Manchester para classificar pacientes e gerenciar filas de prioridade automaticamente.",
-    // DICA: Troque esta URL pela imagem do seu print (ex: '/assets/print_cadastro.png') para mostrar a interface real!
     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop", 
     tags: ["Java", "Swing", "JUnit 5", "MVC"],
     github: "https://github.com/NicolasHarnisch/sistema-triagem-hospitalar", 
