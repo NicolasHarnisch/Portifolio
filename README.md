@@ -1,68 +1,82 @@
-# ⚡ Portfólio - Nícolas Harnisch
+🚀 Portfólio Pessoal - Nícolas Harnisch
+Este é o repositório do meu site pessoal e portfólio profissional, desenvolvido para centralizar minha trajetória acadêmica, experiências em projetos de extensão e exibir as tecnologias que domino no desenvolvimento Full Stack e Design.
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+🔗 Link do Projeto: nicolasharnisch.vercel.app
 
-> "Transformando linhas de código em experiências de aprendizado e design."
+🛠️ Sobre o Projeto
+O site foi construído com foco em UX/UI moderno, utilizando uma estética dark com detalhes em roxo neon para transmitir uma identidade tecnológica e criativa. Ele serve como um cartão de visitas digital, detalhando minhas duas graduações: Ciência da Computação (UFC) e Engenharia de Software (UniAteneu).
 
-## 🚀 Sobre o Projeto
+Principais Seções:
+Hero Section: Introdução com efeito de digitação dinâmica para o cargo de desenvolvedor.
 
-Este é o repositório oficial do meu site pessoal/portfólio. O objetivo deste projeto foi criar um ambiente único para centralizar minha trajetória acadêmica na **UFC (Ciência da Computação)** e **UniAteneu (Engenharia de Software)**, bem como apresentar meus projetos práticos e stack tecnológica.
+Sobre Mim: Descrição detalhada do meu perfil e base teórica.
 
-O design foge dos templates tradicionais, adotando uma identidade visual **Dark/Neon** focada em imersão, sem abrir mão da performance e acessibilidade.
+Experiência: Linha do tempo interativa com histórico profissional e acadêmico (JOGA, NERDS, SESCOMP e Atlética).
 
-### 🌐 Live Demo
-👉 **Acesse o projeto online:** [https://nicolasharnisch.vercel.app/](https://nicolasharnisch.vercel.app/)
+Arsenal Técnico: Exibição das tecnologias divididas por categorias (Back-end, Frontend e Ferramentas).
 
----
+Portfólio: Galeria de projetos reais com links para código-fonte e demonstrações.
 
-## 🛠️ Tecnologias Utilizadas
+💻 Tecnologias Utilizadas
+Frontend & UI
+React.js & Next.js: Estrutura principal do site.
 
-O projeto foi desenvolvido utilizando as melhores práticas de Engenharia de Frontend modernas:
+TypeScript: Garantia de tipagem e segurança do código.
 
-- **[React](https://reactjs.org/)** - Biblioteca principal para construção da UI.
-- **[TypeScript](https://www.typescriptlang.org/)** - Para tipagem estática e segurança do código.
-- **[Tailwind CSS](https://tailwindcss.com/)** - Framework de utilitários para estilização rápida e responsiva.
-- **[Shadcn/UI](https://ui.shadcn.com/)** - Coleção de componentes reutilizáveis e acessíveis.
-- **[Lucide React](https://lucide.dev/)** - Biblioteca de ícones leve e consistente.
-- **[Vite](https://vitejs.dev/)** - Tooling de frontend para build e desenvolvimento ágil.
+Tailwind CSS: Estilização responsiva e moderna.
 
----
+Lucide React: Conjunto de ícones minimalistas.
 
-## ✨ Funcionalidades
+Framer Motion: (Opcional se usar para animações) Utilizado para transições suaves e efeitos de scroll.
 
-- **Design Responsivo:** Layout fluido que se adapta perfeitamente de dispositivos móveis a monitores ultrawide ("Mobile-First").
-- **Componentização:** Arquitetura modular facilitando a manutenção e escalabilidade.
-- **Interatividade:** Efeitos de hover, transições suaves e navegação fluida.
-- **Seções:**
-  - **Hero:** Apresentação pessoal.
-  - **Sobre:** Trajetória acadêmica e profissional.
-  - **Experiência:** Timeline de atuação (Monitoria JOGA, etc).
-  - **Projetos:** Showcase de desenvolvimentos (Aerofix, Engremaq).
-  - **Stack:** Visualização das tecnologias dominadas.
-  - **FAQ:** Seção de dúvidas frequentes com Accordion.
+Outras Tecnologias do Perfil (Exibidas na Stack)
+Back-end: Java (Spring Boot), Node.js, Python, C e SQL.
 
----
+Mobile: React Native e Expo.
 
-## 📦 Como rodar o projeto localmente
+Ferramentas: Git, GitHub, IntelliJ IDEA, Apidog e Figma.
 
-Pré-requisitos: Você precisa ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
+🏗️ Estrutura de Arquivos
+A arquitetura do projeto segue um padrão organizado de componentes:
 
-```bash
-# 1. Clone o repositório
+Plaintext
+src/
+├── components/
+│   ├── ui/             # Componentes base (Botões, Badges, Sheets)
+│   ├── About.tsx       # Seção "Quem Sou"
+│   ├── Experience.tsx  # Seção "Trajetória"
+│   ├── Hero.tsx        # Cabeçalho principal
+│   ├── Navbar.tsx      # Navegação fixa e mobile
+│   ├── Projects.tsx    # Listagem de projetos do portfólio
+│   ├── TechStack.tsx   # Grade de tecnologias
+│   └── Footer.tsx      # Rodapé e links sociais
+├── hooks/              # Lógica de animações e efeitos (ex: useTypingEffect)
+└── lib/                # Utilitários de configuração (Tailwind Merge, etc.)
+⚙️ Como Rodar o Projeto Localmente
+Clone o repositório:
+
+Bash
 git clone https://github.com/NicolasHarnisch/Portifolio.git
+Entre na pasta do projeto:
 
-# 2. Entre na pasta do projeto
-cd portfolio-nicolas
+Bash
+cd Portifolio
+Instale as dependências:
 
-# 3. Instale as dependências
+Bash
 npm install
 # ou
-yarn install
+bun install
+Inicie o servidor de desenvolvimento:
 
-# 4. Rode o servidor de desenvolvimento
+Bash
 npm run dev
-# ou
-yarn dev
+Acesse no navegador:
+http://localhost:5173 (ou a porta indicada no terminal).
+
+👤 Autor
+Nícolas Gomes Harnisch * LinkedIn: linkedin.com/in/nicolasharnisch
+
+GitHub: @NicolasHarnisch
+
+E-mail: nicolasgomeshar@gmail.com
