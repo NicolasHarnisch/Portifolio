@@ -30,9 +30,9 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: "Quem sou", id: "about" },
+    { name: "Sobre", id: "about" },
     { name: "Experiência", id: "experience" },
-    { name: "Stack", id: "stack" },
+    { name: "Tecnologias", id: "stack" },
     { name: "Projetos", id: "projects" },
   ];
 

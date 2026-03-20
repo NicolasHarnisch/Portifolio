@@ -2,42 +2,67 @@ import { Layout, Server, Settings, Cpu } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-// LISTA DE TECNOLOGIAS
+// BANCO DE DADOS DE TECNOLOGIAS
 const stack = [
   {
     title: "Back-end & Arquitetura",
-    icon: <Server className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    skills: ["Node.js", "Java", "Spring Boot", "Python", "C", "SQL", "MVC"]
+    LucideIcon: <Server className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    skills: [
+      { name: "Node.js", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+      { name: "Java", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
+      { name: "Spring Boot", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" },
+      { name: "JUnit (Testes)", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" } ,
+      { name: "Python", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+      { name: "C / C++", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
+      { name: "MongoDB", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
+      { name: "SQL", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
+    ],
   },
   {
     title: "Frontend & Mobile",
-    icon: <Layout className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    skills: ["React.js", "Next.js", "React Native","HTML5/CSS3", "TypeScript", "JavaScript"]
+    LucideIcon: <Layout className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    skills: [
+      { name: "React.js", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+      {name: "Vue.js", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"},
+      { name: "Next.js", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", invertInDarkMode: true },
+      { name: "React Native", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+      { name: "HTML5", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+      { name: "CSS3", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+      { name: "Tailwind CSS", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "TypeScript", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
+      { name: "JavaScript", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+    ],
   },
   {
     title: "Ferramentas & DevOps",
-    icon: <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    skills: ["Git", "GitHub", "IntelliJ IDEA", "Apidog", "Figma", "Vercel"]
-  }
+    LucideIcon: <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    skills: [
+      { name: "Git", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+      { name: "GitHub", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", invertInDarkMode: true },
+      { name: "IntelliJ IDEA", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" },
+      { name: "Apidog", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg" },
+      { name: "Figma", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
+      { name: "Vercel", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg", invertInDarkMode: true },
+      { name: "Inglês", level: "Intermediário", icon: "https://cdn-icons-png.flaticon.com/512/197/197484.png" },
+    ],
+  },
 ];
 
 const TechStack = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section id="stack" className="py-16 sm:py-20 md:py-24 bg-card/5 relative overflow-hidden px-4 sm:px-6">
-      {/* Background Decorativo Sutil */}
+    <section id="stack" className="py-20 md:py-28 bg-card/5 relative overflow-hidden px-4 sm:px-6">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      
-      <div 
+
+      <div
         ref={ref}
         className={`container relative z-10 transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        
-        {/* --- TÍTULO --- */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-16 ml-1">
+        {/* TÍTULO */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-12 ml-1">
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <Cpu className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
@@ -54,32 +79,60 @@ const TechStack = () => {
         {/* --- GRID DE 3 COLUNAS --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stack.map((category, index) => (
-            <div 
+            <div
               key={index}
               className="group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 bg-card/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 flex flex-col"
             >
-              {/* Cabeçalho do Card */}
+              {/* Cabeçalho */}
               <div className="flex items-center gap-3 sm:gap-4 mb-6">
                 <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.1)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 shrink-0">
-                  {category.icon}
+                  {category.LucideIcon}
                 </div>
-                
+
                 <h3 className="text-lg font-bold group-hover:text-primary transition-colors leading-tight">
                   {category.title}
                 </h3>
               </div>
 
               {/* Lista de Skills */}
-              <div className="flex flex-wrap gap-2 mt-auto">
+              <div className="grid gap-3">
                 {category.skills.map((skill) => (
-                  <Badge 
-                    key={skill} 
-                    variant="secondary"
-                    // AQUI A MUDANÇA: text-sm (maior) e px-3 py-1 (mais espaçamento)
-                    className="bg-white/5 border border-white/10 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/50 transition-colors duration-300 cursor-default text-sm px-3 py-1"
+                  <div
+                    key={skill.name}
+                    className="group/skill rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-primary/30 hover:bg-primary/[0.05] hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.18)]"
                   >
-                    {skill}
-                  </Badge>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-white truncate transition-colors duration-300 group-hover/skill:text-primary">
+                          {skill.name}
+                        </p>
+
+                        <Badge
+                          variant="secondary"
+                          className={`inline-flex mt-2 px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all duration-300
+                            ${
+                              skill.level === "Avançado"
+                                ? "bg-green-500/10 text-green-400 border-green-500/15 group-hover/skill:bg-green-500/15"
+                                : skill.level === "Intermediário"
+                                ? "bg-primary/10 text-primary border-primary/20 group-hover/skill:border-primary/40"
+                                : "bg-white/5 text-muted-foreground border-white/10 group-hover/skill:text-primary group-hover/skill:border-primary/20"
+                            }`}
+                        >
+                          {skill.level}
+                        </Badge>
+                      </div>
+
+                      <div className="shrink-0 transition-transform duration-300 group-hover/skill:scale-110 group-hover/skill:-rotate-3">
+                        <img
+                          src={skill.icon}
+                          alt={`${skill.name} icon`}
+                          className={`h-7 w-7 sm:h-8 sm:w-8 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] ${
+                            skill.invertInDarkMode ? "invert opacity-90" : ""
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
