@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Lista apenas com as tecnologias fixas (o nível vai ser traduzido dinamicamente)
 const skillsData = [
   {
     iconComp: <Server className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
@@ -22,7 +21,7 @@ const skillsData = [
     iconComp: <Layout className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     skills: [
       { name: "React.js", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-      { name: "Vue.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"},
+      { name: "Vue.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" },
       { name: "Next.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", invertInDarkMode: true },
       { name: "React Native", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
       { name: "HTML5", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
@@ -51,7 +50,10 @@ const TechStack = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="stack" className="py-20 md:py-28 bg-card/5 relative overflow-hidden px-4 sm:px-6">
+    <section
+      id="stack"
+      className="relative py-20 md:py-28 bg-background overflow-hidden px-4 sm:px-6"
+    >
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
       <div
@@ -60,49 +62,46 @@ const TechStack = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        {/* TÍTULO */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-12 ml-1">
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <Cpu className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
+
           <div>
-            <span className="text-xs sm:text-sm uppercase tracking-widest text-primary font-semibold block mb-1">
+            <span className="text-xs sm:text-sm uppercase tracking-[0.22em] text-primary font-semibold block mb-1">
               {t.tech.badge}
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-foreground">
               {t.tech.title}
             </h2>
           </div>
         </div>
 
-        {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {skillsData.map((category, index) => (
             <div
               key={index}
-              className="group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 bg-card/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              className="group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-card/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_16px_38px_rgba(168,85,247,0.12)]"
             >
-              {/* Cabeçalho */}
               <div className="flex items-center gap-3 sm:gap-4 mb-6">
                 <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.1)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 shrink-0">
                   {category.iconComp}
                 </div>
 
-                <h3 className="text-lg font-bold group-hover:text-primary transition-colors leading-tight">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-foreground group-hover:text-primary transition-colors leading-tight">
                   {t.tech.categories[index]}
                 </h3>
               </div>
 
-              {/* Lista de Skills */}
               <div className="grid gap-3">
                 {category.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="group/skill rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-primary/30 hover:bg-primary/[0.05] hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.18)]"
+                    className="group/skill rounded-xl border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-primary/25 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.05] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(168,85,247,0.10)]"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-white truncate transition-colors duration-300 group-hover/skill:text-primary">
+                        <p className="text-sm font-semibold text-slate-900 dark:text-white truncate transition-colors duration-300 group-hover/skill:text-primary">
                           {skill.name}
                         </p>
 
@@ -111,10 +110,10 @@ const TechStack = () => {
                           className={`inline-flex mt-2 px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all duration-300
                             ${
                               skill.baseLevel === "advanced"
-                                ? "bg-green-500/10 text-green-400 border-green-500/15 group-hover/skill:bg-green-500/15"
+                                ? "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/15 group-hover/skill:bg-green-500/15"
                                 : skill.baseLevel === "intermediate"
                                 ? "bg-primary/10 text-primary border-primary/20 group-hover/skill:border-primary/40"
-                                : "bg-white/5 text-muted-foreground border-white/10 group-hover/skill:text-primary group-hover/skill:border-primary/20"
+                                : "bg-[#F7F4FF] dark:bg-white/5 text-slate-500 dark:text-muted-foreground border-[#E7DFFC] dark:border-white/10 group-hover/skill:text-primary group-hover/skill:border-primary/20"
                             }`}
                         >
                           {t.tech.levels[skill.baseLevel as keyof typeof t.tech.levels]}
@@ -125,8 +124,8 @@ const TechStack = () => {
                         <img
                           src={skill.icon}
                           alt={`${skill.name} icon`}
-                          className={`h-7 w-7 sm:h-8 sm:w-8 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] ${
-                            skill.invertInDarkMode ? "invert opacity-90" : ""
+                          className={`h-7 w-7 sm:h-8 sm:w-8 object-contain ${
+                            skill.invertInDarkMode ? "dark:invert dark:opacity-90" : ""
                           }`}
                         />
                       </div>

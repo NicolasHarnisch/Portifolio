@@ -15,7 +15,6 @@ const Experience = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { t } = useLanguage();
 
-  // Ícones não precisam ser traduzidos, então ficam aqui
   const jobIcons = [
     <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
@@ -39,66 +38,60 @@ const Experience = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        {/* Título da seção */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-16 ml-1">
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
           <div>
-            <span className="text-xs sm:text-sm uppercase tracking-widest text-primary font-semibold block mb-1">
+            <span className="text-xs sm:text-sm uppercase tracking-[0.22em] text-primary font-semibold block mb-1">
               {t.experience.badge}
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-foreground">
               {t.experience.title}
             </h2>
           </div>
         </div>
 
-        {/* Layout principal */}
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10">
-          {/* COLUNA ESQUERDA - EXPERIÊNCIA */}
           <div className="xl:col-span-7">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                 <Building2 className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-foreground">
                 {t.experience.profTitle}
               </h3>
             </div>
 
-            <div className="relative border-l border-white/10 ml-2 sm:ml-4 space-y-8 sm:space-y-10">
+            <div className="relative border-l border-[#E8E0FA] dark:border-white/10 ml-2 sm:ml-4 space-y-8 sm:space-y-10">
               {t.experience.jobs.map((exp, index) => (
-                <div
-                  key={index}
-                  className="relative pl-6 sm:pl-8 md:pl-10 group"
-                >
+                <div key={index} className="relative pl-6 sm:pl-8 md:pl-10 group">
                   <div className="absolute -left-[6px] top-1 h-3 w-3 rounded-full bg-primary border border-primary shadow-[0_0_12px_rgba(168,85,247,0.45)] group-hover:scale-125 transition-transform duration-300" />
 
-                  <div className="rounded-2xl bg-card/5 border border-white/5 hover:border-white/10 hover:bg-card/10 transition-all duration-300 p-5 sm:p-6">
+                  <div className="rounded-2xl bg-white dark:bg-card/5 border border-[#E9E2F8] dark:border-white/5 hover:border-primary/25 dark:hover:border-white/10 hover:bg-white dark:hover:bg-card/10 transition-all duration-300 p-5 sm:p-6 shadow-[0_10px_28px_rgba(88,28,135,0.05)] hover:shadow-[0_14px_36px_rgba(168,85,247,0.12)]">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 w-fit h-fit shadow-[0_0_10px_rgba(168,85,247,0.15)] shrink-0">
                         {jobIcons[index]}
                       </div>
 
                       <div className="flex-1">
-                        <h4 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        <h4 className="text-lg sm:text-xl font-bold mb-2 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors">
                           {exp.role}
                         </h4>
 
                         <div className="flex flex-wrap items-center gap-2 mb-3">
-                          <div className="flex items-center gap-2 text-xs sm:text-sm text-primary bg-primary/10 px-3 py-1 rounded-full">
+                          <div className="flex items-center gap-2 text-xs sm:text-sm text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/15">
                             <Calendar className="h-3 w-3" />
                             {exp.period}
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                        <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-4">
                           <MapPin className="h-4 w-4" />
                           {exp.company}
                         </div>
 
-                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-5">
+                        <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed mb-5">
                           {exp.description}
                         </p>
 
@@ -106,7 +99,7 @@ const Experience = () => {
                           {exp.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-muted-foreground hover:bg-primary/20 hover:border-primary hover:text-primary transition-colors"
+                              className="px-3 py-1 rounded-full text-xs font-medium bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-colors"
                             >
                               {tag}
                             </span>
@@ -120,13 +113,12 @@ const Experience = () => {
             </div>
           </div>
 
-          {/* COLUNA DIREITA - FORMAÇÃO */}
           <div className="xl:col-span-5">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                 <BookOpen className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-foreground">
                 {t.experience.acadTitle}
               </h3>
             </div>
@@ -135,7 +127,7 @@ const Experience = () => {
               {t.experience.education.map((item, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-white/5 bg-card/5 hover:bg-card/10 hover:border-white/10 transition-all duration-300 p-5 sm:p-6"
+                  className="rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white dark:bg-card/5 hover:bg-white dark:hover:bg-card/10 hover:border-primary/25 dark:hover:border-white/10 transition-all duration-300 p-5 sm:p-6 shadow-[0_8px_24px_rgba(88,28,135,0.05)] hover:shadow-[0_12px_32px_rgba(168,85,247,0.10)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
@@ -144,7 +136,7 @@ const Experience = () => {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h4 className="text-lg font-bold leading-tight">
+                        <h4 className="text-lg font-bold leading-tight text-slate-900 dark:text-foreground">
                           {item.course}
                         </h4>
                         <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">
@@ -152,7 +144,7 @@ const Experience = () => {
                         </span>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
+                      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-3">
                         <span>{item.institution}</span>
                         <span className="hidden sm:inline">•</span>
                         <span className="flex items-center gap-1">
@@ -161,7 +153,7 @@ const Experience = () => {
                         </span>
                       </div>
 
-                      <p className="text-sm sm:text-[15px] text-muted-foreground leading-relaxed">
+                      <p className="text-sm sm:text-[15px] text-slate-600 dark:text-muted-foreground leading-relaxed">
                         {item.description}
                       </p>
                     </div>

@@ -6,6 +6,71 @@
 
 @layer base {
   :root {
+    /* TEMA CLARO */
+    --background: 270 100% 99%;
+    --foreground: 255 20% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 255 20% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 255 20% 12%;
+
+    --primary: 262 100% 71%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 55% 97%;
+    --secondary-foreground: 255 18% 20%;
+
+    --muted: 260 35% 96%;
+    --muted-foreground: 255 10% 42%;
+
+    --accent: 268 90% 96%;
+    --accent-foreground: 267 50% 35%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 260 28% 90%;
+    --input: 260 28% 90%;
+    --ring: 262 100% 71%;
+
+    --radius: 0.9rem;
+
+    /* Gradientes tema claro */
+    --gradient-hero: radial-gradient(
+        circle at top,
+        hsl(262 100% 71% / 0.16) 0%,
+        transparent 38%
+      ),
+      linear-gradient(
+        180deg,
+        hsl(270 100% 99%) 0%,
+        hsl(264 100% 98%) 55%,
+        hsl(0 0% 100%) 100%
+      );
+
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(264 100% 98%) 100%
+    );
+
+    --gradient-purple: linear-gradient(
+      135deg,
+      hsl(262 100% 71%) 0%,
+      hsl(280 100% 60%) 100%
+    );
+
+    /* Sombras tema claro */
+    --shadow-glow: 0 0 55px hsl(262 100% 71% / 0.14);
+    --shadow-card: 0 16px 45px hsl(270 35% 18% / 0.08);
+    --shadow-soft: 0 10px 30px hsl(270 35% 18% / 0.06);
+    --shadow-hover: 0 18px 40px hsl(262 100% 71% / 0.14);
+  }
+
+  .dark {
+    /* TEMA ESCURO */
     --background: 260 50% 5%;
     --foreground: 0 0% 98%;
 
@@ -34,21 +99,31 @@
     --input: 260 20% 18%;
     --ring: 262 100% 71%;
 
-    --radius: 0.75rem;
+    /* Gradientes tema escuro */
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(262 100% 71% / 0.3) 0%,
+      hsl(280 100% 60% / 0.1) 50%,
+      transparent 100%
+    );
 
-    /* Custom gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(262 100% 71% / 0.3) 0%, hsl(280 100% 60% / 0.1) 50%, transparent 100%);
-    --gradient-card: linear-gradient(180deg, hsl(260 40% 10%) 0%, hsl(260 40% 6%) 100%);
-    --gradient-purple: linear-gradient(135deg, hsl(262 100% 71%) 0%, hsl(280 100% 60%) 100%);
-    
-    /* Shadows */
+    --gradient-card: linear-gradient(
+      180deg,
+      hsl(260 40% 10%) 0%,
+      hsl(260 40% 6%) 100%
+    );
+
+    --gradient-purple: linear-gradient(
+      135deg,
+      hsl(262 100% 71%) 0%,
+      hsl(280 100% 60%) 100%
+    );
+
+    /* Sombras tema escuro */
     --shadow-glow: 0 0 60px hsl(262 100% 71% / 0.15);
     --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.3);
-  }
-
-  .dark {
-    --background: 260 50% 5%;
-    --foreground: 0 0% 98%;
+    --shadow-soft: 0 10px 30px hsl(0 0% 0% / 0.25);
+    --shadow-hover: 0 0 24px hsl(262 100% 71% / 0.22);
   }
 }
 
@@ -65,6 +140,18 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
+
+  html:not(.dark) body {
+    background-image: linear-gradient(
+      180deg,
+      hsl(var(--background)) 0%,
+      hsl(264 100% 98%) 100%
+    );
+  }
+
+  html.dark body {
+    background-image: none;
+  }
 }
 
 @layer utilities {
@@ -80,6 +167,14 @@
   .card-gradient {
     background: var(--gradient-card);
   }
+
+  .soft-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .soft-hover:hover {
+    box-shadow: var(--shadow-hover);
+  }
 }
 
 @layer components {
@@ -93,6 +188,23 @@
 
   .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .surface-card {
+    @apply bg-white/90 dark:bg-card/20 border border-[#E9E2F8] dark:border-white/10 backdrop-blur-md;
+    box-shadow: var(--shadow-card);
+  }
+
+  .surface-card-hover {
+    @apply transition-all duration-500 hover:-translate-y-1 hover:border-primary/30;
+  }
+
+  .soft-pill {
+    @apply bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground;
+  }
+
+  .soft-section {
+    background: linear-gradient(180deg, #fcfbff 0%, #f7f4ff 100%);
   }
 }
 
@@ -125,20 +237,19 @@
   }
 }
 
-/* Personalização da Scrollbar */
+/* Scrollbar com suporte ao modo claro/escuro */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b; /* Cor de fundo escura (igual ao site) */
+  @apply bg-secondary dark:bg-[#09090b];
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4c1d95; /* Roxo escuro */
-  border-radius: 5px;
+  @apply bg-primary/70 dark:bg-[#4c1d95] rounded-full;  
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed; /* Roxo mais claro ao passar o mouse */
+  @apply bg-primary dark:bg-[#7c3aed];
 }
