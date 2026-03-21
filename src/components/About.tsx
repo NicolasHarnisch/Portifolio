@@ -1,8 +1,10 @@
 import { User } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="py-12 sm:py-16 md:py-24 relative overflow-hidden px-4 sm:px-6">
@@ -13,17 +15,17 @@ const About = () => {
         }`}
       >
         
-        {/* Cabeçalho com ícone e títulos */}
+        {/* Cabeçalho */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-12 ml-1">
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <User className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
           <div>
             <span className="text-xs sm:text-sm uppercase tracking-widest text-primary font-semibold block mb-1">
-              Sobre mim
+              {t.about.badge}
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-              Quem sou
+              {t.about.title}
             </h2>
           </div>
         </div>
@@ -34,7 +36,7 @@ const About = () => {
 
           <div className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
             
-            {/* MINHA FOTO */}
+            {/* FOTO */}
             <div className="w-full md:w-4/12 max-w-[280px] sm:max-w-sm shrink-0 relative group/photo">
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-white/5 shadow-lg transform transition-transform duration-500 group-hover/photo:scale-[1.02]">
                 <img 
@@ -48,19 +50,21 @@ const About = () => {
 
             <div className="w-full md:w-8/12 space-y-3 sm:space-y-4">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold leading-tight text-foreground/90 text-center md:text-left">
-                Transformo ideias em experiências digitais
+                {t.about.subtitle}
               </h3>
               
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Busco excelência técnica não apenas para desenvolver sistemas, mas para criar soluções que ampliem a visão do usuário através de <span className="text-gradient font-semibold">criatividade e tecnologia</span>. Atualmente, divido minha rotina entre a graduação na <span className="text-gradient font-semibold">Universidade Federal do Ceará</span> (Campus Russas) e na <span className="text-gradient font-semibold">UniAteneu</span>, o que me proporciona uma visão ampla de arquitetura e desenvolvimento de software.
+                {t.about.p1_1}<span className="text-gradient font-semibold">{t.about.p1_hi1}</span>{t.about.p1_2}
+                <span className="text-gradient font-semibold">{t.about.p1_hi2}</span>{t.about.p1_3}
+                <span className="text-gradient font-semibold">{t.about.p1_hi3}</span>{t.about.p1_4}
               </p>
               
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Minha trajetória é fortalecida pela atuação em <span className="text-gradient font-semibold">projetos de extensão universitária</span>, onde uno tecnologia e educação. No desenvolvimento, direciono essa dedicação para o Back-end e a Arquitetura de Software, projetando sistemas que vão além da funcionalidade: busco soluções robustas, escaláveis e fundamentadas em código limpo e decisões técnicas sustentáveis.
+                {t.about.p2_1}<span className="text-gradient font-semibold">{t.about.p2_hi1}</span>{t.about.p2_2}
               </p>
               
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Fora das telas de código, trago a experiência em <span className="text-gradient font-semibold">design gráfico</span> para garantir que a usabilidade e a estética caminhem juntas em cada projeto.
+                {t.about.p3_1}<span className="text-gradient font-semibold">{t.about.p3_hi1}</span>{t.about.p3_2}
               </p>
             </div>
 

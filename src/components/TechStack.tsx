@@ -1,55 +1,54 @@
 import { Layout, Server, Settings, Cpu } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-// BANCO DE DADOS DE TECNOLOGIAS
-const stack = [
+// Lista apenas com as tecnologias fixas (o nível vai ser traduzido dinamicamente)
+const skillsData = [
   {
-    title: "Back-end & Arquitetura",
-    LucideIcon: <Server className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    iconComp: <Server className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     skills: [
-      { name: "Node.js", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
-      { name: "Java", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
-      { name: "Spring Boot", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" },
-      { name: "JUnit (Testes)", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" } ,
-      { name: "Python", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
-      { name: "C / C++", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
-      { name: "MongoDB", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
-      { name: "SQL", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
+      { name: "Node.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+      { name: "Java", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
+      { name: "Spring Boot", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" },
+      { name: "JUnit (Testes)", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
+      { name: "Python", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+      { name: "C / C++", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
+      { name: "MongoDB", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
+      { name: "SQL", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
     ],
   },
   {
-    title: "Frontend & Mobile",
-    LucideIcon: <Layout className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    iconComp: <Layout className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     skills: [
-      { name: "React.js", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-      {name: "Vue.js", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"},
-      { name: "Next.js", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", invertInDarkMode: true },
-      { name: "React Native", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-      { name: "HTML5", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
-      { name: "CSS3", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
-      { name: "Tailwind CSS", level: "Básico", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "TypeScript", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
-      { name: "JavaScript", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+      { name: "React.js", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+      { name: "Vue.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"},
+      { name: "Next.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", invertInDarkMode: true },
+      { name: "React Native", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+      { name: "HTML5", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+      { name: "CSS3", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+      { name: "Tailwind CSS", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "TypeScript", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
+      { name: "JavaScript", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
     ],
   },
   {
-    title: "Ferramentas & DevOps",
-    LucideIcon: <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    iconComp: <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     skills: [
-      { name: "Git", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
-      { name: "GitHub", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", invertInDarkMode: true },
-      { name: "IntelliJ IDEA", level: "Intermediário", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" },
-      { name: "Apidog", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg" },
-      { name: "Figma", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
-      { name: "Vercel", level: "Avançado", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg", invertInDarkMode: true },
-      { name: "Inglês", level: "Intermediário", icon: "https://cdn-icons-png.flaticon.com/512/197/197484.png" },
+      { name: "Git", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+      { name: "GitHub", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", invertInDarkMode: true },
+      { name: "IntelliJ IDEA", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" },
+      { name: "Apidog", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg" },
+      { name: "Figma", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
+      { name: "Vercel", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg", invertInDarkMode: true },
+      { name: "Inglês", baseLevel: "intermediate", icon: "https://cdn-icons-png.flaticon.com/512/197/197484.png" },
     ],
   },
 ];
 
 const TechStack = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { t } = useLanguage();
 
   return (
     <section id="stack" className="py-20 md:py-28 bg-card/5 relative overflow-hidden px-4 sm:px-6">
@@ -68,17 +67,17 @@ const TechStack = () => {
           </div>
           <div>
             <span className="text-xs sm:text-sm uppercase tracking-widest text-primary font-semibold block mb-1">
-              Tecnologias
+              {t.tech.badge}
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-              Minha Stack Tecnológica
+              {t.tech.title}
             </h2>
           </div>
         </div>
 
-        {/* --- GRID DE 3 COLUNAS --- */}
+        {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {stack.map((category, index) => (
+          {skillsData.map((category, index) => (
             <div
               key={index}
               className="group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 bg-card/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 flex flex-col"
@@ -86,11 +85,11 @@ const TechStack = () => {
               {/* Cabeçalho */}
               <div className="flex items-center gap-3 sm:gap-4 mb-6">
                 <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.1)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 shrink-0">
-                  {category.LucideIcon}
+                  {category.iconComp}
                 </div>
 
                 <h3 className="text-lg font-bold group-hover:text-primary transition-colors leading-tight">
-                  {category.title}
+                  {t.tech.categories[index]}
                 </h3>
               </div>
 
@@ -111,14 +110,14 @@ const TechStack = () => {
                           variant="secondary"
                           className={`inline-flex mt-2 px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all duration-300
                             ${
-                              skill.level === "Avançado"
+                              skill.baseLevel === "advanced"
                                 ? "bg-green-500/10 text-green-400 border-green-500/15 group-hover/skill:bg-green-500/15"
-                                : skill.level === "Intermediário"
+                                : skill.baseLevel === "intermediate"
                                 ? "bg-primary/10 text-primary border-primary/20 group-hover/skill:border-primary/40"
                                 : "bg-white/5 text-muted-foreground border-white/10 group-hover/skill:text-primary group-hover/skill:border-primary/20"
                             }`}
                         >
-                          {skill.level}
+                          {t.tech.levels[skill.baseLevel as keyof typeof t.tech.levels]}
                         </Badge>
                       </div>
 

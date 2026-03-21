@@ -1,8 +1,9 @@
 import { Instagram, Linkedin, Github, Mail, MapPin, Terminal } from "lucide-react";
-// Removi o import da imagem logoIcon pois não vamos mais usar
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
   
   return (
     <footer className="py-12 border-t border-border/50">
@@ -23,14 +24,14 @@ const Footer = () => {
             <div>
               <p className="font-bold text-lg">Nícolas Harnisch</p>
               <p className="text-sm text-muted-foreground">
-                Desenvolvedor Full Stack & Designer
+                {t.footer.role}
               </p>
             </div>
           </div>
           
           {/* Contato */}
           <div className="space-y-3">
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">Contato</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">{t.footer.contactTitle}</h4>
             <div className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
               <Mail className="h-4 w-4" />
               <a href="mailto:nicolasgomeshar@gmail.com">nicolasgomeshar@gmail.com</a>
@@ -43,7 +44,7 @@ const Footer = () => {
           
           {/* Social */}
           <div className="space-y-3">
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">Social</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">{t.footer.socialTitle}</h4>
             <div className="flex items-center gap-2">
               <a 
                 href="https://www.instagram.com/nick.harnisch_/" 
@@ -75,7 +76,7 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-border/30 text-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Nícolas Harnisch. Todos os direitos reservados.
+            © {currentYear} Nícolas Harnisch. {t.footer.rights}
           </p>
         </div>
       </div>

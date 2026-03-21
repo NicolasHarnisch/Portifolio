@@ -9,71 +9,24 @@ import {
   Building2,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-// EXPERIÊNCIAS PROFISSIONAIS
-const experiences = [
-  {
-    role: "Monitor Pedagógico e Desenvolvedor",
-    company: "Projeto JOGA — UFC",
-    period: "Outubro/2024 - Atualmente",
-    description:
-      "Atuo no desenvolvimento de cursos de programação com React Native e Node.js, aplicando técnicas de gamificação para suporte direto aos estudantes.",
-    tags: ["React Native", "Node.js", "Gamificação", "Ensino"],
-    icon: <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-  },
-  {
-    role: "Desenvolvedor Front-end (Voluntário)",
-    company: "NERDS - Pesquisa e Inovação",
-    period: "Setembro/2025 - Janeiro/2026",
-    description:
-      "Desenvolvimento de interfaces web interativas com Vue.js e JavaScript, com experiência em controle de versão com Git e colaboração em equipes multidisciplinares.",
-    tags: ["Vue.js", "JavaScript", "Git", "Trabalho em Equipe"],
-    icon: <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-  },
-  {
-    role: "Design e Marketing",
-    company: "SESCOMP UFC",
-    period: "Abril/2025 - Setembro/2025",
-    description:
-      "Desenvolvimento de materiais gráficos para divulgação do evento em redes sociais e criação da identidade visual de palestras, workshops e peças de uso institucional.",
-    tags: ["Design Gráfico", "Marketing", "Identidade Visual"],
-    icon: <Palette className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-  },
-  {
-    role: "Design e Marketing",
-    company: "Atlética Indomável — UFC",
-    period: "Outubro/2024 - Agosto/2025",
-    description:
-      "Responsável pela elaboração da identidade visual de campanhas e criação de artes gráficas para materiais de eventos esportivos e sociais, visando o engajamento do público.",
-    tags: ["Design", "Social Media", "Branding"],
-    icon: <Palette className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-  },
-];
-
-// FORMAÇÃO ACADÊMICA
-const education = [
-  {
-    course: "Ciência da Computação",
-    institution: "Universidade Federal do Ceará (UFC)",
-    period: "Outubro/2024 - Dezembro/2028",
-    status: "Graduação em andamento",
-    description:
-      "Formação com foco em fundamentos da computação, programação, estruturas de dados, algoritmos e desenvolvimento de software.",
-    icon: <GraduationCap className="h-5 w-5 text-primary" />,
-  },
-  {
-    course: "Engenharia de Software",
-    institution: "UniAteneu",
-    period: "Fevereiro/2024 - Julho/2028",
-    status: "Formação acadêmica",
-    description:
-      "Estudos voltados para processos de desenvolvimento, arquitetura de software, qualidade, documentação e construção de soluções digitais.",
-    icon: <BookOpen className="h-5 w-5 text-primary" />,
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Experience = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { t } = useLanguage();
+
+  // Ícones não precisam ser traduzidos, então ficam aqui
+  const jobIcons = [
+    <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    <Palette className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    <Palette className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+  ];
+
+  const eduIcons = [
+    <GraduationCap className="h-5 w-5 text-primary" />,
+    <BookOpen className="h-5 w-5 text-primary" />,
+  ];
 
   return (
     <section
@@ -93,10 +46,10 @@ const Experience = () => {
           </div>
           <div>
             <span className="text-xs sm:text-sm uppercase tracking-widest text-primary font-semibold block mb-1">
-              Trajetória
+              {t.experience.badge}
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-              Experiência & Formação
+              {t.experience.title}
             </h2>
           </div>
         </div>
@@ -110,12 +63,12 @@ const Experience = () => {
                 <Building2 className="h-5 w-5 text-primary" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold">
-                Experiência Profissional
+                {t.experience.profTitle}
               </h3>
             </div>
 
             <div className="relative border-l border-white/10 ml-2 sm:ml-4 space-y-8 sm:space-y-10">
-              {experiences.map((exp, index) => (
+              {t.experience.jobs.map((exp, index) => (
                 <div
                   key={index}
                   className="relative pl-6 sm:pl-8 md:pl-10 group"
@@ -125,7 +78,7 @@ const Experience = () => {
                   <div className="rounded-2xl bg-card/5 border border-white/5 hover:border-white/10 hover:bg-card/10 transition-all duration-300 p-5 sm:p-6">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 w-fit h-fit shadow-[0_0_10px_rgba(168,85,247,0.15)] shrink-0">
-                        {exp.icon}
+                        {jobIcons[index]}
                       </div>
 
                       <div className="flex-1">
@@ -174,19 +127,19 @@ const Experience = () => {
                 <BookOpen className="h-5 w-5 text-primary" />
               </div>
               <h3 className="text-xl sm:text-2xl font-bold">
-                Formação Acadêmica
+                {t.experience.acadTitle}
               </h3>
             </div>
 
             <div className="space-y-4">
-              {education.map((item, index) => (
+              {t.experience.education.map((item, index) => (
                 <div
                   key={index}
                   className="rounded-2xl border border-white/5 bg-card/5 hover:bg-card/10 hover:border-white/10 transition-all duration-300 p-5 sm:p-6"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
-                      {item.icon}
+                      {eduIcons[index]}
                     </div>
 
                     <div className="flex-1 min-w-0">
@@ -199,7 +152,6 @@ const Experience = () => {
                         </span>
                       </div>
 
-                      {/* Atualizado aqui para mostrar instituição e data juntos */}
                       <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
                         <span>{item.institution}</span>
                         <span className="hidden sm:inline">•</span>
@@ -217,9 +169,9 @@ const Experience = () => {
                 </div>
               ))}
             </div>
-            </div>
           </div>
         </div>
+      </div>
     </section>
   );
 };
