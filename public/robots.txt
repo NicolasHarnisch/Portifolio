@@ -12,3 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
+Sitemap: https://nicolasharnisch.vercel.app/sitemap.xml
