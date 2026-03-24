@@ -42,8 +42,8 @@ export const translations = {
           role: "Monitor Pedagógico e Desenvolvedor",
           company: "Projeto JOGA — UFC",
           period: "Outubro/2024 - Atualmente",
-          description: "Atuo no desenvolvimento de cursos de programação com React Native e Node.js, aplicando técnicas de gamificação para suporte direto aos estudantes.",
-          tags: ["React Native", "Node.js", "Gamificação", "Ensino"],
+          description: "Desenvolvimento de jornadas sobre aprendizado em tecnologia, unindo programação e gamificação para engajar e apoiar alunos diretamente.",
+          tags: ["Lógica de Programação", "Mentoria", "Gamificação", "Tecnologia Educacional"],
         },
         {
           role: "Desenvolvedor Front-end (Voluntário)",
@@ -167,8 +167,8 @@ export const translations = {
           role: "Pedagogical Monitor and Developer",
           company: "JOGA Project — UFC",
           period: "October/2024 - Present",
-          description: "I work on developing programming courses using React Native and Node.js, applying gamification techniques to directly support students.",
-          tags: ["React Native", "Node.js", "Gamification", "Teaching"],
+          description: "Developing learning journeys in technology, combining programming and gamification to engage and directly support classes.",
+          tags: ["Programming Logic", "Mentoring", "Gamification", "Educational Technology"],
         },
         {
           role: "Front-end Developer (Volunteer)",

@@ -68,14 +68,14 @@ const Experience = () => {
                 <div key={index} className="relative pl-6 sm:pl-8 md:pl-10 group">
                   <div className="absolute -left-[6px] top-1 h-3 w-3 rounded-full bg-primary border border-primary shadow-[0_0_12px_rgba(168,85,247,0.45)] group-hover:scale-125 transition-transform duration-300" />
 
-                  <div className="rounded-2xl bg-white dark:bg-card/5 border border-[#E9E2F8] dark:border-white/5 hover:border-primary/25 dark:hover:border-white/10 hover:bg-white dark:hover:bg-card/10 transition-all duration-300 p-5 sm:p-6 shadow-[0_10px_28px_rgba(88,28,135,0.05)] hover:shadow-[0_14px_36px_rgba(168,85,247,0.12)]">
+                  <div className="rounded-2xl bg-white dark:bg-card/5 border border-[#E9E2F8] dark:border-white/5 hover:border-primary/25 dark:hover:border-primary/30 hover:bg-white dark:hover:bg-card/10 transition-all duration-300 p-5 sm:p-6 shadow-[0_10px_28px_rgba(88,28,135,0.05)] hover:shadow-[0_14px_36px_rgba(168,85,247,0.12)]">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 w-fit h-fit shadow-[0_0_10px_rgba(168,85,247,0.15)] shrink-0">
                         {jobIcons[index]}
                       </div>
 
                       <div className="flex-1">
-                        <h4 className="text-lg sm:text-xl font-bold mb-2 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors">
+                        <h4 className="text-lg sm:text-xl font-bold mb-2 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                           {exp.role}
                         </h4>
 
@@ -99,7 +99,7 @@ const Experience = () => {
                           {exp.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3 py-1 rounded-full text-xs font-medium bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-colors"
+                              className="px-3 py-1 rounded-full text-xs font-medium bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground hover:bg-primary/10 hover:border-primary/40 hover:text-primary dark:hover:bg-primary/20 dark:hover:border-primary/50 dark:hover:text-primary transition-all duration-300 cursor-default hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] hover:-translate-y-0.5"
                             >
                               {tag}
                             </span>
@@ -127,7 +127,7 @@ const Experience = () => {
               {t.experience.education.map((item, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white dark:bg-card/5 hover:bg-white dark:hover:bg-card/10 hover:border-primary/25 dark:hover:border-white/10 transition-all duration-300 p-5 sm:p-6 shadow-[0_8px_24px_rgba(88,28,135,0.05)] hover:shadow-[0_12px_32px_rgba(168,85,247,0.10)]"
+                  className="group rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white dark:bg-card/5 hover:bg-white dark:hover:bg-card/10 hover:border-primary/25 dark:hover:border-primary/30 transition-all duration-300 p-5 sm:p-6 shadow-[0_8px_24px_rgba(88,28,135,0.05)] hover:shadow-[0_12px_32px_rgba(168,85,247,0.12)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
@@ -136,7 +136,7 @@ const Experience = () => {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h4 className="text-lg font-bold leading-tight text-slate-900 dark:text-foreground">
+                        <h4 className="text-lg font-bold leading-tight text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                           {item.course}
                         </h4>
                         <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">

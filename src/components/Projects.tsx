@@ -13,15 +13,14 @@ const projectData = [
     live: "",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop",
-    tags: ["Backend", "C++", "Algoritmos"],
+    image: "/Aerofix-Airlines.png",
+    tags: ["HTML", "CSS3", "C++", "JavaScript", "API REST"],
     github: "https://github.com/NicolasHarnisch/Aerofix-backend-project.git",
-    live: "",
+    live: "https://aerofix-airlines.vercel.app",
   },
   {
     image: "/Engremaq-Web.png",
-    tags: ["HTML5", "CSS3", "JavaScript"],
+    tags: ["HTML5", "CSS3", "JavaScript", "Node.js", "MongoDB"],
     github: "https://github.com/NicolasHarnisch/Engremaq-web-project.git",
     live: "https://engremaq-web-project.vercel.app/index.html",
   },
@@ -67,7 +66,7 @@ const Projects = () => {
               >
                 <div className="h-52 sm:h-60 overflow-hidden relative shrink-0 bg-[#F8F5FF] dark:bg-black/60">
                   {data.image ? (
-                    project.title === "Engremaq-Web" ? (
+                    project.title === "Engremaq-Web" || project.title === "Aerofix Airlines" ? (
                       <div className="absolute inset-0 z-0">
                         <img
                           src={data.image}
@@ -93,7 +92,8 @@ const Projects = () => {
                 </div>
 
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
-                  <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors">
+                  {/* Adicionado duration-300 para o título acender mais suavemente */}
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
 
@@ -106,7 +106,8 @@ const Projects = () => {
                       <Badge
                         key={tag}
                         variant="secondary"
-                        className="px-3 py-1 rounded-full bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground text-xs font-medium hover:bg-primary/10 hover:text-primary hover:border-primary/30 dark:hover:bg-primary/20 dark:hover:text-primary dark:hover:border-primary/40 transition-colors duration-300"
+                        /* === CLASSES ATUALIZADAS AQUI === */
+                        className="px-3 py-1 rounded-full bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground text-xs font-medium hover:bg-primary/10 hover:border-primary/40 hover:text-primary dark:hover:bg-primary/20 dark:hover:border-primary/50 dark:hover:text-primary transition-all duration-300 cursor-default hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] hover:-translate-y-0.5"
                       >
                         {tag}
                       </Badge>
