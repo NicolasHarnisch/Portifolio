@@ -1,5 +1,3 @@
-// src/locales/translations.ts
-
 export const translations = {
   pt: {
     nav: {
@@ -100,6 +98,10 @@ export const translations = {
       codeBtn: "Code",
       viewBtn: "Ver projeto",
       items: [
+        {
+          title: "ANS Healthcare Analytics",
+          description: "Dashboard interativo para análise de despesas de operadoras de saúde brasileiras, com visualização de dados dinâmica por estado e ranking de gastos.",
+        },
         {
           title: "Sistema de Triagem",
           description: "Sistema Desktop desenvolvido em Java Swing utilizando o Protocolo de Manchester para classificar pacientes e gerenciar filas de prioridade automaticamente.",
@@ -225,6 +227,10 @@ export const translations = {
       codeBtn: "Code",
       viewBtn: "View project",
       items: [
+        {
+          title: "ANS Healthcare Analytics",
+          description: "Interactive dashboard for analyzing Brazilian health provider expenses, featuring dynamic data visualization by state and spending rankings.",
+        },
         {
           title: "Triage System",
           description: "Desktop System developed in Java Swing using the Manchester Protocol to classify patients and manage priority queues automatically.",

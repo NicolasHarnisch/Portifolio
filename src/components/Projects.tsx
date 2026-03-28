@@ -6,8 +6,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const projectData = [
   {
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop",
+    image: "/ansanalytics.png",
+    tags: ["Java", "Python", "FastAPI", "MySQL", "ETL", "Docker", "Maven", "Vue.js"],
+    github: "https://github.com/NicolasHarnisch/health-data-analysis",
+    live: "https://ansanalytics.vercel.app",
+  },
+  {
+    image: "/sistema-triagem-hospitalar.png",
     tags: ["Java", "Swing", "JUnit 5", "MVC"],
     github: "https://github.com/NicolasHarnisch/sistema-triagem-hospitalar",
     live: "",
@@ -22,7 +27,7 @@ const projectData = [
     image: "/Engremaq-Web.png",
     tags: ["HTML5", "CSS3", "JavaScript", "Node.js", "MongoDB"],
     github: "https://github.com/NicolasHarnisch/Engremaq-web-project.git",
-    live: "https://engremaq-web-project.vercel.app/index.html",
+    live: "https://engremaq.vercel.app",
   },
 ];
 
@@ -66,7 +71,7 @@ const Projects = () => {
               >
                 <div className="h-52 sm:h-60 overflow-hidden relative shrink-0 bg-[#F8F5FF] dark:bg-black/60">
                   {data.image ? (
-                    project.title === "Engremaq-Web" || project.title === "Aerofix Airlines" ? (
+                    project.title === "Engremaq-Web" || project.title === "Aerofix Airlines" || project.title === "ANS Healthcare Analytics" ? (
                       <div className="absolute inset-0 z-0">
                         <img
                           src={data.image}
@@ -87,12 +92,10 @@ const Projects = () => {
                     </div>
                   )}
 
-                  {/* camada corrigida da imagem */}
                   <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-white/12 to-transparent dark:from-black/30 dark:via-black/10 dark:to-transparent z-10 pointer-events-none" />
                 </div>
 
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
-                  {/* Adicionado duration-300 para o título acender mais suavemente */}
                   <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
@@ -106,7 +109,6 @@ const Projects = () => {
                       <Badge
                         key={tag}
                         variant="secondary"
-                        /* === CLASSES ATUALIZADAS AQUI === */
                         className="px-3 py-1 rounded-full bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground text-xs font-medium hover:bg-primary/10 hover:border-primary/40 hover:text-primary dark:hover:bg-primary/20 dark:hover:border-primary/50 dark:hover:text-primary transition-all duration-300 cursor-default hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] hover:-translate-y-0.5"
                       >
                         {tag}
