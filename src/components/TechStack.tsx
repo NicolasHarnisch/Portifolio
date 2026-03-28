@@ -10,11 +10,13 @@ const skillsData = [
       { name: "Node.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
       { name: "Java", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
       { name: "Spring Boot", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" },
+      { name: "Maven", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" },
       { name: "JUnit (Testes)", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
       { name: "Python", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+      { name: "FastAPI", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" },
       { name: "C / C++", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
       { name: "MongoDB", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
-      { name: "SQL", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
+      { name: "SQL / MySQL", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
     ],
   },
   {
@@ -22,6 +24,7 @@ const skillsData = [
     skills: [
       { name: "React.js", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
       { name: "Vue.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" },
+      { name: "Chart.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chartjs/chartjs-original.svg " },
       { name: "Next.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", invertInDarkMode: true },
       { name: "React Native", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
       { name: "HTML5", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
@@ -34,6 +37,7 @@ const skillsData = [
   {
     iconComp: <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     skills: [
+      { name: "Docker", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
       { name: "Git", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
       { name: "GitHub", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", invertInDarkMode: true },
       { name: "IntelliJ IDEA", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" },
