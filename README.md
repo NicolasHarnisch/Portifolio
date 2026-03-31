@@ -27,7 +27,6 @@
 - [Deployment](#-deployment)
 - [Future Improvements](#-future-improvements)
 - [Author](#-author)
-- [Português](#-português)
 
 ---
 
