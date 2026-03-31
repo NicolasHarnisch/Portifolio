@@ -1,97 +1,254 @@
-# 🚀 Portfólio Pessoal - Nícolas Harnisch
+﻿# 🚀 Personal Portfolio - Nícolas Harnisch
 
-Este é o repositório oficial do meu portfólio profissional, desenvolvido para centralizar meus projetos, experiências e competências técnicas. O site foi projetado com uma estética moderna e responsiva, focada em proporcionar uma excelente experiência de usuário (UX) enquanto exibe meu trabalho como desenvolvedor e designer.
+> **Professional Portfolio** — React + TypeScript application focused on performance, accessibility, and responsive design.
 
-🔗 **Link do Site:** [nicolasharnisch.vercel.app](https://www.google.com/search?q=https://nicolasharnisch.vercel.app)
-
----
-
-## 💻 Sobre o Projeto
-
-O objetivo deste projeto é servir como uma central de informações sobre minha carreira. Ele detalha minha formação acadêmica dupla em **Ciência da Computação (UFC)** e **Engenharia de Software (UniAteneu)**, além de expor meu arsenal técnico e projetos práticos.
-
-### **Principais Funcionalidades:**
-
-* **Hero Section Dinâmica:** Apresentação com efeito de digitação e acesso rápido ao currículo e redes sociais.
-* **Linha do Tempo de Experiência:** Histórico detalhado de atuações em projetos como **JOGA (UFC)**, **NERDS**, **SESCOMP** e **Atlética Indomável**.
-* **Arsenal Técnico:** Divisão clara entre tecnologias de Backend, Frontend, Mobile e Ferramentas.
-* **Galeria de Projetos:** Cards interativos exibindo projetos como o **Sistema de Triagem (Java)** e o **Aerofix (C++)**, com links diretos para o código.
-* **Navegação Inteligente:** Navbar fixa com scroll suave e menu mobile otimizado.
+<div style="display: inline-block; margin-bottom: 15px;">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint" />
+  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white" alt="Prettier" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-0CE9F4?style=for-the-badge&logo=framer&logoColor=black" alt="Framer Motion" />
+</div>
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 📋 Table of Contents
 
-O site foi construído utilizando as tecnologias mais modernas do ecossistema Web:
-
-* **Core:** React.js, Next.js e TypeScript.
-* **Estilização:** Tailwind CSS (para um design responsivo e customizado).
-* **Componentes:** Shadcn/ui (base para botões, badges e modais).
-* **Ícones:** Lucide React.
-* **Hospedagem:** Vercel.
+- [About](#-about)
+- [Architecture Overview](#-architecture-overview)
+- [Technologies](#-technologies)
+- [Folder Structure](#-folder-structure)
+- [Core Features](#-core-features)
+- [Setup](#-setup)
+- [Run Locally](#-run-locally)
+- [Testing](#-testing)
+- [Deployment](#-deployment)
+- [Future Improvements](#-future-improvements)
+- [Author](#-author)
+- [Português](#-português)
 
 ---
 
-## 📂 Estrutura do Repositório
+## 🇧🇷 Português
 
-O projeto segue uma organização limpa e modular:
+Read the full Portuguese version here: [README.pt-BR.md](README.pt-BR.md)
 
-```text
+## 🎯 About
+
+This portfolio project by **Nícolas Harnisch** demonstrates advanced skills in:
+
+- React componentization with `TypeScript`
+- Responsive design with `Tailwind CSS`
+- Accessibility and keyboard-first navigation
+- Smooth transitions with `framer-motion`
+- Internationalization with `LanguageContext`
+- Custom hooks and optimized UI rendering
+
+The site includes sections: Hero, About, Experience, Tech Stack, Projects, Contact, and Footer.
+
+---
+
+## 🏗️ Architecture Overview
+
+- **Vite + React + TypeScript**: fast development server and production build.
+- **Component-based architecture**: UI and logic separation.
+- **Context API**: `LanguageContext` (i18n), `theme-provider` (dark/light mode).
+- **Custom hooks**:
+  - `useMobile` (mobile breakpoint detection)
+  - `useScrollAnimation` (entry animation on scroll)
+  - `useTypingEffect` (typewriter effect in Hero)
+  - `useToast` (toast notifications)
+
+---
+
+## 🛠️ Technologies
+
+### Core
+
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- shadcn/ui (design system)
+
+### Dev Tools
+
+- ESLint
+- Prettier
+- Husky (git hooks, optional)
+- Vitest + Testing Library
+
+---
+
+## 📁 Folder Structure
+
+```
 src/
 ├── components/
-│   ├── ui/             # Componentes base reutilizáveis (Botão, Badge, etc.)
-│   ├── About.tsx       # Detalhes sobre o perfil e formação
-│   ├── Experience.tsx  # Histórico profissional e acadêmico
-│   ├── Hero.tsx        # Seção de boas-vindas e introdução
-│   ├── Navbar.tsx      # Barra de navegação responsiva
-│   ├── Projects.tsx    # Seção de exibição dos projetos
-│   ├── TechStack.tsx   # Grade de tecnologias dominadas
-│   └── Footer.tsx      # Rodapé com informações de contato
-├── hooks/              # Hooks customizados (ex: animações de scroll)
-└── lib/                # Configurações de utilitários
-
+│   ├── ui/                     # Reusable UI components
+│   ├── About.tsx
+│   ├── Experience.tsx
+│   ├── Footer.tsx
+│   ├── Hero.tsx
+│   ├── Navbar.tsx
+│   ├── NavLink.tsx
+│   ├── ProjectCard.tsx
+│   ├── Projects.tsx
+│   ├── TechStack.tsx
+│   └── WhatsAppButton.tsx
+├── contexts/
+│   ├── LanguageContext.tsx
+│   └── theme-provider.tsx
+├── hooks/
+│   ├── use-mobile.tsx
+│   ├── use-scroll-animation.tsx
+│   ├── use-typing-effect.tsx
+│   └── use-toast.ts
+├── lib/
+│   └── utils.ts
+├── locales/
+│   └── translations.ts
+├── pages/
+│   ├── Index.tsx
+│   └── NotFound.tsx
+├── App.tsx
+├── main.tsx
+├── index.css
+└── vite-env.d.ts
 ```
 
 ---
 
-## 🚀 Como Executar o Projeto
+## ✅ Core Features
 
-Caso queira rodar este portfólio localmente:
+### Navigation
+- Fixed top navbar with smooth section scrolling
+- Mobile menu toggle
+- Active section indicator based on scroll position
+- 320px mobile-first responsive support
 
-1. **Clone o repositório:**
+### Hero
+- Typewriter effect using `useTypingEffect`
+- CTA links: CV, LinkedIn, GitHub
+- Persistent dark/light theme toggle
+
+### About & Experience
+- Timeline style experience section
+- Skills and education highlights
+- Buttons for downloading CV and contacting author
+
+### Tech Stack
+- Categorized stack cards
+- Interactive chips and context-aware display
+
+### Projects
+- Project cards with descriptions, tags, and links
+- Dark mode style support on cards
+- Search/filter hooks (if configured)
+
+### Contact
+- Contact form with basic form validation
+- Social and WhatsApp quick contact links
+
+### Accessibility
+- Keyboard focus styles and skip-to-content model
+- High contrast and responsive typography
+
+---
+
+## ⚙️ Setup
+
+### Prerequisites
+- Node.js v18+ recommended
+- npm 10+ or pnpm
+
+### Installation
+
 ```bash
 git clone https://github.com/NicolasHarnisch/Portifolio.git
-
-```
-
-
-2. **Instale as dependências:**
-```bash
+cd Portifolio
 npm install
-
 ```
 
+---
 
-3. **Inicie o ambiente de desenvolvimento:**
+## ▶️ Run Locally
+
 ```bash
 npm run dev
-
 ```
 
+Open: `http://localhost:5173`
 
-4. **Acesse no seu navegador:** `http://localhost:5173`
+### Production build
 
----
-
-## 📧 Contato
-
-Estou sempre aberto a novas oportunidades e colaborações!
-
-* **LinkedIn:** [in/nicolasharnisch](https://www.linkedin.com/in/nicolasharnisch/)
-* **GitHub:** [@NicolasHarnisch](https://github.com/NicolasHarnisch)
-* **Email:** [nicolasgomeshar@gmail.com](mailto:nicolasgomeshar@gmail.com)
-* **WhatsApp:** [+55 85 99688-3588](https://wa.me/5585996883588)
+```bash
+npm run build
+npm run preview
+```
 
 ---
 
-> "Focado em unir uma base teórica sólida com a criação de interfaces modernas e funcionais."
+## 🧪 Testing
+
+Install test dependencies:
+
+```bash
+npm install -D vitest @testing-library/react @testing-library/jest-dom
+```
+
+Run tests:
+
+```bash
+npm run test
+```
+
+---
+
+## 🚀 Deployment
+
+### Vercel
+
+```bash
+npm install -g vercel
+vercel
+```
+
+### Netlify
+
+- Connect repository
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+### GitHub Pages
+
+- Optional: setup with `gh-pages` package
+
+---
+
+## 🗺️ Future Improvements
+
+- Add unit tests and E2E tests
+- Improve SEO with metadata and sitemap
+- Add more content sections (blog/case studies)
+- Add analytics and CI/CD pipeline
+
+---
+
+## 👨‍💻 Author
+
+**Nícolas Harnisch**
+
+- GitHub: https://github.com/NicolasHarnisch
+- LinkedIn: https://linkedin.com/in/nicolasharnisch
+- Email: nicolasgomeshar@gmail.com
+
+---
+
+## 🇧🇷 Português
+
+Read the Portuguese version here: [README.pt-BR.md](README.pt-BR.md)
