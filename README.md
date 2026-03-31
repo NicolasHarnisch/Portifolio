@@ -246,9 +246,3 @@ vercel
 - GitHub: https://github.com/NicolasHarnisch
 - LinkedIn: https://linkedin.com/in/nicolasharnisch
 - Email: nicolasgomeshar@gmail.com
-
----
-
-## 🇧🇷 Português
-
-Read the Portuguese version here: [README.pt-BR.md](README.pt-BR.md)
