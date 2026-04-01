@@ -129,7 +129,7 @@ const Hero = () => {
                     text-foreground
                     transition-all duration-300
 
-                    hover:bg-black hover:text-white hover:border-black
+                    hover:bg-white hover:text-primary hover:border-white hover:shadow-md
                     dark:hover:bg-white dark:hover:text-primary dark:hover:border-white
 
                     hover:-translate-y-1
