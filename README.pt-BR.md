@@ -27,7 +27,6 @@
 - [Deploy](#-deploy)
 - [Melhorias Futuras](#-melhorias-futuras)
 - [Autor](#-autor)
-- [English](#-english)
 
 ---
 
