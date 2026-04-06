@@ -151,7 +151,7 @@ const Navbar = () => {
 
             <Button
               className="h-9 px-4 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground text-sm font-medium transition-all duration-300 shadow-[0_8px_22px_rgba(168,85,247,0.24)] hover:shadow-[0_12px_28px_rgba(168,85,247,0.34)]"
-              onClick={() => window.open("https://wa.me/5585996883588", "_blank")}
+              onClick={() => window.open("https://wa.me/558599997395", "_blank")}
             >
               {t.nav.contact}
             </Button>
@@ -245,7 +245,7 @@ const Navbar = () => {
                 className="mt-2 h-10 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground w-full shadow-[0_8px_20px_rgba(168,85,247,0.24)]"
                 onClick={() => {
                   setIsOpen(false);
-                  window.open("https://wa.me/5585996883588", "_blank");
+                  window.open("https://wa.me/558599997395", "_blank");
                 }}
               >
                 {t.nav.contact}
