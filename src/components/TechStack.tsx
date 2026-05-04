@@ -1,62 +1,143 @@
-import { Layout, Server, Settings, Cpu } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { memo, useMemo } from "react";
+import { Layout, Server, Settings, Database, Cpu } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-const skillsData = [
-  {
-    iconComp: <Server className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    skills: [
-      { name: "Node.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
-      { name: "Java", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
-      { name: "Spring Boot", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" },
-      { name: "Maven", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" },
-      { name: "Python", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
-      { name: "FastAPI", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" },
-      { name: "C / C++", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
-      { name: "MongoDB", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
-      { name: "SQL / MySQL", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
-    ],
-  },
-  {
-    iconComp: <Layout className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    skills: [
-      { name: "React.js", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-      { name: "Vue.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" },
-      { name: "Chart.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/chartjs/chartjs-original.svg " },
-      { name: "Next.js", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", invertInDarkMode: true },
-      { name: "HTML5", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
-      { name: "CSS3", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
-      { name: "Tailwind CSS", baseLevel: "basic", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
-      { name: "TypeScript", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
-      { name: "JavaScript", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
-    ],
-  },
-  {
-    iconComp: <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    skills: [
-      { name: "Docker", baseLevel: "intermediate", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
-      { name: "Git", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
-      { name: "GitHub", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", invertInDarkMode: true },
-      { name: "Apidog", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg" },
-      { name: "Figma", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
-      { name: "Vercel", baseLevel: "advanced", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg", invertInDarkMode: true },
-      { name: "Inglês", baseLevel: "intermediate", icon: "https://cdn-icons-png.flaticon.com/512/197/197484.png" },
-    ],
-  },
-];
 
 const TechStack = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { t } = useLanguage();
 
+  // useMemo para estabilizar os dados de habilidades e evitar recriação de elementos JSX
+  const skillsData = useMemo(
+    () => [
+      {
+        iconComp: <Server className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+        skills: [
+          {
+            name: "Java",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+          },
+          {
+            name: "Python",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+          },
+          {
+            name: "C / C++",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg",
+          },
+          {
+            name: "JavaScript",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+          },
+          {
+            name: "Spring Boot",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+          },
+          {
+            name: "FastAPI",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
+          },
+          {
+            name: "Node.js",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+          },
+        ],
+      },
+      {
+        iconComp: <Database className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+        skills: [
+          {
+            name: "PostgreSQL",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+          },
+          {
+            name: "MySQL",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+          },
+          {
+            name: "MongoDB",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+          },
+          {
+            name: "Prisma",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
+            invertInDarkMode: true,
+          },
+          {
+            name: "Redis",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
+          },
+          {
+            name: "Docker",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+          },
+        ],
+      },
+      {
+        iconComp: <Layout className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+        skills: [
+          {
+            name: "TypeScript",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+          },
+          {
+            name: "JavaScript",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+          },
+          {
+            name: "Tailwind CSS",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+          },
+          {
+            name: "Next.js",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+            invertInDarkMode: true,
+          },
+          {
+            name: "React.js",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+          },
+          {
+            name: "React Native",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+          },
+          {
+            name: "Vue.js",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
+          },
+        ],
+      },
+      {
+        iconComp: <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+        skills: [
+          {
+            name: "Git",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+          },
+          {
+            name: "Postman",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
+          },
+          {
+            name: "Figma",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+          },
+          {
+            name: "Vercel",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
+            invertInDarkMode: true,
+          },
+        ],
+      },
+    ],
+    [],
+  );
+
   return (
     <section
       id="stack"
-      className="relative py-20 md:py-28 bg-background overflow-hidden px-4 sm:px-6"
+      className="relative py-20 md:py-28 bg-transparent overflow-hidden px-4 sm:px-6"
     >
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-
       <div
         ref={ref}
         className={`container relative z-10 transition-all duration-700 ${
@@ -78,11 +159,11 @@ const TechStack = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillsData.map((category, index) => (
             <div
               key={index}
-              className="group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-card/10 backdrop-blur-sm hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_16px_38px_rgba(168,85,247,0.12)]"
+              className="group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-[#08070b]/90 backdrop-blur-md hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]"
             >
               <div className="flex items-center gap-3 sm:gap-4 mb-6">
                 <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.1)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 shrink-0">
@@ -98,27 +179,13 @@ const TechStack = () => {
                 {category.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="group/skill rounded-xl border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-white/[0.03] px-4 py-3 transition-all duration-300 hover:border-primary/25 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.05] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(168,85,247,0.10)]"
+                    className="group/skill rounded-xl border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-[#110f1a]/60 px-4 py-3 transition-all duration-300 hover:border-primary/25 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.1] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(168,85,247,0.10)]"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="min-w-0">
                         <p className="text-sm font-semibold text-slate-900 dark:text-white truncate transition-colors duration-300 group-hover/skill:text-primary">
                           {skill.name}
                         </p>
-
-                        <Badge
-                          variant="secondary"
-                          className={`inline-flex mt-2 px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all duration-300
-                            ${
-                              skill.baseLevel === "advanced"
-                                ? "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/15 group-hover/skill:bg-green-500/15"
-                                : skill.baseLevel === "intermediate"
-                                ? "bg-primary/10 text-primary border-primary/20 group-hover/skill:border-primary/40"
-                                : "bg-[#F7F4FF] dark:bg-white/5 text-slate-500 dark:text-muted-foreground border-[#E7DFFC] dark:border-white/10 group-hover/skill:text-primary group-hover/skill:border-primary/20"
-                            }`}
-                        >
-                          {t.tech.levels[skill.baseLevel as keyof typeof t.tech.levels]}
-                        </Badge>
                       </div>
 
                       <div className="shrink-0 transition-transform duration-300 group-hover/skill:scale-110 group-hover/skill:-rotate-3">
@@ -126,8 +193,12 @@ const TechStack = () => {
                           src={skill.icon}
                           alt={`${skill.name} icon`}
                           className={`h-7 w-7 sm:h-8 sm:w-8 object-contain ${
-                            skill.invertInDarkMode ? "dark:invert dark:opacity-90" : ""
+                            skill.invertInDarkMode
+                              ? "dark:invert dark:opacity-90"
+                              : ""
                           }`}
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     </div>
@@ -142,4 +213,4 @@ const TechStack = () => {
   );
 };
 
-export default TechStack;
+export default memo(TechStack);

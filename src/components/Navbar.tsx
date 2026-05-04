@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, memo, useCallback } from "react";
 import { Button } from "./ui/button";
 import { Menu, Terminal, Globe, Sun, Moon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -14,46 +14,78 @@ import {
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const { language, toggleLanguage, t } = useLanguage();
   const { theme, setTheme } = useTheme();
+
+  const navLinks = useMemo(
+    () => [
+      { name: t.nav.about, id: "about" },
+      { name: t.nav.experience, id: "experience" },
+      { name: t.nav.tech, id: "stack" },
+      { name: t.nav.projects, id: "projects" },
+    ],
+    [t],
+  );
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      const scrollPosition = window.scrollY + 100;
+
+      const sections = navLinks.map((link) => {
+        const el = document.getElementById(link.id);
+        return {
+          id: link.id,
+          offset: el ? el.offsetTop : 0,
+          height: el ? el.offsetHeight : 0,
+        };
+      });
+
+      const current = sections.find(
+        (section) =>
+          scrollPosition >= section.offset &&
+          scrollPosition < section.offset + section.height,
+      );
+
+      if (current) {
+        setActiveSection(current.id);
+      } else if (window.scrollY < 100) {
+        setActiveSection("");
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navLinks]);
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = useCallback((id: string) => {
     setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offset = element.offsetTop - 80;
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth",
+      });
     }
-  };
+  }, []);
 
-  const navLinks = [
-    { name: t.nav.about, id: "about" },
-    { name: t.nav.experience, id: "experience" },
-    { name: t.nav.tech, id: "stack" },
-    { name: t.nav.projects, id: "projects" },
-  ];
-
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme(theme === "dark" ? "light" : "dark");
-  };
+  }, [setTheme, theme]);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 ${
         isScrolled
-          ? "bg-white/75 dark:bg-background/80 backdrop-blur-xl border-b border-[#ECE5FA] dark:border-white/10 py-3 sm:py-4 shadow-[0_8px_30px_rgba(88,28,135,0.08)]"
+          ? "bg-white/75 dark:bg-background/80 backdrop-blur-xl border-b border-[#ECE5FA] dark:border-white/10 py-3 sm:py-4 shadow-sm"
           : "bg-transparent py-4 sm:py-6"
       }`}
     >
-      <div className="container flex items-center justify-between px-4 sm:px-6">
+      <div className="container flex items-center justify-between">
         <a
           href="#"
           onClick={(e) => {
@@ -67,8 +99,6 @@ const Navbar = () => {
               flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl
               bg-gradient-to-br from-primary/15 to-fuchsia-100 dark:from-primary/10 dark:to-transparent
               border border-primary/20
-              shadow-[0_8px_22px_rgba(168,85,247,0.18)]
-              group-hover:shadow-[0_12px_28px_rgba(168,85,247,0.28)]
               group-hover:border-primary/40
               transition-all duration-300
             "
@@ -87,15 +117,24 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="
-                  text-sm font-medium
-                  text-slate-600 dark:text-muted-foreground
-                  hover:text-primary
-                  dark:hover:text-primary
+                className={`
+                  relative text-sm font-medium py-1
+                  ${
+                    activeSection === link.id
+                      ? "text-primary dark:text-primary"
+                      : "text-slate-600 dark:text-muted-foreground hover:text-primary dark:hover:text-primary"
+                  }
                   transition-colors duration-300
-                "
+                  group/link
+                `}
               >
                 {link.name}
+                <span
+                  className={`
+                    absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300
+                    ${activeSection === link.id ? "w-full" : "w-0 group-hover/link:w-full"}
+                  `}
+                />
               </button>
             ))}
           </div>
@@ -150,8 +189,10 @@ const Navbar = () => {
             </div>
 
             <Button
-              className="h-9 px-4 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground text-sm font-medium transition-all duration-300 shadow-[0_8px_22px_rgba(168,85,247,0.24)] hover:shadow-[0_12px_28px_rgba(168,85,247,0.34)]"
-              onClick={() => window.open("https://wa.me/5585999973965", "_blank")}
+              className="h-9 px-4 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground text-sm font-medium transition-all duration-300 shadow-sm"
+              onClick={() =>
+                window.open("https://wa.me/5585999973965", "_blank")
+              }
             >
               {t.nav.contact}
             </Button>
@@ -176,8 +217,10 @@ const Navbar = () => {
           >
             <SheetHeader>
               <SheetTitle className="text-left flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2 text-slate-900 dark:text-foreground">
-                  <Terminal className="h-5 w-5 text-primary" />
+                <div className="flex items-center gap-3 text-slate-900 dark:text-foreground">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/5 border border-primary/20">
+                    <Terminal className="h-4 w-4 text-primary" />
+                  </div>
                   Menu
                 </div>
               </SheetTitle>
@@ -188,12 +231,12 @@ const Navbar = () => {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="
+                  className={`
                     text-base font-medium text-left py-2
-                    text-slate-600 dark:text-muted-foreground
+                    ${activeSection === link.id ? "text-primary" : "text-slate-600 dark:text-muted-foreground"}
                     hover:text-primary dark:hover:text-primary
                     transition-colors duration-300
-                  "
+                  `}
                 >
                   {link.name}
                 </button>
@@ -242,7 +285,7 @@ const Navbar = () => {
               </div>
 
               <Button
-                className="mt-2 h-10 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground w-full shadow-[0_8px_20px_rgba(168,85,247,0.24)]"
+                className="mt-2 h-10 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground w-full shadow-sm"
                 onClick={() => {
                   setIsOpen(false);
                   window.open("https://wa.me/5585999973965", "_blank");
@@ -258,4 +301,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

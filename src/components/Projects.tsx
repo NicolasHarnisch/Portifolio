@@ -1,39 +1,47 @@
+import { memo, useMemo } from "react";
 import { Github, ExternalLink, Folder, Rocket } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const projectData = [
-  {
-    image: "/ansanalytics.png",
-    tags: ["Java", "Python", "FastAPI", "MySQL", "ETL", "Docker", "Maven", "Vue.js"],
-    github: "https://github.com/NicolasHarnisch/health-data-analysis",
-    live: "https://ansanalytics.vercel.app",
-  },
-  {
-    image: "/sistema-triagem-hospitalar.png",
-    tags: ["Java", "Swing", "JUnit 5", "MVC"],
-    github: "https://github.com/NicolasHarnisch/sistema-triagem-hospitalar",
-    live: "",
-  },
-  {
-    image: "/Aerofix-Airlines.png",
-    tags: ["HTML", "CSS3", "C++", "JavaScript", "API REST"],
-    github: "https://github.com/NicolasHarnisch/Aerofix-backend-project.git",
-    live: "https://aerofix-airlines.vercel.app",
-  },
-  {
-    image: "/Engremaq-Web.png",
-    tags: ["HTML5", "CSS3", "JavaScript", "Node.js", "MongoDB"],
-    github: "https://github.com/NicolasHarnisch/Engremaq-web-project.git",
-    live: "https://engremaq.vercel.app",
-  },
-];
-
 const Projects = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { t } = useLanguage();
+
+  // useMemo para estabilizar os dados estáticos e evitar re-processamento
+  const projectData = useMemo(
+    () => [
+      {
+        image: "/ansanalytics.png",
+        tags: [
+          "Java",
+          "Python",
+          "FastAPI",
+          "MySQL",
+          "ETL",
+          "Docker",
+          "Maven",
+          "Vue.js",
+        ],
+        github: "https://github.com/NicolasHarnisch/health-data-analysis",
+        live: "https://ansanalytics.vercel.app",
+      },
+      {
+        image: "/sistema-triagem-hospitalar.png",
+        tags: ["Java", "Swing", "JUnit 5", "MVC"],
+        github: "https://github.com/NicolasHarnisch/sistema-triagem-hospitalar",
+        live: "",
+      },
+      {
+        image: "/Engremaq-Web.png",
+        tags: ["HTML5", "CSS3", "JavaScript", "Node.js", "MongoDB"],
+        github: "https://github.com/NicolasHarnisch/Engremaq-web-project.git",
+        live: "https://engremaq.vercel.app",
+      },
+    ],
+    [],
+  );
 
   return (
     <section
@@ -63,36 +71,30 @@ const Projects = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-20">
           {t.projects.items.map((project, index) => {
             const data = projectData[index];
+            if (!data) return null; // Prevenção contra erros de índice
 
             return (
               <div
                 key={index}
-                className="group rounded-[1.5rem] border border-[#E9E2F8] dark:border-white/10 bg-white/92 dark:bg-card/20 backdrop-blur-md overflow-hidden hover:border-primary/35 hover:bg-white dark:hover:bg-card/30 transition-all duration-500 hover:-translate-y-2 flex flex-col min-h-[520px] shadow-[0_14px_36px_rgba(88,28,135,0.07)] hover:shadow-[0_20px_46px_rgba(168,85,247,0.16)]"
+                className="group rounded-xl border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl overflow-hidden hover:border-primary/35 dark:hover:bg-[#0d0c12] transition-all duration-500 flex flex-col min-h-[520px] shadow-[0_14px_36px_rgba(88,28,135,0.07)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]"
               >
-                <div className="h-52 sm:h-60 overflow-hidden relative shrink-0 bg-[#F8F5FF] dark:bg-black/60">
+                <div className="aspect-video w-full overflow-hidden relative shrink-0 bg-[#F8F5FF] dark:bg-black/60">
                   {data.image ? (
-                    project.title === "Engremaq-Web" || project.title === "Aerofix Airlines" || project.title === "ANS Healthcare Analytics" ? (
-                      <div className="absolute inset-0 z-0">
-                        <img
-                          src={data.image}
-                          alt={project.title}
-                          className="w-full h-full relative z-0 object-cover object-top scale-[1.0]"
-                        />
-                      </div>
-                    ) : (
+                    <>
                       <img
                         src={data.image}
                         alt={project.title}
-                        className="w-full h-full object-cover object-top relative z-0"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                        loading="lazy"
+                        decoding="async"
                       />
-                    )
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-white/10 to-transparent dark:from-black/50 dark:via-black/10 dark:to-transparent z-10 pointer-events-none" />
+                    </>
                   ) : (
-                    <div className="w-full h-full bg-[#F8F5FF] dark:bg-card/30 flex items-center justify-center relative z-0">
+                    <div className="w-full h-full bg-[#F8F5FF] dark:bg-card/30 flex items-center justify-center">
                       <Folder className="h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground/50" />
                     </div>
                   )}
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-white/12 to-transparent dark:from-black/30 dark:via-black/10 dark:to-transparent z-10 pointer-events-none" />
                 </div>
 
                 <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
@@ -166,4 +168,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default memo(Projects);

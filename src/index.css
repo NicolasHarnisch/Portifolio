@@ -5,6 +5,17 @@
 @tailwind utilities;
 
 @layer base {
+  /* Escalonamento Proporcional para Telas Grandes */
+  html {
+    font-size: 16px;
+  }
+  @media (min-width: 1536px) {
+    html { font-size: 17.5px; } /* Full HD+ */
+  }
+  @media (min-width: 1920px) {
+    html { font-size: 20px; } /* Ultrawide */
+  }
+
   :root {
     /* TEMA CLARO */
     --background: 270 100% 99%;
@@ -252,4 +263,132 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary dark:bg-[#7c3aed];
+}
+
+/* ── Hero Spline 3D ─────────────────────────────────────────────────────────── */
+.hero-spline-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  /* altura mínima para o iframe ter espaço */
+  min-height: 420px;
+  aspect-ratio: 1 / 1;
+}
+
+/* Skeleton de loading */
+.spline-loading-skeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: hsl(262 30% 8% / 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.spline-loading-orb {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(262 100% 71% / 0.3) 0%, transparent 70%);
+  animation: splinePulse 2s ease-in-out infinite;
+}
+
+@keyframes splinePulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.5; }
+  50%       { transform: scale(1.1); opacity: 1; }
+}
+
+/* ── Hero Spline Clean ─────────────────────────────────────────────────────── */
+.spline-scene-root {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.spline-clean-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.spline-clean-container.is-loaded {
+  opacity: 1;
+}
+
+.spline-clean-container iframe {
+  width: 100%;
+  /* Mantemos a altura aumentada para cortar a marca d'água do Spline */
+  height: calc(100% + 50px);
+  border: none;
+  pointer-events: all;
+  margin-top: -2px; 
+}
+
+
+
+
+/* Se por acaso o usuário conseguir clicar, colocamos um texto ou deixamos vazio */
+.spline-button-blocker::after {
+  content: "";
+  display: block;
+}
+
+
+/* Fallback */
+.spline-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.spline-fallback-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid hsl(262 100% 71% / 0.3);
+  animation: splineRingPulse 3s ease-in-out infinite;
+}
+
+.spline-fallback-ring       { width: 200px; height: 200px; }
+.spline-fallback-ring-2     { width: 300px; height: 300px; animation-delay: 0.5s; border-color: hsl(262 100% 71% / 0.15); }
+.spline-fallback-ring-3     { width: 400px; height: 400px; animation-delay: 1s;   border-color: hsl(262 100% 71% / 0.07); }
+
+@keyframes splineRingPulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.05); opacity: 0.5; }
+}
+
+.spline-fallback-label {
+  position: relative;
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: monospace;
+  background: linear-gradient(135deg, hsl(262 100% 71%), hsl(280 100% 65%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes subtle-shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-0.5px, 0.5px) rotate(-0.2deg); }
+  40% { transform: translate(-0.5px, -0.5px) rotate(0.2deg); }
+  60% { transform: translate(0.5px, 0.5px) rotate(-0.2deg); }
+  80% { transform: translate(0.5px, -0.5px) rotate(0.2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.hover-shake:hover {
+  animation: subtle-shake 0.15s linear infinite;
 }

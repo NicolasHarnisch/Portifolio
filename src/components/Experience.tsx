@@ -68,7 +68,7 @@ const Experience = () => {
                 <div key={index} className="relative pl-6 sm:pl-8 md:pl-10 group">
                   <div className="absolute -left-[6px] top-1 h-3 w-3 rounded-full bg-primary border border-primary shadow-[0_0_12px_rgba(168,85,247,0.45)] group-hover:scale-125 transition-transform duration-300" />
 
-                  <div className="rounded-2xl bg-white dark:bg-card/5 border border-[#E9E2F8] dark:border-white/5 hover:border-primary/25 dark:hover:border-primary/30 hover:bg-white dark:hover:bg-card/10 transition-all duration-300 p-5 sm:p-6 shadow-[0_10px_28px_rgba(88,28,135,0.05)] hover:shadow-[0_14px_36px_rgba(168,85,247,0.12)]">
+                  <div className="rounded-2xl bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl border border-[#E9E2F8] dark:border-white/10 hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-5 sm:p-6 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 w-fit h-fit shadow-[0_0_10px_rgba(168,85,247,0.15)] shrink-0">
                         {jobIcons[index]}
@@ -127,7 +127,7 @@ const Experience = () => {
               {t.experience.education.map((item, index) => (
                 <div
                   key={index}
-                  className="group rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white dark:bg-card/5 hover:bg-white dark:hover:bg-card/10 hover:border-primary/25 dark:hover:border-primary/30 transition-all duration-300 p-5 sm:p-6 shadow-[0_8px_24px_rgba(88,28,135,0.05)] hover:shadow-[0_12px_32px_rgba(168,85,247,0.12)]"
+                  className="group rounded-2xl border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-5 sm:p-6 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">

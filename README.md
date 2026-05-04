@@ -1,32 +1,30 @@
-﻿# 🚀 Personal Portfolio - Nícolas Harnisch
+# 🚀 Personal Portfolio - Nícolas Harnisch
 
 > **Professional Portfolio** — React + TypeScript application focused on performance, accessibility, and responsive design.
 
-<div style="display: inline-block; margin-bottom: 15px;">
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" alt="ESLint" />
-  <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white" alt="Prettier" />
-  <img src="https://img.shields.io/badge/Framer%20Motion-0CE9F4?style=for-the-badge&logo=framer&logoColor=black" alt="Framer Motion" />
-</div>
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0CE9F4?style=for-the-badge&logo=framer&logoColor=black)
 
 ---
 
 ## 📋 Table of Contents
 
-- [About](#-about)
-- [Architecture Overview](#-architecture-overview)
-- [Technologies](#-technologies)
-- [Folder Structure](#-folder-structure)
-- [Core Features](#-core-features)
-- [Setup](#-setup)
-- [Run Locally](#-run-locally)
-- [Testing](#-testing)
-- [Deployment](#-deployment)
-- [Future Improvements](#-future-improvements)
-- [Author](#-author)
+- [About](#about)
+- [Architecture Overview](#architecture-overview)
+- [Technologies](#technologies)
+- [Folder Structure](#folder-structure)
+- [Core Features](#core-features)
+- [Setup](#setup)
+- [Run Locally](#run-locally)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Future Improvements](#future-improvements)
+- [Author](#author)
 
 ---
 
@@ -34,7 +32,7 @@
 
 Read the full Portuguese version here: [README.pt-BR.md](README.pt-BR.md)
 
-## 🎯 About
+## About 🎯
 
 This portfolio project by **Nícolas Harnisch** demonstrates advanced skills in:
 
@@ -49,7 +47,7 @@ The site includes sections: Hero, About, Experience, Tech Stack, Projects, Conta
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview 🏗️
 
 - **Vite + React + TypeScript**: fast development server and production build.
 - **Component-based architecture**: UI and logic separation.
@@ -62,7 +60,7 @@ The site includes sections: Hero, About, Experience, Tech Stack, Projects, Conta
 
 ---
 
-## 🛠️ Technologies
+## Technologies 🛠️
 
 ### Core
 
@@ -83,9 +81,9 @@ The site includes sections: Hero, About, Experience, Tech Stack, Projects, Conta
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure 📁
 
-```
+```text
 src/
 ├── components/
 │   ├── ui/                     # Reusable UI components
@@ -122,46 +120,54 @@ src/
 
 ---
 
-## ✅ Core Features
+## Core Features ✅
 
 ### Navigation
+
 - Fixed top navbar with smooth section scrolling
 - Mobile menu toggle
 - Active section indicator based on scroll position
 - 320px mobile-first responsive support
 
 ### Hero
+
 - Typewriter effect using `useTypingEffect`
 - CTA links: CV, LinkedIn, GitHub
 - Persistent dark/light theme toggle
 
 ### About & Experience
+
 - Timeline style experience section
 - Skills and education highlights
 - Buttons for downloading CV and contacting author
 
 ### Tech Stack
+
 - Categorized stack cards
 - Interactive chips and context-aware display
 
 ### Projects
+
 - Project cards with descriptions, tags, and links
 - Dark mode style support on cards
 - Search/filter hooks (if configured)
 
 ### Contact
+
 - Contact form with basic form validation
 - Social and WhatsApp quick contact links
 
 ### Accessibility
+
 - Keyboard focus styles and skip-to-content model
 - High contrast and responsive typography
 
 ---
 
-## ⚙️ Setup
+## Setup ⚙️
 
 ### Prerequisites
+
 - Node.js v18+ recommended
 - npm 10+ or pnpm
 
@@ -175,7 +181,7 @@ npm install
 
 ---
 
-## ▶️ Run Locally
+## Run Locally ▶️
 
 ```bash
 npm run dev
@@ -192,7 +198,7 @@ npm run preview
 
 ---
 
-## 🧪 Testing
+## Testing 🧪
 
 Install test dependencies:
 
@@ -208,7 +214,7 @@ npm run test
 
 ---
 
-## 🚀 Deployment
+## Deployment 🚀
 
 ### Vercel
 
@@ -229,7 +235,7 @@ vercel
 
 ---
 
-## 🗺️ Future Improvements
+## Future Improvements 🗺️
 
 - Add unit tests and E2E tests
 - Improve SEO with metadata and sitemap
@@ -238,10 +244,10 @@ vercel
 
 ---
 
-## 👨‍💻 Author
+## Author 👨‍💻
 
-**Nícolas Harnisch**
+### Nícolas Harnisch
 
-- GitHub: https://github.com/NicolasHarnisch
-- LinkedIn: https://linkedin.com/in/nicolasharnisch
-- Email: nicolasgomeshar@gmail.com
+- GitHub: <https://github.com/NicolasHarnisch>
+- LinkedIn: <https://linkedin.com/in/nicolasharnisch>
+- Email: <nicolasgomeshar@gmail.com>

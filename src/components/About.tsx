@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { User } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -31,9 +32,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="relative group rounded-2xl sm:rounded-[2rem] border border-[#E9E2F8] dark:border-white/10 bg-white/90 dark:bg-card/20 backdrop-blur-md shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] p-4 sm:p-6 md:p-8 overflow-hidden transition-all duration-500">
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(168,85,247,0.10),rgba(255,255,255,0.55),rgba(168,85,247,0.04))] dark:bg-gradient-to-br dark:from-primary/10 dark:via-transparent dark:to-primary/5 opacity-80 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-
+        <div className="relative group rounded-2xl sm:rounded-[2rem] border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] p-4 sm:p-6 md:p-8 overflow-hidden transition-all duration-500">
           <div className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
             <div className="w-full md:w-4/12 max-w-[280px] sm:max-w-sm shrink-0 relative group/photo">
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-[#E8E0FA] dark:border-white/5 shadow-[0_12px_30px_rgba(88,28,135,0.10)] transform transition-transform duration-500 group-hover/photo:scale-[1.02]">
@@ -41,6 +40,8 @@ const About = () => {
                   src="/minha-foto.jpeg"
                   alt="Nícolas Gomes Harnisch"
                   className="w-full aspect-[3/4] object-cover transition-all duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-primary/5 mix-blend-overlay pointer-events-none" />
               </div>
@@ -53,23 +54,33 @@ const About = () => {
 
               <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
                 {t.about.p1_1}
-                <span className="text-gradient font-semibold">{t.about.p1_hi1}</span>
+                <span className="text-gradient font-semibold">
+                  {t.about.p1_hi1}
+                </span>
                 {t.about.p1_2}
-                <span className="text-gradient font-semibold">{t.about.p1_hi2}</span>
+                <span className="text-gradient font-semibold">
+                  {t.about.p1_hi2}
+                </span>
                 {t.about.p1_3}
-                <span className="text-gradient font-semibold">{t.about.p1_hi3}</span>
+                <span className="text-gradient font-semibold">
+                  {t.about.p1_hi3}
+                </span>
                 {t.about.p1_4}
               </p>
 
               <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
                 {t.about.p2_1}
-                <span className="text-gradient font-semibold">{t.about.p2_hi1}</span>
+                <span className="text-gradient font-semibold">
+                  {t.about.p2_hi1}
+                </span>
                 {t.about.p2_2}
               </p>
 
               <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
                 {t.about.p3_1}
-                <span className="text-gradient font-semibold">{t.about.p3_hi1}</span>
+                <span className="text-gradient font-semibold">
+                  {t.about.p3_hi1}
+                </span>
                 {t.about.p3_2}
               </p>
             </div>
@@ -80,4 +91,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default memo(About);
