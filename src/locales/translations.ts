@@ -44,18 +44,18 @@ export const translations = {
           tags: ["Lógica de Programação", "Mentoria", "Algoritmos", "Educação"],
         },
         {
-          role: "Desenvolvedor Web (Voluntário)",
-          company: "NERDS - Pesquisa e Inovação",
-          period: "Setembro/2025 - Janeiro/2026",
-          description: "Colaboração no desenvolvimento de interfaces web e manutenção de repositórios. Experiência focada em JavaScript, Vue.js e controle de versão eficiente com Git em equipes multidisciplinares.",
-          tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
-        },
-        {
           role: "Full Stack Engineer",
           company: "Azemble",
           period: "Março/2026 - Atualmente",
           description: "Atuação em engenharia de software para a plataforma Azemble Connect. Foco no desenvolvimento de arquiteturas escaláveis, construção de APIs robustas no backend e integração com interfaces web responsivas em um ambiente ágil internacional.",
           tags: ["Backend", "Node.js", "Arquitetura Escalável", "Full Stack"],
+        },
+        {
+          role: "Desenvolvedor Web (Voluntário)",
+          company: "NERDS - Pesquisa e Inovação",
+          period: "Setembro/2025 - Janeiro/2026",
+          description: "Colaboração no desenvolvimento de interfaces web e manutenção de repositórios. Experiência focada em JavaScript, Vue.js e controle de versão eficiente com Git em equipes multidisciplinares.",
+          tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
         },
         {
           role: "Design de Comunicação Visual",
@@ -77,7 +77,7 @@ export const translations = {
           course: "Engenharia de Software",
           institution: "UniAteneu",
           period: "Fevereiro/2024 - Julho/2028",
-          status: "Formação acadêmica",
+          status: "Graduação em andamento",
           description: "Estudos direcionados a padrões de projeto (Design Patterns), arquitetura de sistemas, DevOps, qualidade de código e metodologias ágeis de desenvolvimento.",
         }
       ]
@@ -177,18 +177,18 @@ export const translations = {
           tags: ["Programming Logic", "Mentoring", "Algorithms", "Education"],
         },
         {
-          role: "Web Developer (Volunteer)",
-          company: "NERDS - Research and Innovation",
-          period: "September/2025 - January/2026",
-          description: "Collaborated on web interface development and repository maintenance. Experience focused on JavaScript, Vue.js, and efficient version control with Git in multidisciplinary teams.",
-          tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
-        },
-        {
           role: "Full Stack Engineer",
           company: "Azemble",
           period: "March/2026 - Present",
           description: "Software engineering for the Azemble Connect platform. Focused on developing scalable architectures, building robust backend APIs, and integrating with responsive web interfaces in an agile, international environment.",
           tags: ["Backend", "Node.js", "Scalable Architecture", "Full Stack"],
+        },
+        {
+          role: "Web Developer (Volunteer)",
+          company: "NERDS - Research and Innovation",
+          period: "September/2025 - January/2026",
+          description: "Collaborated on web interface development and repository maintenance. Experience focused on JavaScript, Vue.js, and efficient version control with Git in multidisciplinary teams.",
+          tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
         },
         {
           role: "Visual Communication Design",
@@ -210,7 +210,7 @@ export const translations = {
           course: "Software Engineering",
           institution: "UniAteneu",
           period: "February/2024 - July/2028",
-          status: "Academic Degree",
+          status: "Ongoing Degree",
           description: "Studies directed towards design patterns, system architecture, DevOps, code quality, and agile development methodologies.",
         }
       ]
