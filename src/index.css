@@ -17,33 +17,33 @@
   }
 
   :root {
-    /* TEMA CLARO */
-    --background: 270 100% 99%;
-    --foreground: 255 20% 12%;
+    /* TEMA CLARO NEUTRO */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 255 20% 12%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 255 20% 12%;
+    --popover-foreground: 240 10% 3.9%;
 
     --primary: 262 100% 71%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 55% 97%;
-    --secondary-foreground: 255 18% 20%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 260 35% 96%;
-    --muted-foreground: 255 10% 42%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 268 90% 96%;
-    --accent-foreground: 267 50% 35%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 260 28% 90%;
-    --input: 260 28% 90%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
     --ring: 262 100% 71%;
 
     --radius: 0.9rem;
@@ -81,33 +81,33 @@
   }
 
   .dark {
-    /* TEMA ESCURO */
-    --background: 260 50% 5%;
+    /* TEMA ESCURO PREMIUM (NEUTRO) */
+    --background: 240 10% 2%;
     --foreground: 0 0% 98%;
 
-    --card: 260 40% 8%;
+    --card: 240 10% 4%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 260 40% 8%;
+    --popover: 240 10% 4%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 262 100% 71%;
-    --primary-foreground: 260 50% 5%;
+    --primary-foreground: 240 5.9% 10%;
 
-    --secondary: 260 30% 12%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 260 20% 15%;
-    --muted-foreground: 260 10% 60%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 262 100% 71%;
-    --accent-foreground: 260 50% 5%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 260 20% 18%;
-    --input: 260 20% 18%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
     --ring: 262 100% 71%;
 
     /* Gradientes tema escuro */

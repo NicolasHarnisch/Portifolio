@@ -14,10 +14,12 @@ export const useTypingEffect = ({ text, speed = 80, delay = 0 }: UseTypingEffect
     setDisplayedText("");
     setIsComplete(false);
 
+    let intervalId: NodeJS.Timeout;
+
     const startTimeout = setTimeout(() => {
       let currentIndex = 0;
       
-      const intervalId = setInterval(() => {
+      intervalId = setInterval(() => {
         if (currentIndex < text.length) {
           setDisplayedText(text.slice(0, currentIndex + 1));
           currentIndex++;
@@ -26,11 +28,12 @@ export const useTypingEffect = ({ text, speed = 80, delay = 0 }: UseTypingEffect
           clearInterval(intervalId);
         }
       }, speed);
-
-      return () => clearInterval(intervalId);
     }, delay);
 
-    return () => clearTimeout(startTimeout);
+    return () => {
+      clearTimeout(startTimeout);
+      if (intervalId) clearInterval(intervalId);
+    };
   }, [text, speed, delay]);
 
   return { displayedText, isComplete };

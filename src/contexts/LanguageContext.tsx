@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 // src/contexts/LanguageContext.tsx
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, ReactNode, useEffect, useMemo } from 'react';
 import { translations } from '../locales/translations';
 
 type Language = 'pt' | 'en';
@@ -23,8 +23,18 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   // Aqui pegamos o dicionário correto com base no idioma atual
   const t = translations[language];
 
+  // Atualiza o atributo lang do HTML para Leitores de Tela e SEO
+  useEffect(() => {
+    document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
+  }, [language]);
+
+  const value = useMemo(
+    () => ({ language, toggleLanguage, t }),
+    [language, t]
+  );
+
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

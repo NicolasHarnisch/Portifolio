@@ -71,7 +71,7 @@ export default function StarBackground() {
   const neonColor = isLightMode ? "#5b21b6" : "#a5b4fc"; // Roxo mais profundo no light, roxo claro/neon no dark
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 w-full h-full">
+    <div className="pointer-events-none fixed inset-0 z-0 w-full h-full" aria-hidden="true" role="presentation">
       <Canvas
         camera={{ position: [0, 0, 1] }}
         gl={{

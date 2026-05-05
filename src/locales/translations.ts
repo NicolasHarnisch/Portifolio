@@ -28,7 +28,8 @@ export const translations = {
       p2_2: ", onde direciono minha dedicação técnica para o Back-end e Integrações de Dados. Desenvolvo sistemas que vão além de simples operações, projetando lógicas de negócios robustas e tomando decisões técnicas sustentáveis que suportam o crescimento da aplicação.",
       p3_1: "Com uma base sólida em desenvolvimento Full Stack, trago também o domínio sobre o ",
       p3_hi1: "ecossistema Front-end",
-      p3_2: " para garantir que toda essa inteligência de servidor chegue ao usuário final através de interfaces rápidas, responsivas e de alta usabilidade."
+      p3_2: " para garantir que toda essa inteligência de servidor chegue ao usuário final através de interfaces rápidas, responsivas e de alta usabilidade.",
+
     },
     experience: {
       badge: "Trajetória",
@@ -161,7 +162,8 @@ export const translations = {
       p2_2: ", where I direct my technical dedication to the Back-end and Data Integrations. I develop systems that go beyond simple operations, designing robust business logics and making sustainable technical decisions that support application growth.",
       p3_1: "With a solid foundation in Full Stack development, I also bring a strong grasp of the ",
       p3_hi1: "Front-end ecosystem",
-      p3_2: " to ensure that all this server-side intelligence reaches the end user through fast, responsive, and highly usable interfaces."
+      p3_2: " to ensure that all this server-side intelligence reaches the end user through fast, responsive, and highly usable interfaces.",
+
     },
     experience: {
       badge: "Trajectory",
