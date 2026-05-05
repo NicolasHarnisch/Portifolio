@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 
@@ -15,6 +15,14 @@ const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
 const StarBackground = lazy(() => import("@/components/StarBackground"));
 
 const Index = () => {
+  useEffect(() => {
+    // Garante que o scroll volte para o topo ao recarregar a página
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen relative bg-white dark:bg-[#050505] text-foreground transition-colors duration-500">
       <Suspense fallback={<div className="fixed inset-0 bg-[#050505] pointer-events-none" />}>

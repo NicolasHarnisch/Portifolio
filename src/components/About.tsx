@@ -32,7 +32,11 @@ const About = () => {
           </div>
         </div>
 
-        <div className="relative group rounded-2xl sm:rounded-[2rem] border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] p-4 sm:p-6 md:p-8 overflow-hidden transition-all duration-500">
+        <div
+          className={`relative group rounded-2xl sm:rounded-[2rem] border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] p-4 sm:p-6 md:p-8 overflow-hidden transition-all duration-500 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
             <div className="w-full md:w-4/12 max-w-[280px] sm:max-w-sm shrink-0 relative group/photo">
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-[#E8E0FA] dark:border-white/5 shadow-[0_12px_30px_rgba(88,28,135,0.10)] transform transition-transform duration-500 group-hover/photo:scale-[1.02]">

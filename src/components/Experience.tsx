@@ -65,7 +65,10 @@ const Experience = () => {
 
             <div className="relative border-l border-[#E8E0FA] dark:border-white/10 ml-2 sm:ml-4 space-y-8 sm:space-y-10">
               {t.experience.jobs.map((exp, index) => (
-                <div key={index} className="relative pl-6 sm:pl-8 md:pl-10 group">
+                <div
+                  key={index}
+                  className="relative pl-6 sm:pl-8 md:pl-10 group"
+                >
                   <div className="absolute -left-[6px] top-1 h-3 w-3 rounded-full bg-primary border border-primary shadow-[0_0_12px_rgba(168,85,247,0.45)] group-hover:scale-125 transition-transform duration-300" />
 
                   <div className="rounded-2xl bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl border border-[#E9E2F8] dark:border-white/10 hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-5 sm:p-6 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]">

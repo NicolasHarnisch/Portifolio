@@ -160,10 +160,13 @@ const TechStack = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillsData.map((category, index) => (
+          {skillsData.map((category, categoryIndex) => (
             <div
-              key={index}
-              className="group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-[#08070b]/90 backdrop-blur-md hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]"
+              key={categoryIndex}
+              className={`group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-[#08070b]/90 backdrop-blur-md hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-700 ease-out shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: `${categoryIndex * 50}ms` }}
             >
               <div className="flex items-center gap-3 sm:gap-4 mb-6">
                 <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.1)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 shrink-0">
@@ -171,15 +174,20 @@ const TechStack = () => {
                 </div>
 
                 <h3 className="text-lg font-bold text-slate-900 dark:text-foreground group-hover:text-primary transition-colors leading-tight">
-                  {t.tech.categories[index]}
+                  {t.tech.categories[categoryIndex]}
                 </h3>
               </div>
 
               <div className="grid gap-3">
-                {category.skills.map((skill) => (
+                {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skill.name}
-                    className="group/skill rounded-xl border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-[#110f1a]/60 px-4 py-3 transition-all duration-300 hover:border-primary/25 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.1] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(168,85,247,0.10)]"
+                    className={`group/skill rounded-xl border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-[#110f1a]/60 px-4 py-3 transition-all duration-500 ease-out hover:border-primary/25 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.1] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(168,85,247,0.10)] ${
+                      isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+                    }`}
+                    style={{
+                      transitionDelay: `${categoryIndex * 50 + skillIndex * 20}ms`,
+                    }}
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="min-w-0">

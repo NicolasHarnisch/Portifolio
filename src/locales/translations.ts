@@ -108,10 +108,6 @@ export const translations = {
           description: "Sistema desktop desenvolvido nativamente em Java focado na lógica do Protocolo de Manchester, capaz de classificar riscos de pacientes e gerenciar filas de prioridade com alta confiabilidade estrutural.",
         },
         {
-          title: "Aerofix",
-          description: "Aplicação em C++ focada no controle de baixo nível e algoritmos de busca. Simula um sistema de gestão e reserva de assentos utilizando estruturas de dados otimizadas para performance.",
-        },
-        {
           title: "Engremaq-Web",
           description: "Plataforma full-stack construída com Node.js, React e banco de dados NoSQL (MongoDB). Implementa lógica de carrinho, controle de estoque e integração segura com APIs de pagamento (Mercado Pago).",
         }
@@ -240,10 +236,6 @@ export const translations = {
         {
           title: "Triage System",
           description: "Desktop system developed natively in Java focused on the Manchester Protocol's logic, capable of classifying patient risks and managing priority queues with high structural reliability.",
-        },
-        {
-          title: "Aerofix",
-          description: "C++ application focused on low-level control and search algorithms. Simulates a seat management and reservation system using performance-optimized data structures.",
         },
         {
           title: "Engremaq-Web",

@@ -71,12 +71,14 @@ const Projects = () => {
             return (
               <div
                 key={index}
-                className="group rounded-[1.5rem] border border-[#E9E2F8] dark:border-white/10 bg-white/92 dark:bg-card/20 backdrop-blur-md overflow-hidden hover:border-primary/35 hover:bg-white dark:hover:bg-card/30 transition-all duration-500 hover:-translate-y-2 flex flex-col min-h-[520px] shadow-[0_14px_36px_rgba(88,28,135,0.07)] hover:shadow-[0_20px_46px_rgba(168,85,247,0.16)]"
+                className={`group rounded-xl border border-[#E9E2F8] dark:border-white/10 bg-white/92 dark:bg-card/20 backdrop-blur-md overflow-hidden hover:border-primary/35 hover:bg-white dark:hover:bg-card/30 transition-all duration-500 hover:-translate-y-2 flex flex-col min-h-[480px] shadow-[0_14px_36px_rgba(88,28,135,0.07)] hover:shadow-[0_20px_46px_rgba(168,85,247,0.16)] ${
+                  isVisible ? "animate-fade-up opacity-100" : "opacity-0"
+                }`}
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className="h-52 sm:h-60 overflow-hidden relative shrink-0 bg-[#F8F5FF] dark:bg-black/60">
+                <div className="h-44 sm:h-52 overflow-hidden relative shrink-0 bg-[#F8F5FF] dark:bg-black/20">
                   {data.image ? (
                     project.title === "Engremaq-Web" ||
-                    project.title === "Aerofix Airlines" ||
                     project.title === "ANS Healthcare Analytics" ? (
                       <div className="absolute inset-0 z-0">
                         <img
@@ -98,31 +100,36 @@ const Projects = () => {
                     </div>
                   )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-white/5 to-transparent dark:from-black/60 dark:via-black/20 dark:to-transparent z-10 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-white/5 to-transparent dark:from-black/30 dark:via-transparent dark:to-transparent z-10 pointer-events-none" />
                 </div>
 
-                <div className="p-6 sm:p-7 flex flex-col flex-grow relative z-20">
-                  <h3 className="text-lg sm:text-xl font-bold mb-3 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
+                <div className="p-5 flex flex-col flex-grow relative z-20">
+                  <h3 className="text-lg font-bold mb-1.5 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
 
-                  <p className="text-slate-600 dark:text-muted-foreground text-sm mb-8 leading-relaxed">
+                  <p className="text-slate-600 dark:text-muted-foreground text-sm mb-3.5 leading-relaxed line-clamp-2 sm:line-clamp-none">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                    {data.tags.map((tag) => (
+                  <div className="flex flex-wrap gap-2 mb-4 mt-auto">
+                    {data.tags.map((tag, tagIndex) => (
                       <Badge
                         key={tag}
                         variant="secondary"
-                        className="px-3 py-1 rounded-full bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground text-xs font-medium hover:bg-primary/10 hover:border-primary/40 hover:text-primary dark:hover:bg-primary/20 dark:hover:border-primary/50 dark:hover:text-primary transition-all duration-300 cursor-default hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] hover:-translate-y-0.5"
+                        className={`px-3 py-1 rounded-full bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground text-[10px] sm:text-xs font-medium hover:bg-primary/10 hover:border-primary/40 hover:text-primary dark:hover:bg-primary/20 dark:hover:border-primary/50 dark:hover:text-primary transition-all duration-300 cursor-default hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] hover:-translate-y-0.5 ${
+                          isVisible ? "animate-fade-in opacity-100" : "opacity-0"
+                        }`}
+                        style={{
+                          animationDelay: `${index * 0.05 + tagIndex * 0.03}s`,
+                        }}
                       >
                         {tag}
                       </Badge>
                     ))}
                   </div>
 
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-[#E8E0FA] dark:via-white/10 to-transparent mb-6" />
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-[#E8E0FA] dark:via-white/10 to-transparent mb-4" />
 
                   <div className="flex gap-3 pt-2 mt-auto">
                     <a
