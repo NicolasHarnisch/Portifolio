@@ -9,6 +9,7 @@
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0CE9F4?style=for-the-badge&logo=framer&logoColor=black)
+![Spline](https://img.shields.io/badge/Spline-3D-FF3366?style=for-the-badge&logo=spline&logoColor=white)
 
 ---
 
@@ -40,10 +41,13 @@ This portfolio project by **Nícolas Harnisch** demonstrates advanced skills in:
 - Responsive design with `Tailwind CSS`
 - Accessibility and keyboard-first navigation
 - Smooth transitions with `framer-motion`
-- Internationalization with `LanguageContext`
+- Internationalization (i18n) with `LanguageContext` (English/Portuguese)
+- Interactive 3D elements with `Spline`
+- Dynamic Star Background for immersive UI
+- Performance-focused architecture with `React.lazy` and `Suspense`
 - Custom hooks and optimized UI rendering
 
-The site includes sections: Hero, About, Experience, Tech Stack, Projects, Contact, and Footer.
+The site includes sections: Hero, About, Experience, Tech Stack, Projects, and Footer.
 
 ---
 
@@ -57,6 +61,8 @@ The site includes sections: Hero, About, Experience, Tech Stack, Projects, Conta
   - `useScrollAnimation` (entry animation on scroll)
   - `useTypingEffect` (typewriter effect in Hero)
   - `useToast` (toast notifications)
+- **Interactive 3D**: `Spline` integration for high-end visual engagement.
+- **Code Splitting**: Heavy components (Spline, sections) are lazy-loaded to optimize initial TTI/LCP.
 
 ---
 
@@ -71,6 +77,9 @@ The site includes sections: Hero, About, Experience, Tech Stack, Projects, Conta
 - Framer Motion
 - Lucide React
 - shadcn/ui (design system)
+- Spline 3D (3D scenes)
+- Lucide React (icons)
+- HSL Theming (Glassmorphism & Airy Premium)
 
 ### Dev Tools
 
@@ -95,6 +104,8 @@ src/
 │   ├── NavLink.tsx
 │   ├── ProjectCard.tsx
 │   ├── Projects.tsx
+│   ├── SplineScene.tsx          # 3D interactive scene
+│   ├── StarBackground.tsx       # Dynamic background
 │   ├── TechStack.tsx
 │   └── WhatsAppButton.tsx
 ├── contexts/
@@ -132,8 +143,10 @@ src/
 ### Hero
 
 - Typewriter effect using `useTypingEffect`
-- CTA links: CV, LinkedIn, GitHub
-- Persistent dark/light theme toggle
+- CTA links: CV (Google Drive), LinkedIn, GitHub, Email
+- Interactive 3D Robot/Scene (Spline)
+- Persistent dark/light theme toggle with transition effects
+- Dynamic Star Background following theme colors
 
 ### About & Experience
 
@@ -152,10 +165,11 @@ src/
 - Dark mode style support on cards
 - Search/filter hooks (if configured)
 
-### Contact
+### Contact & Footer
 
-- Contact form with basic form validation
-- Social and WhatsApp quick contact links
+- Quick WhatsApp access button
+- Detailed footer with navigation and social presence
+- Multi-language support toggle (PT/EN) integrated in Navbar
 
 ### Accessibility
 

@@ -9,6 +9,7 @@
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-0CE9F4?style=for-the-badge&logo=framer&logoColor=black)
+![Spline](https://img.shields.io/badge/Spline-3D-FF3366?style=for-the-badge&logo=spline&logoColor=white)
 
 ---
 
@@ -40,10 +41,13 @@ Este projeto de portfólio por **Nícolas Harnisch** demonstra habilidades avan�
 - Layout responsivo com `Tailwind CSS`
 - Acessibilidade e navegação por teclado
 - Animações suaves com `framer-motion`
-- Internacionalização com `LanguageContext`
+- Internacionalização (i18n) com `LanguageContext` (Português/Inglês)
+- Elementos 3D interativos com `Spline`
+- Background de estrelas dinâmico para uma UI imersiva
+- Arquitetura focada em performance com `React.lazy` e `Suspense`
 - Hooks customizados e renderização otimizada
 
-O site contém seções: Hero, Sobre, Experiência, Tech Stack, Projetos, Contato e Footer.
+O site contém seções: Hero, Sobre, Experiência, Tech Stack, Projetos e Footer.
 
 ---
 
@@ -57,6 +61,8 @@ O site contém seções: Hero, Sobre, Experiência, Tech Stack, Projetos, Contat
   - `useScrollAnimation` (animação na rolagem)
   - `useTypingEffect` (efeito digitador no Hero)
   - `useToast` (notificações toast)
+- **3D Interativo**: Integração com `Spline` para engajamento visual de alto nível.
+- **Code Splitting**: Componentes pesados (Spline, seções) são carregados via lazy-loading para otimizar o carregamento inicial (TTI/LCP).
 
 ---
 
@@ -71,6 +77,9 @@ O site contém seções: Hero, Sobre, Experiência, Tech Stack, Projetos, Contat
 - Framer Motion
 - Lucide React
 - shadcn/ui (sistema de design)
+- Spline 3D (cenas 3D)
+- Lucide React (ícones)
+- Temas em HSL (Glassmorphism & Airy Premium)
 
 ### Ferramentas
 
@@ -95,6 +104,8 @@ src/
 │   ├── NavLink.tsx
 │   ├── ProjectCard.tsx
 │   ├── Projects.tsx
+│   ├── SplineScene.tsx          # Cena 3D interativa
+│   ├── StarBackground.tsx       # Background dinâmico
 │   ├── TechStack.tsx
 │   └── WhatsAppButton.tsx
 ├── contexts/
@@ -132,8 +143,10 @@ src/
 ### Hero
 
 - Efeito de digitação com `useTypingEffect`
-- CTAs para CV, LinkedIn e GitHub
-- Modo claro/escuro persistente
+- Links de CTA: Currículo (Google Drive), LinkedIn, GitHub, Email
+- Robô/Cena 3D Interativa (Spline)
+- Modo claro/escuro persistente com efeitos de transição
+- Background de estrelas dinâmico que segue as cores do tema
 
 ### Sobre & Experiência
 
@@ -151,10 +164,11 @@ src/
 - Cards de projeto com tags e links
 - Suporte modo escuro
 
-### Contato
+### Contato & Footer
 
-- Formulário com validação básica
-- Links sociais e WhatsApp
+- Botão de acesso rápido ao WhatsApp
+- Rodapé detalhado com navegação e presença social
+- Seletor de idioma (PT/EN) integrado na Navbar
 
 ### Acessibilidade
 

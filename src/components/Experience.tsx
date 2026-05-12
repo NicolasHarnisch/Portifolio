@@ -16,10 +16,10 @@ const Experience = () => {
   const { t } = useLanguage();
 
   const jobIcons = [
+    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
     <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    <Palette className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
   ];
 
   const eduIcons = [

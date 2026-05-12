@@ -9,7 +9,7 @@ export const translations = {
     },
     hero: {
       role: "Software Engineer",
-      description: "Desenvolvedor focado em construir arquiteturas escaláveis, APIs robustas e modelagem de dados, conectando motores de alta performance a interfaces web modernas. Estudante de Ciência da Computação (UFC) e Engenharia de Software (UniAteneu).",
+      description: "Desenvolvedor focado em construir arquiteturas escaláveis, APIs robustas e modelagem de dados, conectando motores de alta performance a interfaces web modernas.",
       resumeBtn: "Visualizar Currículo"
     },
     about: {
@@ -38,11 +38,11 @@ export const translations = {
       acadTitle: "Formação Acadêmica",
       jobs: [
         {
-          role: "Desenvolvedor e Monitor Pedagógico (Bolsista PREX)",
-          company: "Projeto JOGA — UFC",
-          period: "Outubro/2024 - Atualmente",
-          description: "Atuação vinculada à Pró-Reitoria de Extensão (PREX) com o desenvolvimento de jornadas sobre aprendizado em tecnologia, unindo programação e gamificação para engajar e apoiar alunos diretamente.",
-          tags: ["Lógica de Programação", "Mentoria", "Algoritmos", "Educação"],
+          role: "Desenvolvedor Full-Stack",
+          company: "Startup Devora",
+          period: "Maio/2026 - Atualmente",
+          description: "Desenvolvimento de soluções de ponta a ponta, construindo desde landing pages responsivas e de alta conversão para empresas até a lógica de servidor. Criação e manutenção de APIs RESTful escaláveis para suportar os serviços internos da startup e integrar com as interfaces web.",
+          tags: ["Full Stack", "API RESTful", "Landing Pages", "Node.js"],
         },
         {
           role: "Full Stack Engineer",
@@ -52,18 +52,18 @@ export const translations = {
           tags: ["Backend", "Node.js", "Arquitetura Escalável", "Full Stack"],
         },
         {
+          role: "Desenvolvedor e Monitor Pedagógico (Bolsista PREX)",
+          company: "Projeto JOGA — UFC",
+          period: "Outubro/2024 - Atualmente",
+          description: "Atuação vinculada à Pró-Reitoria de Extensão (PREX) com o desenvolvimento de jornadas sobre aprendizado em tecnologia, unindo programação e gamificação para engajar e apoiar alunos diretamente.",
+          tags: ["Lógica de Programação", "Mentoria", "Algoritmos", "Educação"],
+        },
+        {
           role: "Desenvolvedor Web (Voluntário)",
           company: "NERDS - Pesquisa e Inovação",
           period: "Setembro/2025 - Janeiro/2026",
           description: "Colaboração no desenvolvimento de interfaces web e manutenção de repositórios. Experiência focada em JavaScript, Vue.js e controle de versão eficiente com Git em equipes multidisciplinares.",
           tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
-        },
-        {
-          role: "Design de Comunicação Visual",
-          company: "Atlética Indomável — UFC",
-          period: "Outubro/2024 - Agosto/2025",
-          description: "Aplicação de conceitos de UI e design gráfico para elaboração de identidade visual de campanhas e criação de materiais visuais com foco em engajamento digital.",
-          tags: ["UI/UX", "Design", "Comunicação"],
         }
       ],
       education: [
@@ -139,7 +139,7 @@ export const translations = {
     },
     hero: {
       role: "Software Engineer",
-      description: "Developer focused on building scalable architectures, robust APIs, and data modeling, connecting high-performance engines to modern web interfaces. Computer Science (UFC) and Software Engineering (UniAteneu) student.",
+      description: "Developer focused on building scalable architectures, robust APIs, and data modeling, connecting high-performance engines to modern web interfaces.",
       resumeBtn: "View Resume"
     },
     about: {
@@ -168,11 +168,11 @@ export const translations = {
       acadTitle: "Academic Education",
       jobs: [
         {
-          role: "Developer and Pedagogical Monitor (PREX Scholar)",
-          company: "JOGA Project — UFC",
-          period: "October/2024 - Present",
-          description: "Working with the Pro-Rectorate for Extension (PREX) to develop technology learning journeys, combining programming and gamification to engage and directly support students.",
-          tags: ["Programming Logic", "Mentoring", "Algorithms", "Education"],
+          role: "Full-Stack Developer",
+          company: "Startup Devora",
+          period: "May/2026 - Present",
+          description: "End-to-end solution development, building everything from responsive, high-conversion landing pages to server-side logic. Creating and maintaining scalable RESTful APIs to support startup internal services and integrate with web interfaces.",
+          tags: ["Full Stack", "RESTful API", "Landing Pages", "Node.js"],
         },
         {
           role: "Full Stack Engineer",
@@ -182,18 +182,18 @@ export const translations = {
           tags: ["Backend", "Node.js", "Scalable Architecture", "Full Stack"],
         },
         {
+          role: "Developer and Pedagogical Monitor (PREX Scholar)",
+          company: "JOGA Project — UFC",
+          period: "October/2024 - Present",
+          description: "Working with the Pro-Rectorate for Extension (PREX) to develop technology learning journeys, combining programming and gamification to engage and directly support students.",
+          tags: ["Programming Logic", "Mentoring", "Algorithms", "Education"],
+        },
+        {
           role: "Web Developer (Volunteer)",
           company: "NERDS - Research and Innovation",
           period: "September/2025 - January/2026",
           description: "Collaborated on web interface development and repository maintenance. Experience focused on JavaScript, Vue.js, and efficient version control with Git in multidisciplinary teams.",
           tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
-        },
-        {
-          role: "Visual Communication Design",
-          company: "Indomável Athletics — UFC",
-          period: "October/2024 - August/2025",
-          description: "Applied UI and graphic design concepts to develop visual identities for campaigns and create visual materials aimed at digital engagement.",
-          tags: ["UI/UX", "Design", "Communication"],
         }
       ],
       education: [
