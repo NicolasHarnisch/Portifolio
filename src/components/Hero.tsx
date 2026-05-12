@@ -52,7 +52,7 @@ const Hero = () => {
   const links = useMemo(
     () => ({
       curriculo:
-        "https://drive.google.com/file/d/17j-xZkCIoK3iAjRUKdJltdq15sUlzfMw/view?usp=sharing",
+        "https://drive.google.com/drive/u/0/folders/10zqRRhACo9TW0RTiKJR3czsblnv75w0Y",
       github: "https://github.com/NicolasHarnisch",
       linkedin: "https://www.linkedin.com/in/nicolasharnisch/",
       email: "mailto:nicolasgomeshar@gmail.com",
@@ -73,12 +73,12 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden px-4 sm:px-6 bg-transparent">
       {/* Background limpo - Apenas as estrelas globais aparecerão aqui */}
 
-      <div className="container relative z-10 pt-32 sm:pt-40 lg:pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 items-center w-full">
+      <div className="container relative z-10 pt-24 sm:pt-32 md:pt-40 lg:pt-20 pb-24 md:pb-12 flex flex-col justify-center min-h-screen">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 items-center w-full mt-8 md:mt-0">
           {/* ── COLUNA ESQUERDA (Textos) ── */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 sm:mb-6 animate-fade-up text-foreground"
+              className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 sm:mb-6 animate-fade-up text-foreground"
               style={{ animationDelay: "0.05s" }}
             >
               Nícolas Gomes
@@ -87,14 +87,14 @@ const Hero = () => {
             </h1>
 
             <p
-              className="text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-4 animate-fade-up min-h-[1.75em] sm:min-h-[2em] flex items-center justify-center md:justify-start"
+              className="text-xl sm:text-2xl md:text-2xl font-medium text-foreground mb-4 animate-fade-up min-h-[1.75em] sm:min-h-[2em] flex items-center justify-center md:justify-start"
               style={{ animationDelay: "0.1s" }}
             >
               <TypewriterLoop text={t.hero.role} />
             </p>
 
             <p
-              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mb-8 sm:mb-10 animate-fade-up mx-auto md:mx-0"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mb-8 sm:mb-10 animate-fade-up mx-auto md:mx-0 px-2 sm:px-0"
               style={{ animationDelay: "0.2s" }}
             >
               {t.hero.description}
@@ -109,11 +109,11 @@ const Hero = () => {
                 href={links.curriculo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto px-4 sm:px-0"
               >
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 transition-all duration-300 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base"
+                  className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 active:scale-95 transition-all duration-300 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base py-6 sm:py-4 rounded-xl"
                 >
                   <FileText className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
                   {t.hero.resumeBtn}
@@ -121,7 +121,7 @@ const Hero = () => {
               </a>
 
               {/* BOTÕES SOCIAIS */}
-              <div className="flex gap-3">
+              <div className="flex gap-4 sm:gap-3 mt-4 sm:mt-0">
                 {socials.map((social, index) => (
                   <a
                     key={index}
@@ -130,18 +130,19 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     aria-label={social.label}
                     className="
-                      p-3 rounded-lg
+                      p-4 sm:p-3 rounded-xl sm:rounded-lg
                       bg-black/5 dark:bg-background/50
-                      border border-black/10 dark:border-input
+                      border border-black/10 dark:border-white/10
                       text-foreground
                       transition-all duration-300
                       hover:bg-slate-900 hover:text-primary hover:border-slate-800 hover:shadow-md
                       dark:hover:bg-white dark:hover:text-primary dark:hover:border-white
                       hover-shake
                       shadow-sm
+                      active:scale-95
                     "
                   >
-                    <social.icon className="h-5 w-5" />
+                    <social.icon className="h-6 w-6 sm:h-5 sm:w-5" />
                   </a>
                 ))}
               </div>
@@ -150,7 +151,7 @@ const Hero = () => {
 
           {/* ── COLUNA DIREITA: Spline 3D — Robô interativo ── */}
           <div
-            className="flex items-center justify-center animate-fade-up relative"
+            className="hidden md:flex items-center justify-center animate-fade-up relative"
             style={{ animationDelay: "0.3s" }}
           >
             <div className="w-full h-full flex items-center justify-center">

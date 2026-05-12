@@ -79,7 +79,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 ${
+      className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 ${
         isScrolled
           ? "bg-white/75 dark:bg-background/80 backdrop-blur-xl border-b border-[#ECE5FA] dark:border-white/10 py-3 sm:py-4 shadow-sm"
           : "bg-transparent py-4 sm:py-6"
@@ -199,8 +199,9 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Hambúrguer oculto no mobile — navegação feita pelo BottomNav */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
+          <SheetTrigger asChild className="hidden">
             <Button
               variant="ghost"
               size="icon"
@@ -232,10 +233,10 @@ const Navbar = () => {
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className={`
-                    text-base font-medium text-left py-2
-                    ${activeSection === link.id ? "text-primary" : "text-slate-600 dark:text-muted-foreground"}
-                    hover:text-primary dark:hover:text-primary
-                    transition-colors duration-300
+                    text-base font-medium text-left py-2 px-2 rounded-lg
+                    ${activeSection === link.id ? "text-primary bg-primary/5" : "text-slate-600 dark:text-muted-foreground"}
+                    hover:text-primary dark:hover:text-primary active:bg-primary/10 active:scale-[0.98]
+                    transition-all duration-300
                   `}
                 >
                   {link.name}
@@ -255,6 +256,7 @@ const Navbar = () => {
                     text-sm font-medium text-slate-900 dark:text-white
                     hover:text-primary hover:bg-primary/5
                     dark:hover:text-primary dark:hover:bg-white/5
+                    active:scale-95
                     transition-all duration-300 shadow-sm
                   "
                   type="button"
@@ -272,6 +274,7 @@ const Navbar = () => {
                     text-muted-foreground
                     hover:text-primary hover:bg-primary/5
                     dark:hover:text-primary dark:hover:bg-white/5
+                    active:scale-95
                     transition-all duration-300 shadow-sm
                   "
                   type="button"
@@ -285,7 +288,7 @@ const Navbar = () => {
               </div>
 
               <Button
-                className="mt-2 h-10 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground w-full shadow-sm"
+                className="mt-2 h-10 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground w-full shadow-sm active:scale-95"
                 onClick={() => {
                   setIsOpen(false);
                   window.open("https://wa.me/5585999973965", "_blank");

@@ -1,6 +1,7 @@
 export const translations = {
   pt: {
     nav: {
+      home: "Início",
       about: "Sobre",
       experience: "Experiência",
       tech: "Tecnologias",
@@ -131,6 +132,7 @@ export const translations = {
   // ==========================================
   en: {
     nav: {
+      home: "Home",
       about: "About",
       experience: "Experience",
       tech: "Tech Stack",

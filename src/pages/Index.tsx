@@ -1,17 +1,14 @@
 import { useEffect, lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
+import BottomNav from "@/components/BottomNav";
 import Hero from "@/components/Hero";
 
-
 // Lazy loading das seções que estão "abaixo da dobra" (below the fold)
-// Isso reduz o tamanho do arquivo JavaScript inicial carregado pelo navegador.
 const About = lazy(() => import("@/components/About"));
-
 const Experience = lazy(() => import("@/components/Experience"));
 const Projects = lazy(() => import("@/components/Projects"));
 const TechStack = lazy(() => import("@/components/TechStack"));
 const Footer = lazy(() => import("@/components/Footer"));
-const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
 const StarBackground = lazy(() => import("@/components/StarBackground"));
 
 const Index = () => {
@@ -35,6 +32,7 @@ const Index = () => {
       />
 
       <Navbar />
+      <BottomNav />
 
       <main className="relative z-10">
         {/* Hero é crítico (LCP), então mantemos o carregamento síncrono */}
@@ -47,7 +45,6 @@ const Index = () => {
           <TechStack />
           <Projects />
           <Footer />
-          <WhatsAppButton />
         </Suspense>
       </main>
     </div>

@@ -16,8 +16,8 @@ const Footer = () => {
   return (
     <footer className="relative py-12 border-t border-[#ECE5FA] dark:border-white/10 bg-transparent overflow-hidden px-4 sm:px-6">
       <div className="container relative z-10">
-        <div className="flex flex-wrap gap-x-12 lg:gap-x-24 gap-y-10 mb-8 items-start">
-          <div className="group relative overflow-hidden flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-white/95 dark:bg-[#08070b]/90 border border-[#EEE7FB] dark:border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] dark:hover:border-primary/30 md:min-w-[480px]">
+        <div className="flex flex-col md:flex-row md:flex-wrap gap-x-12 lg:gap-x-24 gap-y-10 mb-10 items-start">
+          <div className="w-full md:w-auto group relative overflow-hidden flex items-center gap-4 p-4 md:p-6 rounded-2xl bg-white/95 dark:bg-[#08070b]/90 border border-[#EEE7FB] dark:border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] dark:hover:border-primary/30 md:min-w-[480px]">
             <div className="relative z-10 flex items-center gap-4">
               <div
                 className="

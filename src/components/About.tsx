@@ -56,7 +56,7 @@ const About = () => {
                 {t.about.subtitle}
               </h3>
 
-              <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
+              <p className="text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
                 {t.about.p1_1}
                 <span className="text-gradient font-semibold">
                   {t.about.p1_hi1}
@@ -72,7 +72,7 @@ const About = () => {
                 {t.about.p1_4}
               </p>
 
-              <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
+              <p className="text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
                 {t.about.p2_1}
                 <span className="text-gradient font-semibold">
                   {t.about.p2_hi1}
@@ -80,7 +80,7 @@ const About = () => {
                 {t.about.p2_2}
               </p>
 
-              <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
+              <p className="text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
                 {t.about.p3_1}
                 <span className="text-gradient font-semibold">
                   {t.about.p3_hi1}

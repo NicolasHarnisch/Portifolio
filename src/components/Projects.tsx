@@ -118,7 +118,9 @@ const Projects = () => {
                         key={tag}
                         variant="secondary"
                         className={`px-3 py-1 rounded-full bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground text-[10px] sm:text-xs font-medium hover:bg-primary/10 hover:border-primary/40 hover:text-primary dark:hover:bg-primary/20 dark:hover:border-primary/50 dark:hover:text-primary transition-all duration-300 cursor-default hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] hover:-translate-y-0.5 ${
-                          isVisible ? "animate-fade-in opacity-100" : "opacity-0"
+                          isVisible
+                            ? "animate-fade-in opacity-100"
+                            : "opacity-0"
                         }`}
                         style={{
                           animationDelay: `${index * 0.05 + tagIndex * 0.03}s`,

@@ -164,7 +164,9 @@ const TechStack = () => {
             <div
               key={categoryIndex}
               className={`group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-[#08070b]/90 backdrop-blur-md hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-700 ease-out shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${categoryIndex * 50}ms` }}
             >
@@ -178,38 +180,31 @@ const TechStack = () => {
                 </h3>
               </div>
 
-              <div className="grid gap-3">
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skill.name}
-                    className={`group/skill rounded-xl border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-[#110f1a]/60 px-4 py-3 transition-all duration-500 ease-out hover:border-primary/25 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.1] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(168,85,247,0.10)] ${
-                      isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+                    className={`group/skill flex items-center gap-2 rounded-full border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-[#110f1a]/60 px-3 py-2 transition-all duration-300 hover:border-primary/30 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.1] hover:shadow-[0_4px_16px_rgba(168,85,247,0.15)] active:scale-95 ${
+                      isVisible ? "opacity-100" : "opacity-0"
                     }`}
                     style={{
                       transitionDelay: `${categoryIndex * 50 + skillIndex * 20}ms`,
                     }}
                   >
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold text-slate-900 dark:text-white truncate transition-colors duration-300 group-hover/skill:text-primary">
-                          {skill.name}
-                        </p>
-                      </div>
-
-                      <div className="shrink-0 transition-transform duration-300 group-hover/skill:scale-110 group-hover/skill:-rotate-3">
-                        <img
-                          src={skill.icon}
-                          alt={`${skill.name} icon`}
-                          className={`h-7 w-7 sm:h-8 sm:w-8 object-contain ${
-                            skill.invertInDarkMode
-                              ? "dark:invert dark:opacity-90"
-                              : ""
-                          }`}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                    </div>
+                    <img
+                      src={skill.icon}
+                      alt={`${skill.name} icon`}
+                      className={`h-4 w-4 object-contain flex-shrink-0 ${
+                        skill.invertInDarkMode
+                          ? "dark:invert dark:opacity-90"
+                          : ""
+                      }`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <p className="text-xs font-semibold text-slate-900 dark:text-white/80 group-hover/skill:text-primary transition-colors duration-300 whitespace-nowrap">
+                      {skill.name}
+                    </p>
                   </div>
                 ))}
               </div>
