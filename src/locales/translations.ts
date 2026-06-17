@@ -9,28 +9,28 @@ export const translations = {
       contact: "Fale Comigo"
     },
     hero: {
-      role: "Software Engineer",
-      description: "Desenvolvedor focado em construir arquiteturas escaláveis, APIs robustas e modelagem de dados, conectando motores de alta performance a interfaces web modernas.",
-      resumeBtn: "Visualizar Currículo"
+      role: "Desenvolvedor Full-Stack",
+      description: "Crio aplicações web, APIs e dashboards com React, Next.js, Node.js, TypeScript e bancos de dados. Trabalho da interface à estrutura de dados para construir sistemas funcionais, organizados e fáceis de usar.",
+      resumeBtn: "Ver currículo",
+      projectsBtn: "Ver projetos"
     },
     about: {
       badge: "Sobre mim",
       title: "Quem sou",
-      subtitle: "Construindo a inteligência por trás das aplicações",
-      p1_1: "Busco excelência técnica para construir a base estrutural de sistemas complexos, garantindo segurança, escalabilidade e performance através de ",
-      p1_hi1: "arquitetura de software e código limpo",
-      p1_2: ". Atualmente, divido minha rotina acadêmica entre a ",
-      p1_hi2: "Universidade Federal do Ceará",
-      p1_3: " (Campus Russas) e a ",
-      p1_hi3: "UniAteneu",
-      p1_4: ", o que me proporciona uma sólida base teórica e prática em engenharia de sistemas.",
-      p2_1: "Minha trajetória é fortalecida pela atuação em ",
-      p2_hi1: "projetos e desenvolvimento de produtos",
-      p2_2: ", onde direciono minha dedicação técnica para o Back-end e Integrações de Dados. Desenvolvo sistemas que vão além de simples operações, projetando lógicas de negócios robustas e tomando decisões técnicas sustentáveis que suportam o crescimento da aplicação.",
-      p3_1: "Com uma base sólida em desenvolvimento Full Stack, trago também o domínio sobre o ",
-      p3_hi1: "ecossistema Front-end",
-      p3_2: " para garantir que toda essa inteligência de servidor chegue ao usuário final através de interfaces rápidas, responsivas e de alta usabilidade.",
-
+      subtitle: "Da interface ao banco de dados",
+      p1_1: "Sou Nícolas Harnisch, desenvolvedor full-stack e estudante de Ciência da Computação na ",
+      p1_hi1: "UFC",
+      p1_2: " e Engenharia de Software na ",
+      p1_hi2: "UniAteneu",
+      p1_3: ".",
+      p1_hi3: "",
+      p1_4: "",
+      p2_1: "Tenho experiência criando aplicações web, APIs, dashboards e sistemas administrativos, atuando tanto na interface quanto na ",
+      p2_hi1: "lógica e organização dos dados",
+      p2_2: ".",
+      p3_1: "Trabalho principalmente com ",
+      p3_hi1: "React, Next.js, Node.js, TypeScript, Prisma e bancos de dados relacionais",
+      p3_2: ". Meu foco é construir sistemas funcionais, bem organizados e fáceis de usar."
     },
     experience: {
       badge: "Trajetória",
@@ -42,29 +42,29 @@ export const translations = {
           role: "Desenvolvedor Full-Stack",
           company: "Startup Devora",
           period: "Maio/2026 - Atualmente",
-          description: "Desenvolvimento de soluções de ponta a ponta, construindo desde landing pages responsivas e de alta conversão para empresas até a lógica de servidor. Criação e manutenção de APIs RESTful escaláveis para suportar os serviços internos da startup e integrar com as interfaces web.",
-          tags: ["Full Stack", "API RESTful", "Landing Pages", "Node.js"],
+          description: "Atuação no desenvolvimento de landing pages, aplicações web, APIs REST e integrações. Trabalho com front-end, back-end e organização de dados para entregar soluções responsivas e funcionais.",
+          tags: ["Full Stack", "API REST", "Node.js"],
         },
         {
           role: "Full Stack Engineer",
           company: "Azemble",
           period: "Março/2026 - Atualmente",
-          description: "Atuação em engenharia de software para a plataforma Azemble Connect. Foco no desenvolvimento de arquiteturas escaláveis, construção de APIs robustas no backend e integração com interfaces web responsivas em um ambiente ágil internacional.",
-          tags: ["Backend", "Node.js", "Arquitetura Escalável", "Full Stack"],
+          description: "Atuação na evolução de uma plataforma voltada à engenharia de software, com foco em interfaces web, integração com serviços e manutenção de funcionalidades para uso em ambiente digital.",
+          tags: ["Full Stack", "Node.js", "Integrações"],
         },
         {
-          role: "Desenvolvedor e Monitor Pedagógico (Bolsista PREX)",
-          company: "Projeto JOGA — UFC",
+          role: "Desenvolvedor e Monitor Pedagógico",
+          company: "Projeto JOGA",
           period: "Outubro/2024 - Atualmente",
-          description: "Atuação vinculada à Pró-Reitoria de Extensão (PREX) com o desenvolvimento de jornadas sobre aprendizado em tecnologia, unindo programação e gamificação para engajar e apoiar alunos diretamente.",
-          tags: ["Lógica de Programação", "Mentoria", "Algoritmos", "Educação"],
+          description: "Atuação em desenvolvimento, suporte técnico e atividades de ensino ligadas à lógica de programação e ferramentas digitais, contribuindo para projetos educacionais e extensão universitária.",
+          tags: ["Lógica", "Mentoria", "Educação"],
         },
         {
-          role: "Desenvolvedor Web (Voluntário)",
+          role: "Desenvolvedor Web",
           company: "NERDS - Pesquisa e Inovação",
           period: "Setembro/2025 - Janeiro/2026",
-          description: "Colaboração no desenvolvimento de interfaces web e manutenção de repositórios. Experiência focada em JavaScript, Vue.js e controle de versão eficiente com Git em equipes multidisciplinares.",
-          tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
+          description: "Colaboração no desenvolvimento e manutenção de interfaces web e repositórios, com foco em HTML, CSS, JavaScript, versionamento com Git e organização do código.",
+          tags: ["Front-end", "Git"],
         }
       ],
       education: [
@@ -80,7 +80,7 @@ export const translations = {
           institution: "UniAteneu",
           period: "Fevereiro/2024 - Julho/2028",
           status: "Graduação em andamento",
-          description: "Estudos direcionados a padrões de projeto (Design Patterns), arquitetura de sistemas, DevOps, qualidade de código e metodologias ágeis de desenvolvimento.",
+          description: "Estudos direcionados a padrões de projeto (Design Patterns), arquitetura de sistemas, qualidade de código e metodologias ágeis de desenvolvimento.",
         }
       ]
     },
@@ -92,37 +92,49 @@ export const translations = {
         intermediate: "Intermediário",
         basic: "Básico"
       },
-      categories: ["Back-end & APIs", "Infra & Banco de Dados", "Frontend & Mobile", "Ferramentas & DevOps"]
+      categories: ["Backend", "Banco de Dados", "Frontend", "Ferramentas"]
     },
     projects: {
       badge: "Portfólio",
-      title: "Arquitetura e Desenvolvimento",
-      codeBtn: "Code",
+      title: "Projetos em Destaque",
+      subtitle: "Algumas soluções que desenvolvi envolvendo front-end, back-end, bancos de dados, dashboards e sistemas web completos.",
+      codeBtn: "Código",
       viewBtn: "Ver projeto",
+      inDevelopment: "Em desenvolvimento",
       items: [
         {
+          title: "TV Russas",
+          description: "Portal de notícias com páginas editoriais, categorias, busca, métricas e painel administrativo. Atuei no front-end, back-end e estrutura de dados para organizar a publicação e leitura de conteúdos.",
+        },
+        {
+          title: "TFBrand",
+          description: "E-commerce de moda com vitrine de produtos, variações, carrinho e finalização via WhatsApp. O projeto prioriza navegação simples, experiência mobile e conversão.",
+        },
+        {
           title: "ANS Healthcare Analytics",
-          description: "Projeto de automação envolvendo um pipeline de dados e API (Java 21/FastAPI). Processa relatórios governamentais complexos para alimentar um dashboard interativo de despesas de operadoras de saúde.",
+          description: "Dashboard para consulta e análise de dados públicos da ANS, com organização de informações, filtros e visualização de dados relacionados a operadoras de saúde.",
         },
         {
           title: "Sistema de Triagem",
-          description: "Sistema desktop desenvolvido nativamente em Java focado na lógica do Protocolo de Manchester, capaz de classificar riscos de pacientes e gerenciar filas de prioridade com alta confiabilidade estrutural.",
+          description: "Sistema web para cadastro, organização e acompanhamento de triagens. A interface foi pensada para uso administrativo, com fluxo simples de preenchimento e consulta de registros.",
         },
         {
           title: "Engremaq-Web",
-          description: "Plataforma full-stack construída com Node.js, React e banco de dados NoSQL (MongoDB). Implementa lógica de carrinho, controle de estoque e integração segura com APIs de pagamento (Mercado Pago).",
+          description: "Site institucional e catálogo para apresentação de produtos e informações de uma empresa do setor de peças e componentes. O projeto trabalha navegação responsiva, organização visual e páginas informativas.",
         }
       ]
     },
     footer: {
-      role: "Software Engineer",
+      role: "Desenvolvedor Full-Stack",
       contactTitle: "Contato",
       socialTitle: "Social",
       navTitle: "Navegação",
       rights: "Todos os direitos reservados.",
       sourceCode: "Ver Código Fonte",
-      description: "Especializado em engenharia de back-end, arquitetura de software escalável e soluções robustas de processamento de dados.",
-      backToTop: "Voltar ao topo"
+      ctaTitle: "Tem uma vaga, projeto ou ideia que precisa sair do papel?",
+      ctaDescription: "Estou aberto a oportunidades de estágio, desenvolvimento web, projetos full-stack e freelas. Entre em contato para conversarmos.",
+      backToTop: "Voltar ao topo",
+      talkToMe: "Fale comigo"
     },
     whatsapp: "Contato via WhatsApp"
   },
@@ -140,28 +152,28 @@ export const translations = {
       contact: "Contact Me"
     },
     hero: {
-      role: "Software Engineer",
-      description: "Developer focused on building scalable architectures, robust APIs, and data modeling, connecting high-performance engines to modern web interfaces.",
-      resumeBtn: "View Resume"
+      role: "Full-Stack Developer",
+      description: "Full-Stack Developer focused on web applications, APIs, and dashboards. I build solutions with React, Next.js, Node.js, TypeScript, and databases, combining interface, performance, and back-end structure organization.",
+      resumeBtn: "View Resume",
+      projectsBtn: "View Projects"
     },
     about: {
       badge: "About me",
       title: "Who I am",
-      subtitle: "Building the intelligence behind the applications",
-      p1_1: "I seek technical excellence to build the structural foundation of complex systems, ensuring security, scalability, and performance through ",
-      p1_hi1: "software architecture and clean code",
-      p1_2: ". Currently, I divide my academic routine between the ",
-      p1_hi2: "Federal University of Ceará",
-      p1_3: " (Russas Campus) and ",
-      p1_hi3: "UniAteneu",
-      p1_4: ", which provides me with a solid theoretical and practical background in systems engineering.",
-      p2_1: "My trajectory is strengthened by my involvement in ",
-      p2_hi1: "projects and product development",
-      p2_2: ", where I direct my technical dedication to the Back-end and Data Integrations. I develop systems that go beyond simple operations, designing robust business logics and making sustainable technical decisions that support application growth.",
-      p3_1: "With a solid foundation in Full Stack development, I also bring a strong grasp of the ",
-      p3_hi1: "Front-end ecosystem",
-      p3_2: " to ensure that all this server-side intelligence reaches the end user through fast, responsive, and highly usable interfaces.",
-
+      subtitle: "Building complete web systems",
+      p1_1: "I'm Nícolas Harnisch, a full-stack developer and student of Computer Science at ",
+      p1_hi1: "UFC",
+      p1_2: " and Software Engineering at ",
+      p1_hi2: "UniAteneu",
+      p1_3: ".",
+      p1_hi3: "",
+      p1_4: "",
+      p2_1: "I have experience creating web applications, APIs, dashboards, and administrative systems, acting both on the interface and the ",
+      p2_hi1: "logic and data organization",
+      p2_2: ".",
+      p3_1: "I work mainly with ",
+      p3_hi1: "React, Next.js, Node.js, TypeScript, Prisma, and relational databases",
+      p3_2: ". My focus is on building functional, well-organized, and easy-to-use systems."
     },
     experience: {
       badge: "Trajectory",
@@ -173,29 +185,29 @@ export const translations = {
           role: "Full-Stack Developer",
           company: "Startup Devora",
           period: "May/2026 - Present",
-          description: "End-to-end solution development, building everything from responsive, high-conversion landing pages to server-side logic. Creating and maintaining scalable RESTful APIs to support startup internal services and integrate with web interfaces.",
-          tags: ["Full Stack", "RESTful API", "Landing Pages", "Node.js"],
+          description: "Working on the development of landing pages, web applications, REST APIs, and integrations. Working with front-end, back-end, and data organization to deliver responsive and functional solutions.",
+          tags: ["Full Stack", "REST API", "Node.js"],
         },
         {
           role: "Full Stack Engineer",
           company: "Azemble",
           period: "March/2026 - Present",
-          description: "Software engineering for the Azemble Connect platform. Focused on developing scalable architectures, building robust backend APIs, and integrating with responsive web interfaces in an agile, international environment.",
-          tags: ["Backend", "Node.js", "Scalable Architecture", "Full Stack"],
+          description: "Working on the evolution of a platform aimed at software engineering, focusing on web interfaces, service integration, and feature maintenance for a digital environment.",
+          tags: ["Full Stack", "Node.js", "Integrations"],
         },
         {
-          role: "Developer and Pedagogical Monitor (PREX Scholar)",
-          company: "JOGA Project — UFC",
+          role: "Developer and Pedagogical Monitor",
+          company: "JOGA Project",
           period: "October/2024 - Present",
-          description: "Working with the Pro-Rectorate for Extension (PREX) to develop technology learning journeys, combining programming and gamification to engage and directly support students.",
-          tags: ["Programming Logic", "Mentoring", "Algorithms", "Education"],
+          description: "Working in development, technical support, and teaching activities related to programming logic and digital tools, contributing to educational projects and university extension.",
+          tags: ["Logic", "Mentoring", "Education"],
         },
         {
-          role: "Web Developer (Volunteer)",
-          company: "NERDS - Research and Innovation",
+          role: "Web Developer",
+          company: "NERDS - Pesquisa e Inovação",
           period: "September/2025 - January/2026",
-          description: "Collaborated on web interface development and repository maintenance. Experience focused on JavaScript, Vue.js, and efficient version control with Git in multidisciplinary teams.",
-          tags: ["JavaScript", "Vue.js", "Git", "Clean Code"],
+          description: "Collaboration in the development and maintenance of web interfaces and repositories, focusing on HTML, CSS, JavaScript, version control with Git, and code organization.",
+          tags: ["JavaScript", "HTML/CSS", "Git"],
         }
       ],
       education: [
@@ -211,7 +223,7 @@ export const translations = {
           institution: "UniAteneu",
           period: "February/2024 - July/2028",
           status: "Ongoing Degree",
-          description: "Studies directed towards design patterns, system architecture, DevOps, code quality, and agile development methodologies.",
+          description: "Studies directed towards design patterns, system architecture, code quality, and agile development methodologies.",
         }
       ]
     },
@@ -223,37 +235,49 @@ export const translations = {
         intermediate: "Intermediate",
         basic: "Basic"
       },
-      categories: ["Back-end & APIs", "Infra & Databases", "Frontend & Mobile", "Tools & DevOps"]
+      categories: ["Backend", "Database", "Frontend", "Tools"]
     },
     projects: {
       badge: "Portfolio",
-      title: "Architecture and Development",
+      title: "Featured Projects",
+      subtitle: "Some solutions I developed involving front-end, back-end, databases, dashboards, and full web systems.",
       codeBtn: "Code",
       viewBtn: "View project",
+      inDevelopment: "In development",
       items: [
         {
-          title: "ANS Healthcare Analytics",
-          description: "Data automation project involving an ETL pipeline and API (Java 21/FastAPI). Processes complex government reports to feed an interactive hospital expense dashboard.",
+          title: "TV Russas",
+          description: "News portal with editorial pages, categories, search, metrics, and administrative panel. Worked on front-end, back-end, and data structure, creating an organized base for content publishing and reading.",
         },
         {
-          title: "Triage System",
-          description: "Desktop system developed natively in Java focused on the Manchester Protocol's logic, capable of classifying patient risks and managing priority queues with high structural reliability.",
+          title: "TFBrand",
+          description: "Fashion e-commerce with product showcase, variations, cart, and checkout via WhatsApp. The project prioritizes mobile experience, simple navigation, and a conversion-focused interface.",
+        },
+        {
+          title: "ANS Healthcare Analytics",
+          description: "Dashboard for consulting and analyzing public ANS data, with information organization, filters, and data visualization related to health operators.",
+        },
+        {
+          title: "Screening System",
+          description: "Web system for registration, organization, and monitoring of screenings. The interface was designed for administrative use, with a simple flow for filling out and consulting records.",
         },
         {
           title: "Engremaq-Web",
-          description: "Full-stack web platform built with Node.js, React, and NoSQL database (MongoDB). Implements cart logic, inventory control, and secure integration with payment APIs (Mercado Pago).",
+          description: "Institutional site/catalog to present products and information of a company in the parts and components sector. The project focuses on responsive navigation, visual organization, and informative pages.",
         }
       ]
     },
     footer: {
-      role: "Software Engineer",
+      role: "Full-Stack Developer",
       contactTitle: "Contact",
       socialTitle: "Social",
       navTitle: "Navigation",
       rights: "All rights reserved.",
       sourceCode: "View Source Code",
-      description: "Specialized in back-end engineering, scalable software architecture, and robust data processing solutions.",
-      backToTop: "Back to top"
+      ctaTitle: "Got a job opening, project, or idea that needs to come to life?",
+      ctaDescription: "I'm open to internship opportunities, web development, full-stack projects, and freelance work. Get in touch so we can chat.",
+      backToTop: "Back to top",
+      talkToMe: "Talk to me"
     },
     whatsapp: "Contact via WhatsApp"
   }

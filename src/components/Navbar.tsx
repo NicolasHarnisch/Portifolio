@@ -20,10 +20,10 @@ const Navbar = () => {
 
   const navLinks = useMemo(
     () => [
+      { name: t.nav.projects, id: "projects" },
       { name: t.nav.about, id: "about" },
       { name: t.nav.experience, id: "experience" },
       { name: t.nav.tech, id: "stack" },
-      { name: t.nav.projects, id: "projects" },
     ],
     [t],
   );

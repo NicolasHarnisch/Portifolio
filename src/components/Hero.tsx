@@ -70,15 +70,15 @@ const Hero = () => {
   );
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden px-4 sm:px-6 bg-transparent">
+    <section className="relative min-h-[60vh] md:min-h-[85vh] flex items-center overflow-hidden px-4 sm:px-6 bg-transparent">
       {/* Background limpo - Apenas as estrelas globais aparecerão aqui */}
 
-      <div className="container relative z-10 pt-24 sm:pt-32 md:pt-40 lg:pt-20 pb-24 md:pb-12 flex flex-col justify-center min-h-screen">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 items-center w-full mt-8 md:mt-0">
+      <div className="container relative z-10 pt-24 sm:pt-28 md:pt-28 lg:pt-28 xl:pt-32 pb-8 flex flex-col justify-center min-h-[60vh] md:min-h-[85vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-4 items-center w-full mt-4 md:mt-0">
           {/* ── COLUNA ESQUERDA (Textos) ── */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <h1
-              className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 sm:mb-6 animate-fade-up text-foreground"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-3 sm:mb-6 animate-fade-up text-foreground"
               style={{ animationDelay: "0.05s" }}
             >
               Nícolas Gomes
@@ -87,14 +87,14 @@ const Hero = () => {
             </h1>
 
             <p
-              className="text-xl sm:text-2xl md:text-2xl font-medium text-foreground mb-4 animate-fade-up min-h-[1.75em] sm:min-h-[2em] flex items-center justify-center md:justify-start"
+              className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground mb-3 animate-fade-up min-h-[1.75em] sm:min-h-[2em] flex items-center justify-center md:justify-start"
               style={{ animationDelay: "0.1s" }}
             >
               <TypewriterLoop text={t.hero.role} />
             </p>
 
             <p
-              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mb-8 sm:mb-10 animate-fade-up mx-auto md:mx-0 px-2 sm:px-0"
+              className="text-base sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-xl mb-8 sm:mb-10 animate-fade-up mx-auto md:mx-0 px-2 sm:px-0 leading-relaxed"
               style={{ animationDelay: "0.2s" }}
             >
               {t.hero.description}
@@ -104,21 +104,32 @@ const Hero = () => {
               className="flex flex-col sm:flex-row items-center gap-4 animate-fade-up mx-auto md:mx-0 w-full sm:w-auto justify-center md:justify-start"
               style={{ animationDelay: "0.4s" }}
             >
-              {/* BOTÃO PRINCIPAL */}
-              <a
-                href={links.curriculo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-4 sm:px-0"
-              >
-                <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 active:scale-95 transition-all duration-300 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base py-6 sm:py-4 rounded-xl"
+              {/* BOTÕES PRINCIPAIS */}
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto px-4 sm:px-0">
+                <a
+                  href={links.curriculo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
                 >
-                  <FileText className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-                  {t.hero.resumeBtn}
-                </Button>
-              </a>
+                  <Button
+                    size="lg"
+                    className="bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 active:scale-95 transition-all duration-300 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base px-6 sm:px-8 rounded-xl h-12 sm:h-[46px]"
+                  >
+                    <FileText className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+                    {t.hero.resumeBtn}
+                  </Button>
+                </a>
+                <a href="#projects" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full sm:w-auto text-base px-6 sm:px-8 rounded-xl border-[#E2D8FA] dark:border-white/10 bg-white dark:bg-transparent text-foreground dark:text-white shadow-sm hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-all duration-300 h-12 sm:h-[46px]"
+                  >
+                    {t.hero.projectsBtn}
+                  </Button>
+                </a>
+              </div>
 
               {/* BOTÕES SOCIAIS */}
               <div className="flex gap-4 sm:gap-3 mt-4 sm:mt-0">
@@ -158,7 +169,7 @@ const Hero = () => {
               {/* Suspense com placeholder de baixo custo para evitar Layout Shift */}
               <Suspense
                 fallback={
-                  <div className="w-full aspect-square max-w-[18rem] sm:max-w-[22rem] md:max-w-[26rem] lg:max-w-[32.5rem] bg-primary/5 rounded-3xl animate-pulse" />
+                  <div className="w-full aspect-square max-w-[14rem] sm:max-w-[18rem] md:max-w-[22rem] lg:max-w-[28rem] bg-primary/5 rounded-3xl animate-pulse" />
                 }
               >
                 <SplineScene />

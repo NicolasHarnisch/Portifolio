@@ -38,7 +38,7 @@ const Experience = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-16 ml-1">
+        <div className="flex flex-row items-center gap-3 sm:gap-4 mb-10 sm:mb-16 ml-1">
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
@@ -63,38 +63,38 @@ const Experience = () => {
               </h3>
             </div>
 
-            <div className="relative border-l border-[#E8E0FA] dark:border-white/10 ml-2 sm:ml-4 space-y-8 sm:space-y-10">
+            <div className="relative border-l border-[#E8E0FA] dark:border-white/10 ml-2 sm:ml-4 space-y-4 sm:space-y-6">
               {t.experience.jobs.map((exp, index) => (
                 <div
                   key={index}
-                  className="relative pl-6 sm:pl-8 md:pl-10 group"
+                  className="relative pl-4 sm:pl-8 md:pl-10 group"
                 >
                   <div className="absolute -left-[6px] top-1 h-3 w-3 rounded-full bg-primary border border-primary shadow-[0_0_12px_rgba(168,85,247,0.45)] group-hover:scale-125 transition-transform duration-300" />
 
-                  <div className="rounded-2xl bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl border border-[#E9E2F8] dark:border-white/10 hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-5 sm:p-6 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]">
+                  <div className="rounded-2xl bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl border border-[#E9E2F8] dark:border-white/10 hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-3 sm:p-4 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 w-fit h-fit shadow-[0_0_10px_rgba(168,85,247,0.15)] shrink-0">
                         {jobIcons[index]}
                       </div>
 
                       <div className="flex-1">
-                        <h4 className="text-lg sm:text-xl font-bold mb-2 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
+                        <h4 className="text-lg sm:text-xl font-bold mb-1 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                           {exp.role}
                         </h4>
 
-                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
                           <div className="flex items-center gap-2 text-xs sm:text-sm text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/15">
                             <Calendar className="h-3 w-3" />
                             {exp.period}
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-4">
+                        <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-2">
                           <MapPin className="h-4 w-4" />
                           {exp.company}
                         </div>
 
-                        <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed mb-5">
+                        <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed mb-3 line-clamp-2 md:line-clamp-none">
                           {exp.description}
                         </p>
 
@@ -126,11 +126,11 @@ const Experience = () => {
               </h3>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {t.experience.education.map((item, index) => (
                 <div
                   key={index}
-                  className="group rounded-2xl border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-5 sm:p-6 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]"
+                  className="group rounded-2xl border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-3 sm:p-4 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
@@ -138,7 +138,7 @@ const Experience = () => {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
                         <h4 className="text-lg font-bold leading-tight text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                           {item.course}
                         </h4>
@@ -147,7 +147,7 @@ const Experience = () => {
                         </span>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-3">
+                      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-2">
                         <span>{item.institution}</span>
                         <span className="hidden sm:inline">•</span>
                         <span className="flex items-center gap-1">

@@ -136,7 +136,7 @@ const TechStack = () => {
   return (
     <section
       id="stack"
-      className="relative py-20 md:py-28 bg-transparent overflow-hidden px-4 sm:px-6"
+      className="relative py-16 md:py-28 bg-transparent overflow-hidden px-4 sm:px-6"
     >
       <div
         ref={ref}
@@ -144,7 +144,7 @@ const TechStack = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-10 sm:mb-12 ml-1">
+        <div className="flex flex-row items-center gap-3 sm:gap-4 mb-8 md:mb-12 ml-1">
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <Cpu className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
@@ -159,18 +159,18 @@ const TechStack = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {skillsData.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              className={`group p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-[#08070b]/90 backdrop-blur-md hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-700 ease-out shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] ${
+              className={`group p-4 md:p-6 rounded-xl sm:rounded-2xl border border-[#E9E2F8] dark:border-white/5 bg-white/85 dark:bg-[#08070b]/90 backdrop-blur-md hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-700 ease-out shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${categoryIndex * 50}ms` }}
             >
-              <div className="flex items-center gap-3 sm:gap-4 mb-6">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 md:mb-6">
                 <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.1)] group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all duration-300 shrink-0">
                   {category.iconComp}
                 </div>
@@ -180,11 +180,11 @@ const TechStack = () => {
                 </h3>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skill.name}
-                    className={`group/skill flex items-center gap-2 rounded-full border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-[#110f1a]/60 px-3 py-2 transition-all duration-300 hover:border-primary/30 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.1] hover:shadow-[0_4px_16px_rgba(168,85,247,0.15)] active:scale-95 ${
+                    className={`group/skill flex items-center gap-1.5 md:gap-2 rounded-full border border-[#ECE4FB] dark:border-white/10 bg-[#FCFAFF] dark:bg-[#110f1a]/60 px-2.5 py-1.5 md:px-3 md:py-2 transition-all duration-300 hover:border-primary/30 hover:bg-[#F7F1FF] dark:hover:bg-primary/[0.1] hover:shadow-[0_4px_16px_rgba(168,85,247,0.15)] active:scale-95 ${
                       isVisible ? "opacity-100" : "opacity-0"
                     }`}
                     style={{

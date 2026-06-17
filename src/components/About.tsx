@@ -18,7 +18,7 @@ const About = () => {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-12 ml-1">
+        <div className="flex flex-row items-center gap-3 sm:gap-4 mb-8 sm:mb-12 ml-1">
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <User className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
@@ -33,13 +33,13 @@ const About = () => {
         </div>
 
         <div
-          className={`relative group rounded-2xl sm:rounded-[2rem] border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] p-4 sm:p-6 md:p-8 overflow-hidden transition-all duration-500 ${
+          className={`relative group rounded-2xl sm:rounded-[2rem] border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] p-5 md:p-8 overflow-hidden transition-all duration-500 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
-            <div className="w-full md:w-4/12 max-w-[280px] sm:max-w-sm shrink-0 relative group/photo">
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-[#E8E0FA] dark:border-white/5 shadow-[0_12px_30px_rgba(88,28,135,0.10)] transform transition-transform duration-500 group-hover/photo:scale-[1.02]">
+          <div className="flex flex-col md:flex-row gap-5 md:gap-10 items-center">
+            <div className="w-full md:w-5/12 max-w-[320px] sm:max-w-[380px] md:max-w-[420px] shrink-0 relative group/photo mx-auto md:mx-0">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E8E0FA] dark:border-white/5 shadow-[0_12px_30px_rgba(88,28,135,0.15)] transform transition-transform duration-500 group-hover/photo:scale-[1.02]">
                 <img
                   src="/minha-foto.jpeg"
                   alt="Nícolas Gomes Harnisch"
@@ -56,7 +56,7 @@ const About = () => {
                 {t.about.subtitle}
               </h3>
 
-              <p className="text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
+              <p className="text-[15px] sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
                 {t.about.p1_1}
                 <span className="text-gradient font-semibold">
                   {t.about.p1_hi1}
@@ -72,7 +72,7 @@ const About = () => {
                 {t.about.p1_4}
               </p>
 
-              <p className="text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
+              <p className="text-[15px] sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
                 {t.about.p2_1}
                 <span className="text-gradient font-semibold">
                   {t.about.p2_hi1}
@@ -80,7 +80,7 @@ const About = () => {
                 {t.about.p2_2}
               </p>
 
-              <p className="text-base text-slate-600 dark:text-muted-foreground leading-relaxed">
+              <p className="text-[15px] sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
                 {t.about.p3_1}
                 <span className="text-gradient font-semibold">
                   {t.about.p3_hi1}

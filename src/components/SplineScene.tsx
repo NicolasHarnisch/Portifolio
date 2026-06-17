@@ -5,7 +5,7 @@ export default function SplineScene() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="relative w-full aspect-square max-w-[18rem] sm:max-w-[22rem] md:max-w-[26rem] lg:max-w-[32.5rem] max-h-[60vh] overflow-hidden" aria-hidden="true" role="presentation">
+    <div className="relative w-full aspect-square max-w-[14rem] sm:max-w-[18rem] md:max-w-[22rem] lg:max-w-[28rem] max-h-[60vh] overflow-hidden" aria-hidden="true" role="presentation">
       {/* Skeleton / Loading State */}
       {!loaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-md z-10">

@@ -16,10 +16,10 @@ const MobileTopNav = () => {
 
   const menuGrid = [
     { id: "top",        icon: ArrowUp,   label: t.nav.home },
+    { id: "projects",   icon: Folder,    label: t.nav.projects },
     { id: "about",      icon: User,      label: t.nav.about },
     { id: "experience", icon: Briefcase, label: t.nav.experience },
     { id: "stack",      icon: Cpu,       label: t.nav.tech },
-    { id: "projects",   icon: Folder,    label: t.nav.projects },
     { id: "contact",    icon: Mail,      label: t.nav.contact },
   ];
 

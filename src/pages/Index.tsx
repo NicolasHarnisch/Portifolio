@@ -40,10 +40,10 @@ const Index = () => {
 
         {/* Suspense agrupa o carregamento das seções secundárias */}
         <Suspense fallback={null}>
+          <Projects />
           <About />
           <Experience />
           <TechStack />
-          <Projects />
           <Footer />
         </Suspense>
       </main>
