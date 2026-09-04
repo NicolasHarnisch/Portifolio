@@ -16,10 +16,12 @@ const Experience = () => {
   const { t } = useLanguage();
 
   const jobIcons = [
-    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
-    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
+    <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="1" />, // JOGA
+    <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="2" />, // TOP
+    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="3" />, // Opnora
+    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="4" />, // Devora
+    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="5" />, // Azemble
+    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="6" />, // Freelance NERDS
   ];
 
   const eduIcons = [
@@ -155,10 +157,6 @@ const Experience = () => {
                           {item.period}
                         </span>
                       </div>
-
-                      <p className="text-sm sm:text-[15px] text-slate-600 dark:text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
                     </div>
                   </div>
                 </div>

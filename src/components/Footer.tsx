@@ -8,21 +8,42 @@ import {
   ArrowUp,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCardSpotlight } from "@/hooks/useCardSpotlight";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  const handleSpotlight = useCardSpotlight();
 
   return (
     <footer
       id="contact"
-      className="relative pt-12 md:pt-16 pb-10 md:pb-12 border-t border-[#ECE5FA] dark:border-white/10 bg-transparent overflow-hidden px-4 sm:px-6"
+      className="relative z-10 pt-12 md:pt-16 pb-10 md:pb-12 border-t border-[#ECE5FA] dark:border-white/10 bg-white dark:bg-[#050505] overflow-hidden px-4 sm:px-6"
     >
+      {/* Luzes de fundo (Blobs) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -left-[10%] top-[10%] w-[30%] h-[40%] rounded-full bg-primary/10 dark:bg-primary/5 blur-[120px] mix-blend-normal" />
+        <div className="absolute right-[15%] bottom-[-10%] w-[35%] h-[45%] rounded-full bg-fuchsia-500/10 dark:bg-fuchsia-500/5 blur-[120px] mix-blend-normal" />
+        <div className="absolute left-[35%] top-[-15%] w-[40%] h-[50%] rounded-full bg-purple-500/10 dark:bg-purple-500/5 blur-[120px] mix-blend-normal" />
+        <div className="absolute -right-[5%] top-[40%] w-[25%] h-[35%] rounded-full bg-primary/10 dark:bg-primary/5 blur-[100px] mix-blend-normal" />
+      </div>
+
       <div className="container relative z-10">
-        {/* CTA Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-8 md:p-10 mb-10 md:mb-16 rounded-3xl bg-white/95 dark:bg-[#08070b]/90 border border-[#EEE7FB] dark:border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] dark:hover:border-primary/30">
-          <div className="max-w-2xl text-center md:text-left">
-            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-foreground mb-3 leading-tight">
+        {/* CTA Section com spinning border isolado na borda */}
+        <div 
+          onMouseMove={handleSpotlight}
+          className="card-spotlight relative mb-10 md:mb-16 group transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] rounded-[1.5rem] bg-white/95 dark:bg-[#08070b]/90 border border-[#E9E2F8] dark:border-white/10 backdrop-blur-md dark:hover:bg-[#0d0c12] hover:border-primary/30"
+        >
+          {/* Anel de luz giratório COM MÁSCARA (SÓ aparece nos 1.5px da borda, nunca no fundo!) */}
+          <div className="spinning-border-container">
+            <div className="spinning-border-mask">
+              <div className="spinning-border-gradient" />
+            </div>
+          </div>
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 p-6 sm:p-8 md:p-10">
+          <div className="flex-1 text-center md:text-left md:pr-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-foreground mb-3 leading-tight text-balance">
               {t.footer.ctaTitle}
             </h3>
             <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300">
@@ -35,14 +56,18 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="shrink-0 w-full md:w-auto"
           >
-            <button className="w-full md:w-auto px-8 py-4 rounded-xl bg-primary text-white font-semibold text-lg hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-lg shadow-primary/25">
+            <button className="w-full md:w-auto px-6 py-3 rounded-xl bg-primary text-white font-semibold text-base hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-lg shadow-primary/25">
               {t.footer.talkToMe || "Fale comigo"}
             </button>
           </a>
         </div>
+        </div>
 
         <div className="flex flex-col md:flex-row md:flex-wrap gap-x-12 lg:gap-x-24 gap-y-10 mb-8 md:mb-10 items-start">
-          <div className="w-full md:w-auto group relative overflow-hidden flex items-center gap-4 p-5 md:p-6 rounded-2xl bg-white/95 dark:bg-[#08070b]/90 border border-[#EEE7FB] dark:border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.25)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] dark:hover:border-primary/30 md:min-w-[480px]">
+          <div 
+            onMouseMove={handleSpotlight}
+            className="card-spotlight w-full md:w-auto group relative overflow-hidden flex items-center gap-4 p-5 md:p-6 rounded-2xl bg-white/95 dark:bg-[#08070b]/90 border border-[#E9E2F8] dark:border-white/10 shadow-[0_12px_32px_rgba(88,28,135,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.22)] backdrop-blur-md transition-all duration-500 hover:border-primary/30 dark:hover:bg-[#0d0c12] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] md:min-w-[480px]"
+          >
             <div className="relative z-10 flex items-center gap-4">
               <div
                 className="
@@ -213,12 +238,12 @@ const Footer = () => {
           <div className="flex items-center">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="group flex items-center gap-2 text-[10px] font-bold text-slate-500 dark:text-muted-foreground/80 uppercase tracking-[0.2em] hover:text-primary transition-all duration-300"
+              className="group flex items-center gap-2 text-[12px] font-bold text-slate-500 dark:text-muted-foreground/80 uppercase tracking-[0.2em] hover:text-primary transition-colors duration-300"
             >
-              <div className="p-1.5 rounded-full border border-slate-200 dark:border-white/10 group-hover:border-primary/50 group-hover:bg-primary/5 transition-colors">
-                <ArrowUp className="h-3 w-3 transition-transform duration-300 group-hover:-translate-y-0.5" />
+              <div className="p-2 rounded-full border border-slate-200 dark:border-white/10 group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300 group-hover:shadow-[0_0_12px_rgba(168,85,247,0.4)]">
+                <ArrowUp className="h-4 w-4 text-slate-400 group-hover:text-primary transition-transform duration-300 group-hover:-translate-y-0.5" />
               </div>
-              {t.footer.backToTop}
+              <span className="group-hover:text-primary transition-colors duration-300">{t.footer.backToTop}</span>
             </button>
           </div>
         </div>

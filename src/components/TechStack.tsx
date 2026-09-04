@@ -59,6 +59,10 @@ const TechStack = () => {
             icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
           },
           {
+            name: "Supabase",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+          },
+          {
             name: "Prisma",
             icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
             invertInDarkMode: true,
@@ -104,6 +108,16 @@ const TechStack = () => {
           {
             name: "Vue.js",
             icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
+          },
+          {
+            name: "Framer Motion",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg",
+            invertInDarkMode: true,
+          },
+          {
+            name: "Three.js",
+            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg",
+            invertInDarkMode: true,
           },
         ],
       },

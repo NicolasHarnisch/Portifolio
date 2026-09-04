@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -194,12 +193,26 @@
   }
 
   .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
+    animation: fadeUp 0.6s ease-out both;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.8s ease-out both;
   }
+
+  .animate-gentle-bounce {
+    animation: gentle-bounce 3.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+
+  @keyframes gentle-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
 
   .surface-card {
     @apply bg-white/90 dark:bg-card/20 border border-[#E9E2F8] dark:border-white/10 backdrop-blur-md;
@@ -217,6 +230,135 @@
   .soft-section {
     background: linear-gradient(180deg, #fcfbff 0%, #f7f4ff 100%);
   }
+}
+
+/* ─── MOTION TOKENS ───────────────────────────────────────────────────────── */
+:root {
+  /* Easings naturais */
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Durações por nível hierárquico */
+  --dur-micro: 150ms;    /* Nível 1: hover rápido, border, cor */
+  --dur-fast: 220ms;     /* Nível 1: botões, ícones */
+  --dur-card: 350ms;     /* Nível 2: cards, imagens */
+  --dur-section: 600ms;  /* Nível 3: entrada de seção */
+  --dur-hero: 800ms;     /* Nível 3: hero stagger */
+}
+
+/* ─── SCROLL REVEAL UTILITÁRIOS ───────────────────────────────────────────── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-section) var(--ease-out-cubic),
+              transform var(--dur-section) var(--ease-out-cubic);
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity var(--dur-section) var(--ease-out-cubic),
+              transform var(--dur-section) var(--ease-out-cubic);
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity var(--dur-section) var(--ease-out-cubic),
+              transform var(--dur-section) var(--ease-out-cubic);
+}
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── CARD SPOTLIGHT ──────────────────────────────────────────────────────── */
+/* Aplica o glow que segue o cursor dentro do card via CSS vars --x / --y */
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    280px circle at var(--x, 50%) var(--y, 50%),
+    rgba(168, 85, 247, 0.07),
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-card) var(--ease-out-cubic);
+}
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* ─── MAGNETIC BUTTON BASE ────────────────────────────────────────────────── */
+.magnetic-btn {
+  position: relative;
+  transition: transform var(--dur-fast) var(--ease-spring);
+  will-change: transform;
+}
+
+/* ─── SCROLL PROGRESS ─────────────────────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  z-index: 9998;
+  transform-origin: left;
+  background: linear-gradient(90deg, hsl(262 100% 71%), hsl(280 100% 65%));
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+  pointer-events: none;
+}
+
+/* ─── TIMELINE PROGRESSIVA ────────────────────────────────────────────────── */
+.timeline-line-fill {
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.8s var(--ease-out-cubic);
+}
+.timeline-line-fill.active {
+  transform: scaleY(1);
+}
+
+.timeline-dot {
+  transform: scale(0.6);
+  opacity: 0.4;
+  transition: transform var(--dur-card) var(--ease-spring),
+              opacity var(--dur-card) var(--ease-out-cubic),
+              box-shadow var(--dur-card) var(--ease-out-cubic);
+}
+.timeline-dot.active {
+  transform: scale(1);
+  opacity: 1;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.45);
+}
+
+/* ─── BOTÃO PREMIUM (hover states completos) ──────────────────────────────── */
+.btn-primary-motion {
+  transition: background-color var(--dur-fast) var(--ease-out-cubic),
+              transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast) var(--ease-out-cubic);
+}
+.btn-primary-motion:hover {
+  transform: translateY(-1px);
+}
+.btn-primary-motion:active {
+  transform: scale(0.97) translateY(0);
 }
 
 @keyframes float {
@@ -246,6 +388,49 @@
   to {
     opacity: 1;
   }
+}
+
+/* ─── SPINNING BORDER (CTA Premium) ──────────────────────────────────────── */
+.spinning-border-container {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20; /* Fica sobreposto à borda normal */
+}
+
+.spinning-border-mask {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 1.5px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.spinning-border-gradient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250vw;
+  height: 250vw;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    hsl(262 100% 71% / 0.5) 5%,
+    transparent 15%,
+    transparent 85%,
+    hsl(280 100% 65% / 0.5) 95%,
+    transparent 100%
+  );
+  animation: spinBorder 8s linear infinite;
+}
+
+@keyframes spinBorder {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* Scrollbar com suporte ao modo claro/escuro */
@@ -392,3 +577,43 @@
 .hover-shake:hover {
   animation: subtle-shake 0.15s linear infinite;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Oculta a barra de progresso (é decorativa) */
+  #scroll-progress {
+    display: none;
+  }
+
+  /* Revela tudo imediatamente (sem translate) */
+  .reveal-up,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Desativa parallax */
+  [style*="--px-mid"],
+  [style*="--px-main"] {
+    transform: none !important;
+  }
+
+  /* Desativa spinning border */
+  .spinning-border::before {
+    animation: none;
+  }
+}
+

@@ -62,16 +62,21 @@ export default function StarBackground() {
   const { theme } = useTheme();
 
   // Verifica se é light mode (diretamente ou via system)
-  const isLightMode = 
-    theme === "light" || 
-    (theme === "system" && !window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const isLightMode =
+    theme === "light" ||
+    (theme === "system" &&
+      !window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   // Cores dinâmicas dependendo do tema
   const starColor = isLightMode ? "#7c3aed" : "#fafafa"; // Roxo escuro no light, branco no dark
   const neonColor = isLightMode ? "#5b21b6" : "#a5b4fc"; // Roxo mais profundo no light, roxo claro/neon no dark
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 w-full h-full" aria-hidden="true" role="presentation">
+    <div
+      className="pointer-events-none fixed inset-0 z-0 w-full h-full overflow-hidden"
+      aria-hidden="true"
+      role="presentation"
+    >
       <Canvas
         camera={{ position: [0, 0, 1] }}
         gl={{
@@ -82,7 +87,12 @@ export default function StarBackground() {
       >
         <Suspense fallback={null}>
           {/* Camada 1: Muitas estrelas finas */}
-          <StarsLayer count={4000} radius={1.5} color={starColor} size={0.002} />
+          <StarsLayer
+            count={4000}
+            radius={1.5}
+            color={starColor}
+            size={0.002}
+          />
           {/* Camada 2: Estrelas de destaque, um pouco maiores para dar profundidade */}
           <StarsLayer count={800} radius={1.5} color={neonColor} size={0.003} />
         </Suspense>

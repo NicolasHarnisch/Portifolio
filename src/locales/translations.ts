@@ -39,7 +39,28 @@ export const translations = {
       acadTitle: "Formação Acadêmica",
       jobs: [
         {
-          role: "Desenvolvedor Full-Stack",
+          role: "Líder de Projeto e Bolsista PREX",
+          company: "Projeto JOGA – Jogando e Guiando Aprendizes",
+          period: "Outubro/2024 - Atualmente",
+          description: "Liderança das equipes de marketing e pedagógica (principal foco no ensino de tecnologia para os alunos, através de cursos e artigos). Atuação na tomada de decisões técnicas e arquitetura de soluções educacionais.",
+          tags: ["Liderança", "Ensino", "Educação"],
+        },
+        {
+          role: "Estagiário Desenvolvedor Full Stack",
+          company: "Time Organizacional Publicitário (TOP)",
+          period: "Setembro/2026 - Atualmente",
+          description: "Desenvolvimento integral de um portal para a Prefeitura de Russas focado no uso por artesãos locais. Trabalho envolvendo desde a interface e usabilidade até as regras de negócio e infraestrutura.",
+          tags: ["Full Stack", "Estágio", "Prefeitura de Russas"],
+        },
+        {
+          role: "Cofundador e Desenvolvedor Full-Stack (Freelancer)",
+          company: "Startup Opnora",
+          period: "Julho/2026 - Atualmente",
+          description: "Atuação como CEO e Líder Técnico, guiando a visão estratégica do produto e a arquitetura de software. Desenvolvimento integral (Front e Back) da plataforma desde o MVP, definindo a infraestrutura e a stack tecnológica.",
+          tags: ["Full Stack", "Next.js", "Arquitetura", "Supabase"],
+        },
+        {
+          role: "Desenvolvedor Full-Stack (Freelancer)",
           company: "Startup Devora",
           period: "Maio/2026 - Atualmente",
           description: "Atuação no desenvolvimento de landing pages, aplicações web, APIs REST e integrações. Trabalho com front-end, back-end e organização de dados para entregar soluções responsivas e funcionais.",
@@ -48,20 +69,13 @@ export const translations = {
         {
           role: "Full Stack Engineer",
           company: "Azemble",
-          period: "Março/2026 - Atualmente",
+          period: "Março/2026 - Agosto/2026",
           description: "Atuação na evolução de uma plataforma voltada à engenharia de software, com foco em interfaces web, integração com serviços e manutenção de funcionalidades para uso em ambiente digital.",
           tags: ["Full Stack", "Node.js", "Integrações"],
         },
         {
-          role: "Desenvolvedor e Monitor Pedagógico",
-          company: "Projeto JOGA",
-          period: "Outubro/2024 - Atualmente",
-          description: "Atuação em desenvolvimento, suporte técnico e atividades de ensino ligadas à lógica de programação e ferramentas digitais, contribuindo para projetos educacionais e extensão universitária.",
-          tags: ["Lógica", "Mentoria", "Educação"],
-        },
-        {
-          role: "Desenvolvedor Web",
-          company: "NERDS - Pesquisa e Inovação",
+          role: "Estágio Front-end voluntário",
+          company: "NERDS - UFC",
           period: "Setembro/2025 - Janeiro/2026",
           description: "Colaboração no desenvolvimento e manutenção de interfaces web e repositórios, com foco em HTML, CSS, JavaScript, versionamento com Git e organização do código.",
           tags: ["Front-end", "Git"],
@@ -102,6 +116,10 @@ export const translations = {
       viewBtn: "Ver projeto",
       inDevelopment: "Em desenvolvimento",
       items: [
+        {
+          title: "Opnora",
+          description: "Iniciativa de desenvolvimento de software e soluções digitais sob medida para empresas. Criamos sites, sistemas e plataformas com arquitetura escalável e design de alta conversão.",
+        },
         {
           title: "TV Russas",
           description: "Portal de notícias com páginas editoriais, categorias, busca, métricas e painel administrativo. Atuei no front-end, back-end e estrutura de dados para organizar a publicação e leitura de conteúdos.",
@@ -182,29 +200,43 @@ export const translations = {
       acadTitle: "Academic Education",
       jobs: [
         {
-          role: "Full-Stack Developer",
+          role: "Project Leader & PREX Scholar",
+          company: "JOGA Project – Jogando e Guiando Aprendizes",
+          period: "October/2024 - Present",
+          description: "Leadership of the marketing and pedagogical teams (main focus on teaching technology to students through courses and articles). Active role in technical decisions and educational solutions architecture.",
+          tags: ["Leadership", "Teaching", "Education"],
+        },
+        {
+          role: "Full Stack Developer Intern",
+          company: "Time Organizacional Publicitário (TOP)",
+          period: "September/2026 - Present",
+          description: "Full development of a portal for the Russas City Hall focused on local artisans. Work covering everything from UI/UX and usability to business rules and infrastructure.",
+          tags: ["Full Stack", "Internship", "Russas City Hall"],
+        },
+        {
+          role: "Co-founder & Full-Stack Developer (Freelance)",
+          company: "Startup Opnora",
+          period: "July/2026 - Present",
+          description: "Acting as CEO and Tech Lead, guiding product strategy and software architecture. Full development (Front & Back) of the platform from MVP, defining infrastructure and tech stack.",
+          tags: ["Full Stack", "Next.js", "Architecture", "Supabase"],
+        },
+        {
+          role: "Full-Stack Developer (Freelance)",
           company: "Startup Devora",
           period: "May/2026 - Present",
-          description: "Working on the development of landing pages, web applications, REST APIs, and integrations. Working with front-end, back-end, and data organization to deliver responsive and functional solutions.",
+          description: "Worked on developing landing pages, web applications, REST APIs, and integrations. Handled front-end, back-end, and data organization to deliver responsive and functional solutions.",
           tags: ["Full Stack", "REST API", "Node.js"],
         },
         {
           role: "Full Stack Engineer",
           company: "Azemble",
-          period: "March/2026 - Present",
-          description: "Working on the evolution of a platform aimed at software engineering, focusing on web interfaces, service integration, and feature maintenance for a digital environment.",
+          period: "March/2026 - August/2026",
+          description: "Worked on evolving a software engineering platform, focusing on web interfaces, service integration, and feature maintenance for digital environments.",
           tags: ["Full Stack", "Node.js", "Integrations"],
         },
         {
-          role: "Developer and Pedagogical Monitor",
-          company: "JOGA Project",
-          period: "October/2024 - Present",
-          description: "Working in development, technical support, and teaching activities related to programming logic and digital tools, contributing to educational projects and university extension.",
-          tags: ["Logic", "Mentoring", "Education"],
-        },
-        {
-          role: "Web Developer",
-          company: "NERDS - Pesquisa e Inovação",
+          role: "Volunteer Front-end Intern",
+          company: "NERDS - UFC",
           period: "September/2025 - January/2026",
           description: "Collaboration in the development and maintenance of web interfaces and repositories, focusing on HTML, CSS, JavaScript, version control with Git, and code organization.",
           tags: ["JavaScript", "HTML/CSS", "Git"],
@@ -245,6 +277,10 @@ export const translations = {
       viewBtn: "View project",
       inDevelopment: "In development",
       items: [
+        {
+          title: "Opnora",
+          description: "Software development initiative providing custom digital solutions for businesses. We build scalable websites, systems, and platforms with high-conversion design.",
+        },
         {
           title: "TV Russas",
           description: "News portal with editorial pages, categories, search, metrics, and administrative panel. Worked on front-end, back-end, and data structure, creating an organized base for content publishing and reading.",

@@ -118,23 +118,24 @@ const Navbar = () => {
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 className={`
-                  relative text-sm font-medium py-1
+                  relative text-sm font-medium px-3 py-1.5 rounded-lg
+                  transition-colors duration-[220ms]
                   ${
                     activeSection === link.id
-                      ? "text-primary dark:text-primary"
-                      : "text-slate-600 dark:text-muted-foreground hover:text-primary dark:hover:text-primary"
+                      ? "text-primary"
+                      : "text-slate-600 dark:text-muted-foreground hover:text-foreground dark:hover:text-foreground"
                   }
-                  transition-colors duration-300
-                  group/link
                 `}
+                style={{
+                  background:
+                    activeSection === link.id
+                      ? "rgba(168,85,247,0.08)"
+                      : "transparent",
+                  transition:
+                    "color 220ms ease, background 350ms cubic-bezier(0.215,0.61,0.355,1)",
+                }}
               >
                 {link.name}
-                <span
-                  className={`
-                    absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300
-                    ${activeSection === link.id ? "w-full" : "w-0 group-hover/link:w-full"}
-                  `}
-                />
               </button>
             ))}
           </div>
@@ -189,7 +190,7 @@ const Navbar = () => {
             </div>
 
             <Button
-              className="h-9 px-4 rounded-xl bg-primary hover:bg-primary/95 text-primary-foreground text-sm font-medium transition-all duration-300 shadow-sm"
+              className="btn-primary-motion h-9 px-4 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium shadow-sm shadow-primary/20"
               onClick={() =>
                 window.open("https://wa.me/5585999973965", "_blank")
               }

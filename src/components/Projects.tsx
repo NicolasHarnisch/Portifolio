@@ -6,6 +6,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const projectData = [
   {
+    image: "/opnora.png",
+    tags: ["React", "TypeScript", "Tailwind CSS"],
+    github: "",
+    live: "https://opnora.me/",
+    privateRepo: true,
+  },
+  {
     image: "/TvRussas.png",
     tags: ["Next.js", "React", "Node.js", "PostgreSQL"],
     github: "",
@@ -91,7 +98,7 @@ const Projects = () => {
                       className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-white/5 to-transparent dark:from-black/30 dark:via-transparent dark:to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t dark:from-black/30 dark:via-transparent dark:to-transparent z-10 pointer-events-none" />
                   </div>
                 )}
 
