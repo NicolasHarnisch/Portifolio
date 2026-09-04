@@ -7,6 +7,7 @@ import {
   Code2,
   BookOpen,
   Building2,
+  Rocket,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -20,7 +21,7 @@ const Experience = () => {
     <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="2" />, // TOP
     <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="3" />, // Opnora
     <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="4" />, // Devora
-    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="5" />, // Azemble
+    <Rocket className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="5" />, // Azemble
     <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="6" />, // Freelance NERDS
   ];
 
@@ -99,17 +100,6 @@ const Experience = () => {
                         <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed mb-3 line-clamp-2 md:line-clamp-none">
                           {exp.description}
                         </p>
-
-                        <div className="flex flex-wrap gap-2">
-                          {exp.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 rounded-full text-xs font-medium bg-[#F7F4FF] dark:bg-white/5 border border-[#E7DFFC] dark:border-white/10 text-slate-600 dark:text-muted-foreground hover:bg-primary/10 hover:border-primary/40 hover:text-primary dark:hover:bg-primary/20 dark:hover:border-primary/50 dark:hover:text-primary transition-all duration-300 cursor-default hover:shadow-[0_0_12px_rgba(168,85,247,0.25)] hover:-translate-y-0.5"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
                       </div>
                     </div>
                   </div>
