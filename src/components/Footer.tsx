@@ -120,7 +120,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
               <Terminal className="h-4 w-4" />
               <a
-                href="https://drive.google.com/file/d/139dr8jYnxxpTTrC9aRdwwc_VzdJjGMg9/view?usp=sharing"
+                href="https://drive.google.com/file/d/1A1JLH69vATpAQYjmuhNOsLn34DT93htq/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
               >
