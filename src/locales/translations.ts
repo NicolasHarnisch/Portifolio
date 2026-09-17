@@ -20,9 +20,9 @@ export const translations = {
       subtitle: "Da interface ao banco de dados",
       p1_1: "Sou Nícolas Harnisch, desenvolvedor full-stack e estudante de Ciência da Computação na ",
       p1_hi1: "UFC",
-      p1_2: " e Engenharia de Software na ",
-      p1_hi2: "UniAteneu",
-      p1_3: ".",
+      p1_2: ".",
+      p1_hi2: "",
+      p1_3: "",
       p1_hi3: "",
       p1_4: "",
       p2_1: "Tenho experiência criando aplicações web, APIs, dashboards e sistemas administrativos, atuando tanto na interface quanto na ",
@@ -53,13 +53,6 @@ export const translations = {
           tags: ["Full Stack", "Estágio", "Prefeitura de Russas"],
         },
         {
-          role: "Cofundador e Desenvolvedor Full-Stack (Freelancer)",
-          company: "Startup Opnora",
-          period: "Julho/2026 - Atualmente",
-          description: "Atuação como CEO e Líder Técnico, guiando a visão estratégica do produto e a arquitetura de software. Desenvolvimento integral (Front e Back) da plataforma desde o MVP, definindo a infraestrutura e a stack tecnológica.",
-          tags: ["Full Stack", "Next.js", "Arquitetura", "Supabase"],
-        },
-        {
           role: "Desenvolvedor Full-Stack (Freelancer)",
           company: "Startup Devora",
           period: "Maio/2026 - Atualmente",
@@ -88,13 +81,6 @@ export const translations = {
           period: "Outubro/2024 - Dezembro/2028",
           status: "Graduação em andamento",
           description: "Formação com forte ênfase na base matemática da computação, estruturas de dados avançadas, complexidade de algoritmos e engenharia de software.",
-        },
-        {
-          course: "Engenharia de Software",
-          institution: "UniAteneu",
-          period: "Fevereiro/2024 - Julho/2028",
-          status: "Graduação em andamento",
-          description: "Estudos direcionados a padrões de projeto (Design Patterns), arquitetura de sistemas, qualidade de código e metodologias ágeis de desenvolvimento.",
         }
       ]
     },
@@ -116,10 +102,6 @@ export const translations = {
       viewBtn: "Ver projeto",
       inDevelopment: "Em desenvolvimento",
       items: [
-        {
-          title: "Opnora",
-          description: "Iniciativa de desenvolvimento de software e soluções digitais sob medida para empresas. Criamos sites, sistemas e plataformas com arquitetura escalável e design de alta conversão.",
-        },
         {
           title: "TV Russas",
           description: "Portal de notícias com páginas editoriais, categorias, busca, métricas e painel administrativo. Atuei no front-end, back-end e estrutura de dados para organizar a publicação e leitura de conteúdos.",
@@ -181,9 +163,9 @@ export const translations = {
       subtitle: "Building complete web systems",
       p1_1: "I'm Nícolas Harnisch, a full-stack developer and student of Computer Science at ",
       p1_hi1: "UFC",
-      p1_2: " and Software Engineering at ",
-      p1_hi2: "UniAteneu",
-      p1_3: ".",
+      p1_2: ".",
+      p1_hi2: "",
+      p1_3: "",
       p1_hi3: "",
       p1_4: "",
       p2_1: "I have experience creating web applications, APIs, dashboards, and administrative systems, acting both on the interface and the ",
@@ -214,13 +196,6 @@ export const translations = {
           tags: ["Full Stack", "Internship", "Russas City Hall"],
         },
         {
-          role: "Co-founder & Full-Stack Developer (Freelance)",
-          company: "Startup Opnora",
-          period: "July/2026 - Present",
-          description: "Acting as CEO and Tech Lead, guiding product strategy and software architecture. Full development (Front & Back) of the platform from MVP, defining infrastructure and tech stack.",
-          tags: ["Full Stack", "Next.js", "Architecture", "Supabase"],
-        },
-        {
           role: "Full-Stack Developer (Freelance)",
           company: "Startup Devora",
           period: "May/2026 - Present",
@@ -249,13 +224,6 @@ export const translations = {
           period: "October/2024 - December/2028",
           status: "Ongoing Degree",
           description: "Education with a strong emphasis on the mathematical foundations of computing, advanced data structures, algorithm complexity, and software engineering.",
-        },
-        {
-          course: "Software Engineering",
-          institution: "UniAteneu",
-          period: "February/2024 - July/2028",
-          status: "Ongoing Degree",
-          description: "Studies directed towards design patterns, system architecture, code quality, and agile development methodologies.",
         }
       ]
     },
@@ -277,10 +245,6 @@ export const translations = {
       viewBtn: "View project",
       inDevelopment: "In development",
       items: [
-        {
-          title: "Opnora",
-          description: "Software development initiative providing custom digital solutions for businesses. We build scalable websites, systems, and platforms with high-conversion design.",
-        },
         {
           title: "TV Russas",
           description: "News portal with editorial pages, categories, search, metrics, and administrative panel. Worked on front-end, back-end, and data structure, creating an organized base for content publishing and reading.",

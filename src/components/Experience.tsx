@@ -19,7 +19,6 @@ const Experience = () => {
   const jobIcons = [
     <Gamepad2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="1" />, // JOGA
     <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="2" />, // TOP
-    <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="3" />, // Opnora
     <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="4" />, // Devora
     <Rocket className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="5" />, // Azemble
     <Code2 className="h-5 w-5 sm:h-6 sm:w-6 text-primary" key="6" />, // Freelance NERDS
@@ -27,7 +26,6 @@ const Experience = () => {
 
   const eduIcons = [
     <GraduationCap className="h-5 w-5 text-primary" />,
-    <BookOpen className="h-5 w-5 text-primary" />,
   ];
 
   return (

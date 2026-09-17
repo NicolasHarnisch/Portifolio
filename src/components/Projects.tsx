@@ -6,13 +6,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const projectData = [
   {
-    image: "/opnora.png",
-    tags: ["React", "TypeScript", "Tailwind CSS"],
-    github: "",
-    live: "https://opnora.me/",
-    privateRepo: true,
-  },
-  {
     image: "/TvRussas.png",
     tags: ["Next.js", "React", "Node.js", "PostgreSQL"],
     github: "",

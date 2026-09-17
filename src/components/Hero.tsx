@@ -95,7 +95,7 @@ const Hero = () => {
   const links = useMemo(
     () => ({
       curriculo:
-        "https://drive.google.com/file/d/1A1JLH69vATpAQYjmuhNOsLn34DT93htq/view?usp=sharing",
+        "https://drive.google.com/file/d/1Ka-PnvDNWg3gdsvzdNVcOdci6wrRTtoQ/view?usp=sharing",
       github: "https://github.com/NicolasHarnisch",
       linkedin: "https://www.linkedin.com/in/nicolasharnisch/",
       email: "mailto:nicolasgomeshar@gmail.com",
