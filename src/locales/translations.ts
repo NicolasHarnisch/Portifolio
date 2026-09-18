@@ -55,7 +55,7 @@ export const translations = {
         {
           role: "Desenvolvedor Full-Stack (Freelancer)",
           company: "Startup Devora",
-          period: "Maio/2026 - Atualmente",
+          period: "Maio/2026 - Setembro/2026",
           description: "Atuação no desenvolvimento de landing pages, aplicações web, APIs REST e integrações. Trabalho com front-end, back-end e organização de dados para entregar soluções responsivas e funcionais.",
           tags: ["Full Stack", "API REST", "Node.js"],
         },
@@ -198,7 +198,7 @@ export const translations = {
         {
           role: "Full-Stack Developer (Freelance)",
           company: "Startup Devora",
-          period: "May/2026 - Present",
+          period: "May/2026 - September/2026",
           description: "Worked on developing landing pages, web applications, REST APIs, and integrations. Handled front-end, back-end, and data organization to deliver responsive and functional solutions.",
           tags: ["Full Stack", "REST API", "Node.js"],
         },
