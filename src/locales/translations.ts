@@ -103,6 +103,10 @@ export const translations = {
       inDevelopment: "Em desenvolvimento",
       items: [
         {
+          title: "Opnora",
+          description: "Plataforma da Opnora, focada em soluções digitais sob medida para empresas. O projeto apresenta os serviços da startup com foco em criar tecnologia que simplifica o dia a dia e resolve problemas reais.",
+        },
+        {
           title: "TV Russas",
           description: "Portal de notícias com páginas editoriais, categorias, busca, métricas e painel administrativo. Atuei no front-end, back-end e estrutura de dados para organizar a publicação e leitura de conteúdos.",
         },
@@ -245,6 +249,10 @@ export const translations = {
       viewBtn: "View project",
       inDevelopment: "In development",
       items: [
+        {
+          title: "Opnora",
+          description: "Opnora platform, focused on custom digital solutions for companies. The project showcases the startup's services with a focus on creating technology that simplifies daily life and solves real problems.",
+        },
         {
           title: "TV Russas",
           description: "News portal with editorial pages, categories, search, metrics, and administrative panel. Worked on front-end, back-end, and data structure, creating an organized base for content publishing and reading.",
