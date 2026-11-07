@@ -1,16 +1,32 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR" class="dark">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (() => {
+        let theme = "dark";
+        try {
+          const saved = localStorage.getItem("vite-ui-theme");
+          if (saved === "light" || saved === "dark" || saved === "system") theme = saved;
+        } catch {}
+        const resolved = theme === "system"
+          ? (window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+          : theme;
+        document.documentElement.className = resolved;
+        document.documentElement.style.colorScheme = resolved;
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://prod.spline.design" crossorigin>
-    <link rel="preload" href="https://prod.spline.design/QvwWJuxjXQNLFlpO/scene.splinecode" as="fetch" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Nícolas Harnisch | Desenvolvedor Full-Stack</title>
     <meta name="description" content="Portfólio de Nícolas Harnisch, desenvolvedor full-stack focado em aplicações web, APIs, dashboards e sistemas com React, Next.js, Node.js, TypeScript e bancos de dados." />
+    <link rel="canonical" href="https://nicolasharnisch.vercel.app/" />
+    <meta property="og:url" content="https://nicolasharnisch.vercel.app/" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Nícolas Harnisch" />
     <meta name="author" content="Nícolas Harnisch" />
 
     <meta name="keywords" content="Nicolas Harnisch, Nícolas Harnisch, Desenvolvedor Full-Stack, Programador, Engenheiro de Software, Backend Engineer, Arquitetura de Software, React, Next.js, Node.js, TypeScript" />
@@ -19,7 +35,12 @@
     <meta property="og:description" content="Portfólio de Nícolas Harnisch, desenvolvedor full-stack focado em aplicações web, APIs, dashboards e sistemas com React, Next.js, Node.js, TypeScript e bancos de dados." />
     <meta property="og:type" content="website" />
 
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Nícolas Harnisch | Desenvolvedor Full-Stack" />
+    <meta name="twitter:description" content="Aplicações web, APIs e dashboards com React, Next.js, Node.js e TypeScript." />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Person","name":"Nícolas Harnisch","url":"https://nicolasharnisch.vercel.app/","jobTitle":"Desenvolvedor Full-Stack","sameAs":["https://github.com/NicolasHarnisch","https://www.linkedin.com/in/nicolasharnisch/"]}
+    </script>
   </head>
 
   <body>

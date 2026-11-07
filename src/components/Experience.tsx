@@ -9,11 +9,10 @@ import {
   Building2,
   Rocket,
 } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import MotionTitle from "./MotionTitle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Experience = () => {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { t } = useLanguage();
 
   const jobIcons = [
@@ -33,13 +32,10 @@ const Experience = () => {
       id="experience"
       className="py-16 sm:py-20 md:py-24 relative overflow-hidden px-4 sm:px-6"
     >
-      <div
-        ref={ref}
-        className={`container relative z-10 transition-all duration-700 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
-      >
-        <div className="flex flex-row items-center gap-3 sm:gap-4 mb-10 sm:mb-16 ml-1">
+      <div className="container relative z-10">
+        <div data-motion-heading className="motion-heading flex flex-row items-center gap-3 sm:gap-4 mb-10 sm:mb-16 ml-1">
+          <span data-motion-chapter className="motion-chapter" aria-hidden="true">03</span>
+          <span data-motion-rule className="motion-heading-rule" aria-hidden="true" />
           <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.15)]">
             <GraduationCap className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
           </div>
@@ -48,13 +44,13 @@ const Experience = () => {
               {t.experience.badge}
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-foreground">
-              {t.experience.title}
+              <MotionTitle>{t.experience.title}</MotionTitle>
             </h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10">
-          <div className="xl:col-span-7">
+        <div className="space-y-16 sm:space-y-24">
+          <div className="w-full">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                 <Building2 className="h-5 w-5 text-primary" />
@@ -64,40 +60,45 @@ const Experience = () => {
               </h3>
             </div>
 
-            <div className="relative border-l border-[#E8E0FA] dark:border-white/10 ml-2 sm:ml-4 space-y-4 sm:space-y-6">
+            <div data-motion-timeline className="relative flex flex-col gap-4 sm:gap-6 border-l border-[#E8E0FA] dark:border-white/10 ml-2 sm:ml-4 w-full">
+              <span data-motion-line className="motion-timeline-fill" aria-hidden="true" />
               {t.experience.jobs.map((exp, index) => (
                 <div
                   key={index}
+                  data-motion-item
                   className="relative pl-4 sm:pl-8 md:pl-10 group"
                 >
                   <div className="absolute -left-[6px] top-1 h-3 w-3 rounded-full bg-primary border border-primary shadow-[0_0_12px_rgba(168,85,247,0.45)] group-hover:scale-125 transition-transform duration-300" />
 
-                  <div className="rounded-2xl bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl border border-[#E9E2F8] dark:border-white/10 hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-3 sm:p-4 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]">
+                  <div className="surface-card rounded-2xl hover:border-primary/30 transition-all duration-500 p-3 sm:p-4 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 w-fit h-fit shadow-[0_0_10px_rgba(168,85,247,0.15)] shrink-0">
                         {jobIcons[index]}
                       </div>
 
                       <div className="flex-1">
-                        <h4 className="text-lg sm:text-xl font-bold mb-1 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
+                        <h4 className="text-xl sm:text-2xl font-bold mb-2 text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                           {exp.role}
                         </h4>
 
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <div className="flex items-center gap-2 text-xs sm:text-sm text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/15">
-                            <Calendar className="h-3 w-3" />
+                        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4">
+                          <div className="flex items-center gap-1.5 text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-200">
+                            <MapPin className="h-4 w-4 text-primary" />
+                            {exp.company}
+                          </div>
+
+                          <div className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-primary bg-primary/10 px-2.5 py-1 rounded-full border border-primary/20">
+                            <Calendar className="h-3.5 w-3.5" />
                             {exp.period}
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-2">
-                          <MapPin className="h-4 w-4" />
-                          {exp.company}
-                        </div>
+                        <ul className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-300/80 leading-relaxed mb-3 space-y-2.5 mt-4 list-disc pl-5 marker:text-primary">
+                          {(Array.isArray(exp.description) ? exp.description : [exp.description]).map((point, i) => (
+                            <li key={i} className="pl-1">{point}</li>
+                          ))}
+                        </ul>
 
-                        <p className="text-sm sm:text-base text-slate-600 dark:text-muted-foreground leading-relaxed mb-3 line-clamp-2 md:line-clamp-none">
-                          {exp.description}
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -106,7 +107,7 @@ const Experience = () => {
             </div>
           </div>
 
-          <div className="xl:col-span-5">
+          <div className="w-full">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
                 <BookOpen className="h-5 w-5 text-primary" />
@@ -116,32 +117,35 @@ const Experience = () => {
               </h3>
             </div>
 
-            <div className="space-y-3 sm:space-y-4">
+            <div className="flex flex-col gap-4 sm:gap-6">
               {t.experience.education.map((item, index) => (
                 <div
                   key={index}
-                  className="group rounded-2xl border border-[#E9E2F8] dark:border-white/10 bg-white/95 dark:bg-[#08070b]/90 backdrop-blur-xl hover:border-primary/30 dark:hover:bg-[#0d0c12] transition-all duration-500 p-3 sm:p-4 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)]"
+                  data-motion-item
+                  className="surface-card group rounded-2xl hover:border-primary/30 transition-[background-color,border-color,box-shadow] duration-500 p-4 sm:p-6 shadow-[0_18px_50px_rgba(88,28,135,0.08)] hover:shadow-[0_24px_60px_rgba(168,85,247,0.14)] w-full"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
                     <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 shrink-0">
                       {eduIcons[index]}
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <h4 className="text-lg font-bold leading-tight text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2 sm:mb-3">
+                        <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-foreground group-hover:text-primary transition-colors duration-300">
                           {item.course}
                         </h4>
-                        <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">
+                        <span className="w-fit px-3 py-1 rounded-full text-xs font-medium bg-primary/10 border border-primary/20 text-primary">
                           {item.status}
                         </span>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-muted-foreground mb-2">
-                        <span>{item.institution}</span>
-                        <span className="hidden sm:inline">•</span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3.5 w-3.5" />
+                      <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm sm:text-base text-slate-600 dark:text-muted-foreground">
+                        <span className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                          <MapPin className="h-4 w-4 text-primary" />
+                          {item.institution}
+                        </span>
+                        <span className="flex items-center gap-1.5 font-medium text-slate-500">
+                          <Calendar className="h-4 w-4" />
                           {item.period}
                         </span>
                       </div>

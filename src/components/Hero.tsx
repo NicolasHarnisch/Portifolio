@@ -3,26 +3,31 @@ import {
   useEffect,
   useMemo,
   memo,
-  lazy,
-  Suspense,
   useRef,
   useCallback,
+  useLayoutEffect,
 } from "react";
 import { Button } from "@/components/ui/button";
-import { FileText, Github, Linkedin, Mail } from "lucide-react";
+import { FileText, Github, Linkedin, Mail, ArrowDownRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import StarBackground from "./StarBackground";
-
-// Code Splitting: O Spline é uma biblioteca pesada, isolamos o carregamento para não travar o carregamento inicial da página.
-const SplineScene = lazy(() => import("./SplineScene"));
+import { animateHero } from "@/animations/hero";
+import DeferredGraphics from "./DeferredGraphics";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useInView, usePageVisible } from "@/hooks/useVisible";
+import { RESUME_URL } from "@/lib/links";
+import { useNavigationState } from "@/hooks/useNavigationState";
+import type { GraphicLoadResult } from "@/hooks/useSplineEligibility";
 
 /* ─── Typewriter ─────────────────────────────────────────────────────────────── */
 // Memoizado para evitar que o componente Hero inteiro re-renderize a cada nova letra digitada.
-const TypewriterLoop = memo(({ text }: { text: string }) => {
-  const [displayedText, setDisplayedText] = useState("");
+const TypewriterLoop = memo(({ text, active }: { text: string; active: boolean }) => {
+  const [displayedText, setDisplayedText] = useState(text);
   const [isDeleting, setIsDeleting] = useState(false);
+  useEffect(() => { setDisplayedText(text); setIsDeleting(false); }, [text]);
 
+  const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
   useEffect(() => {
+    if (!active || reduced) return;
     let timeout: ReturnType<typeof setTimeout>;
     const typeSpeed = 60;
     const deleteSpeed = 60;
@@ -41,12 +46,14 @@ const TypewriterLoop = memo(({ text }: { text: string }) => {
       }, nextDelay);
     }
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, text]);
+  }, [displayedText, isDeleting, text, active, reduced]);
 
   return (
     <>
-      {displayedText}
-      <span className="inline-block w-[3px] h-[1em] bg-primary ml-1 animate-pulse" />
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">{reduced ? text : displayedText}
+        <span className="inline-block w-[3px] h-[1em] bg-primary ml-1 animate-pulse" />
+      </span>
     </>
   );
 });
@@ -54,15 +61,63 @@ const TypewriterLoop = memo(({ text }: { text: string }) => {
 TypewriterLoop.displayName = "TypewriterLoop";
 
 /* ─── Hero ───────────────────────────────────────────────────────────────────── */
-const Hero = () => {
-  const { t } = useLanguage();
+const Hero = ({ introReady = true, onSceneSettled }: {
+  introReady?: boolean; onSceneSettled?: (result: GraphicLoadResult) => void;
+}) => {
+  const { t, language } = useLanguage();
 
   const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const badgeRef = useRef<HTMLParagraphElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const showcaseRef = useRef<HTMLDivElement>(null);
+
+  const desktop = useMediaQuery("(min-width: 768px)");
+  const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const finePointer = useMediaQuery("(pointer: fine)");
+  const inView = useInView(sectionRef);
+  const { activeSection } = useNavigationState();
+  const graphicVisible = inView && activeSection === "top";
+  const pageVisible = usePageVisible();
   const rafRef = useRef<number | null>(null);
+  // O Hero é sticky; quando o conteúdo o cobre por completo ele é ocultado para não vazar durante a rolagem.
+  const [covered, setCovered] = useState(false);
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const el = sectionRef.current;
+      if (el) setCovered(window.scrollY >= el.offsetHeight);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!introReady) return;
+    const cleanup = animateHero({
+      containerRef: sectionRef,
+      badgeRef,
+      titleRef,
+      subtitleRef,
+      ctaRef,
+      showcaseRef,
+    });
+    return cleanup;
+  }, [reduced, introReady]);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (window.innerWidth < 768 || !sectionRef.current) return;
-    if (rafRef.current) return;
+    if (rafRef.current !== null) return;
 
     rafRef.current = requestAnimationFrame(() => {
       const el = sectionRef.current;
@@ -83,19 +138,22 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    if (window.innerWidth < 768) return;
+    if (!desktop || reduced || !finePointer || !graphicVisible || !pageVisible) {
+      for (const name of ["--px-mid", "--py-mid", "--px-main", "--py-main"]) sectionRef.current?.style.removeProperty(name);
+      return;
+    }
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     };
-  }, [handleMouseMove]);
+  }, [handleMouseMove, desktop, reduced, finePointer, graphicVisible, pageVisible]);
 
   // useMemo para estabilizar as referências e evitar recriação de objetos em cada render.
   const links = useMemo(
     () => ({
-      curriculo:
-        "https://drive.google.com/file/d/1FCiDQ1Pi-YrQ7PmRR2L1GGlYg6SFXABV/view?usp=sharing",
+      curriculo: RESUME_URL,
       github: "https://github.com/NicolasHarnisch",
       linkedin: "https://www.linkedin.com/in/nicolasharnisch/",
       email: "mailto:nicolasgomeshar@gmail.com",
@@ -115,76 +173,74 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[60vh] md:min-h-[85vh] flex items-center overflow-hidden px-4 sm:px-6 bg-transparent"
+      className={`sticky top-0 z-0 w-full min-h-[calc(100svh+2.5rem)] sm:min-h-[calc(100svh+5rem)] flex items-center overflow-hidden px-4 sm:px-6 bg-transparent ${covered ? "invisible" : ""}`}
     >
-      <div className="container relative z-10 pt-24 sm:pt-28 md:pt-28 lg:pt-28 xl:pt-32 pb-8 flex flex-col justify-center min-h-[60vh] md:min-h-[85vh]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-4 items-center w-full mt-4 md:mt-0">
+      <DeferredGraphics kind="stars" inView={graphicVisible && introReady} />
+
+      <div data-hero-content className="container relative z-10 pt-24 pb-16 md:pt-20 md:pb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 items-center w-full">
           {/* ── COLUNA ESQUERDA (Textos) ── */}
           <div
-            className="flex flex-col items-center text-center md:items-start md:text-left"
+            className="flex flex-col items-start text-left"
             style={{
               transform: "translate(var(--px-mid, 0), var(--py-mid, 0))",
               transition: "transform 0.1s linear",
             }}
           >
             <h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-3 sm:mb-6 animate-fade-up text-foreground"
-              style={{ animationDelay: "0.15s" }}
+              ref={titleRef}
+              className="text-[2.35rem] sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem] font-extrabold leading-[1.08] tracking-tight mb-3 sm:mb-5 text-foreground"
             >
-              Nícolas Gomes
-              <br />
-              <span className="text-gradient">Harnisch</span>
+              <span className="hero-name-window"><span data-hero-line>Nícolas Gomes</span></span>
+              <span className="hero-name-window"><span data-hero-line className="text-gradient">Harnisch</span></span>
             </h1>
 
             <p
-              className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground mb-3 animate-fade-up min-h-[1.75em] sm:min-h-[2em] flex items-center justify-center md:justify-start"
-              style={{ animationDelay: "0.25s" }}
+              ref={badgeRef}
+              className="text-lg sm:text-2xl lg:text-[1.65rem] font-semibold text-foreground/95 mb-3 min-h-[1.75em] sm:min-h-[2em] flex items-center justify-start"
             >
-              <TypewriterLoop text={t.hero.role} />
+              <TypewriterLoop text={t.hero.role} active={graphicVisible && pageVisible} />
             </p>
 
             <p
-              className="text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-300 max-w-xl mb-8 sm:mb-10 animate-fade-up mx-auto md:mx-0 px-2 sm:px-0 leading-relaxed"
-              style={{ animationDelay: "0.35s" }}
+              ref={subtitleRef}
+              className="text-[0.98rem] sm:text-[1.1rem] lg:text-[1.15rem] text-slate-600 dark:text-slate-300/90 max-w-[34rem] mb-7 sm:mb-8 leading-relaxed"
             >
-              {t.hero.description}
+              <span className="sm:hidden">{t.hero.mobileDescription}</span>
+              <span className="hidden sm:inline">{t.hero.description}</span>
             </p>
 
             <div
-              className="flex flex-col sm:flex-row items-center gap-4 animate-fade-up mx-auto md:mx-0 w-full sm:w-auto justify-center md:justify-start"
-              style={{ animationDelay: "0.45s" }}
+              ref={ctaRef}
+              className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-4 w-full sm:w-auto justify-start"
             >
               {/* BOTÕES PRINCIPAIS */}
-              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto px-4 sm:px-0">
-                <a
-                  href={links.curriculo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto"
-                >
-                  <Button
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 w-full sm:w-auto">
+                <div className="w-full sm:w-auto">
+                  <Button asChild
                     size="lg"
-                    className="btn-primary-motion bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 active:scale-95 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base px-6 sm:px-8 rounded-xl h-12 sm:h-[46px]"
+                    className="btn-primary-motion bg-primary text-primary-foreground hover:bg-primary/80 hover:brightness-110 active:scale-95 group shadow-lg shadow-primary/25 w-full sm:w-auto text-base px-6 sm:px-8 rounded-xl h-12 sm:h-[48px]"
                   >
-                    <FileText className="mr-2 h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
-                    {t.hero.resumeBtn}
+                    <a href={links.curriculo} target="_blank" rel="noopener noreferrer">
+                      <FileText className="mr-2 h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+                      {t.hero.resumeBtn}
+                    </a>
                   </Button>
-                </a>
-                <a href="#projects" className="w-full sm:w-auto">
-                  <Button
+                </div>
+                <div className="w-full sm:w-auto">
+                  <Button asChild
                     size="lg"
                     variant="outline"
-                    className="w-full sm:w-auto text-base px-6 sm:px-8 rounded-xl border-[#E2D8FA] dark:border-white/10 bg-white dark:bg-transparent text-foreground dark:text-white shadow-sm hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-all duration-[220ms] h-12 sm:h-[46px]"
+                    className="w-full sm:w-auto text-base px-6 sm:px-8 rounded-xl border-[#E2D8FA] dark:border-white/10 bg-white dark:bg-transparent text-foreground dark:text-white shadow-sm hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-white transition-all [transition-duration:220ms] h-12 sm:h-[48px]"
                   >
-                    {t.hero.projectsBtn}
+                    <a href="#projects">{t.hero.projectsBtn}</a>
                   </Button>
-                </a>
+                </div>
               </div>
 
               {/* BOTÕES SOCIAIS */}
               <div
-                className="flex gap-4 sm:gap-3 mt-4 sm:mt-0 animate-fade-up"
-                style={{ animationDelay: "0.55s" }}
+                className="flex gap-4 sm:gap-3 mt-1 sm:mt-0"
               >
                 {socials.map((social, index) => (
                   <a
@@ -194,7 +250,7 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     aria-label={social.label}
                     className="
-                      p-4 sm:p-3 rounded-xl sm:rounded-lg
+                      p-3 rounded-xl
                       bg-black/5 dark:bg-background/50
                       border border-black/10 dark:border-white/10
                       text-foreground
@@ -206,7 +262,7 @@ const Hero = () => {
                       active:scale-95
                     "
                   >
-                    <social.icon className="h-6 w-6 sm:h-5 sm:w-5" />
+                    <social.icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>
@@ -215,26 +271,21 @@ const Hero = () => {
 
           {/* ── COLUNA DIREITA: Spline 3D — Robô interativo ── */}
           <div
-            className="hidden md:flex items-center justify-center animate-fade-up relative"
-            style={{
-              animationDelay: "0.65s",
-              transform: "translate(var(--px-main, 0), var(--py-main, 0))",
-              transition: "transform 0.12s linear",
-            }}
+            ref={showcaseRef}
+            className="hidden md:flex items-center justify-center relative"
           >
-            <div className="w-full h-full flex items-center justify-center">
-              {/* Suspense com placeholder de baixo custo para evitar Layout Shift */}
-              <Suspense
-                fallback={
-                  <div className="w-full aspect-square max-w-[14rem] sm:max-w-[18rem] md:max-w-[22rem] lg:max-w-[28rem] bg-primary/5 rounded-3xl animate-pulse" />
-                }
-              >
-                <SplineScene />
-              </Suspense>
+            <div className="hero-orbit" aria-hidden="true"><span /><span /><i /></div>
+            <div className="w-full h-full flex items-center justify-center relative"
+              style={{ transform: "translate(var(--px-main, 0), var(--py-main, 0))", transition: "transform 0.12s linear" }}>
+              <DeferredGraphics kind="spline" inView={graphicVisible} eager={!introReady} onSettled={onSceneSettled} />
             </div>
           </div>
         </div>
       </div>
+      <a href="#projects" className="hero-scroll-cue hidden md:inline-flex">
+        <span>{language === "pt" ? "Role para explorar" : "Scroll to explore"}</span>
+        <ArrowDownRight aria-hidden="true" className="h-5 w-5" />
+      </a>
     </section>
   );
 };

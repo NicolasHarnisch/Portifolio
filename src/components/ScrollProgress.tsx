@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { usePageVisible } from "@/hooks/useVisible";
 
 /**
  * Barra de progresso de scroll fixada no topo da página.
@@ -7,41 +9,45 @@ import { useEffect, useRef } from "react";
  */
 export default function ScrollProgress() {
   const barRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number | null>(null);
+  const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const visible = usePageVisible();
 
   useEffect(() => {
     const bar = barRef.current;
-    if (!bar) return;
+    if (!bar || reduced || !visible) return;
+    let frame: number | null = null;
 
     const update = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      bar.style.width = `${Math.min(progress, 100)}%`;
-      rafRef.current = null;
+      frame = null;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = height > 0 ? Math.max(0, Math.min(1, window.scrollY / height)) : 0;
+      bar.style.transform = `scaleX(${progress})`;
     };
 
     const onScroll = () => {
-      if (!rafRef.current) {
-        rafRef.current = requestAnimationFrame(update);
-      }
+      if (frame === null) frame = requestAnimationFrame(update);
     };
 
+    const observer = typeof ResizeObserver !== "undefined" ? new ResizeObserver(onScroll) : undefined;
+    observer?.observe(document.body);
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
     update(); // Estado inicial
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", onScroll);
+      observer?.disconnect();
+      if (frame !== null) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [reduced, visible]);
 
+  if (reduced) return null;
   return (
     <div
       id="scroll-progress"
       ref={barRef}
-      style={{ width: "0%" }}
+      style={{ width: "100%", transform: "scaleX(0)" }}
       aria-hidden="true"
     />
   );

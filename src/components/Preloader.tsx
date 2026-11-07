@@ -1,96 +1,63 @@
-import { useState, useEffect } from "react";
-import { Terminal } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Rocket } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-export default function Preloader() {
-  const [progress, setProgress] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [shouldRender, setShouldRender] = useState(true);
+export const SCENE_LOAD_DEADLINE = 20000;
+
+export default function Preloader({ active, onContinue }: { active: boolean; onContinue: () => void }) {
+  const { language } = useLanguage();
+  const [present, setPresent] = useState(active);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const portuguese = language === "pt";
 
   useEffect(() => {
-    let isMounted = true;
-    let progressInterval: ReturnType<typeof setInterval>;
+    if (active) { setPresent(true); return; }
+    if (!present) return;
+    const timer = window.setTimeout(() => setPresent(false), 280);
+    return () => window.clearTimeout(timer);
+  }, [active, present]);
 
-    // Inicia a barra subindo até 90%
-    progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 90) {
-          clearInterval(progressInterval);
-          return 90; // Pausa no 90% esperando a página carregar
-        }
-        const step = Math.floor(Math.random() * 5) + 2;
-        return Math.min(90, prev + step);
-      });
-    }, 40);
-
-    const finishLoading = () => {
-      if (!isMounted) return;
-      clearInterval(progressInterval);
-      setProgress(100);
-      
-      setTimeout(() => {
-        if (isMounted) setIsLoaded(true);
-        setTimeout(() => {
-          if (isMounted) setShouldRender(false);
-        }, 700);
-      }, 400); // pequeno delay para mostrar o 100%
-    };
-
-    if (document.readyState === "complete") {
-      // Já carregou? Dá um tempinho mínimo só pela estética da animação e completa
-      setTimeout(finishLoading, 600);
-    } else {
-      // Aguarda o evento de load da janela (imagens, estilos, etc)
-      window.addEventListener("load", finishLoading);
-      
-      // Fallback de segurança (se por acaso o load não disparar)
-      setTimeout(finishLoading, 4000);
-    }
-
+  useEffect(() => {
+    if (!active) return;
+    const overflow = document.body.style.overflow;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const dialog = dialogRef.current;
+    document.body.style.overflow = "hidden";
+    dialog?.focus({ preventScroll: true });
+    // Covers the download of the optional chunk as well as the external scene.
+    const timeout = window.setTimeout(onContinue, SCENE_LOAD_DEADLINE);
     return () => {
-      isMounted = false;
-      clearInterval(progressInterval);
-      window.removeEventListener("load", finishLoading);
+      window.clearTimeout(timeout);
+      document.body.style.overflow = overflow;
+      const focused = document.activeElement;
+      if (focused instanceof HTMLElement && dialog?.contains(focused)) {
+        if (previousFocus?.isConnected && previousFocus !== document.body) {
+          previousFocus.focus({ preventScroll: true });
+        } else {
+          focused.blur();
+        }
+      }
     };
-  }, []);
+  }, [active, onContinue]);
 
-  if (!shouldRender) return null;
-
-  return (
-    <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505] transition-opacity duration-700 ease-in-out select-none ${
-        isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
-    >
-      {/* Brilho de fundo sutil */}
-      <div className="absolute w-72 h-72 rounded-full bg-primary/20 blur-[120px] pointer-events-none -z-10 animate-pulse" />
-
-      <div className="flex flex-col items-center gap-6">
-        {/* Identidade / Logo */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-            <Terminal className="h-5 w-5 text-primary" />
-          </div>
-          <span className="text-xl font-bold tracking-tight text-white">
-            Nicolas Harnisch
-          </span>
-        </div>
-
-        {/* Barra de Progresso */}
-        <div className="w-56 sm:w-64">
-          <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden p-[1px]">
-            <div
-              className="h-full bg-gradient-to-r from-primary to-purple-400 rounded-full transition-all duration-75 ease-out shadow-[0_0_12px_rgba(168,85,247,0.6)]"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-
-          {/* Porcentagem e Status */}
-          <div className="flex justify-between items-center mt-2.5 px-0.5 text-xs font-mono text-white/50">
-            <span>Iniciando ambiente...</span>
-            <span>{progress}%</span>
-          </div>
-        </div>
-      </div>
+  if (!present) return null;
+  return <div ref={dialogRef} tabIndex={-1} className={`site-preloader ${active ? "" : "site-preloader-leaving"}`}
+    role={active ? "dialog" : undefined} aria-modal={active ? true : undefined}
+    aria-hidden={!active || undefined} aria-labelledby="preloader-title"
+    onKeyDown={event => {
+      if (event.key === "Escape") onContinue();
+      if (event.key === "Tab") { event.preventDefault(); buttonRef.current?.focus(); }
+    }}>
+    <div className="preloader-content">
+      <Rocket className="preloader-rocket" strokeWidth={1.5} aria-hidden="true" />
+      <p id="preloader-title" role="status" className="text-xs text-muted-foreground">
+        {portuguese ? "Carregando..." : "Loading..."}
+      </p>
+      <button ref={buttonRef} type="button" onClick={onContinue}
+        className="preloader-skip">
+        {portuguese ? "Pular" : "Skip"}
+      </button>
     </div>
-  );
+  </div>;
 }

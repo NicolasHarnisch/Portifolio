@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 // src/contexts/LanguageContext.tsx
-import React, { createContext, useState, useContext, ReactNode, useEffect, useMemo } from 'react';
+import { createContext, useState, useContext, ReactNode, useEffect, useMemo, useCallback } from 'react';
+import { readPreference, writePreference } from "@/lib/storage";
 import { translations } from '../locales/translations';
 
 type Language = 'pt' | 'en';
@@ -14,11 +15,11 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('pt');
+  const [language, setLanguage] = useState<Language>(() => readPreference('portfolio-language') === 'en' ? 'en' : 'pt');
 
-  const toggleLanguage = () => {
+  const toggleLanguage = useCallback(() => {
     setLanguage((prev) => (prev === 'pt' ? 'en' : 'pt'));
-  };
+  }, []);
 
   // Aqui pegamos o dicionário correto com base no idioma atual
   const t = translations[language];
@@ -26,11 +27,12 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   // Atualiza o atributo lang do HTML para Leitores de Tela e SEO
   useEffect(() => {
     document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
+    writePreference('portfolio-language', language);
   }, [language]);
 
   const value = useMemo(
     () => ({ language, toggleLanguage, t }),
-    [language, t]
+    [language, t, toggleLanguage]
   );
 
   return (

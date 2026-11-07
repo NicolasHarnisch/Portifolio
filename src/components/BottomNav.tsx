@@ -1,18 +1,20 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import {
   ArrowUp, Folder, Briefcase, Mail, X,
   User, Cpu, Terminal, Globe, Sun, Moon, Menu,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/theme-provider";
+import { useNavigationState } from "@/hooks/useNavigationState";
+import { useThemeToggle } from "@/hooks/useThemeToggle";
+import { CONTACT_URL } from "@/lib/links";
 
 const MobileTopNav = () => {
-  const [activeSection, setActiveSection] = useState("");
+  const { activeSection, isScrolled } = useNavigationState();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, toggleTheme } = useThemeToggle();
   const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const menuGrid = [
     { id: "top",        icon: ArrowUp,   label: t.nav.home },
@@ -24,53 +26,35 @@ const MobileTopNav = () => {
   ];
 
   useEffect(() => {
-    const sectionIds = ["about", "experience", "stack", "projects"];
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-      if (window.scrollY < 100) { setActiveSection("top"); return; }
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      let current = "";
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el && scrollPosition >= el.offsetTop) current = id;
-      }
-      setActiveSection(current);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setIsExpanded(false);
       }
     };
-    if (isExpanded) document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsExpanded(false);
+        triggerRef.current?.focus();
+      }
+    };
+    if (isExpanded) {
+      document.addEventListener("pointerdown", handler);
+      document.addEventListener("keydown", onKeyDown);
+    }
+    return () => {
+      document.removeEventListener("pointerdown", handler);
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, [isExpanded]);
-
-  const scrollTo = useCallback((id: string) => {
-    setIsExpanded(false);
-    if (id === "top") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
-    if (id === "contact") { window.open("https://wa.me/5585999973965", "_blank"); return; }
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.offsetTop - 64, behavior: "smooth" });
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }, [setTheme, theme]);
 
   return (
     <div
       ref={menuRef}
       className={`
-        fixed top-0 left-0 right-0 z-50 md:hidden
+        fixed top-0 left-0 right-0 z-50 lg:hidden
         transition-all duration-300 px-4 pt-3 pb-2
         ${isScrolled
-          ? "bg-white/75 dark:bg-background/80 backdrop-blur-xl border-b border-[#ECE5FA] dark:border-white/10 shadow-sm"
+          ? "site-header-glass"
           : "bg-transparent"
         }
       `}
@@ -79,8 +63,8 @@ const MobileTopNav = () => {
       <div className="flex items-center justify-between">
         {/* Logo + Nome */}
         <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); scrollTo("top"); }}
+          href="#top"
+          onClick={() => setIsExpanded(false)}
           className="flex items-center gap-2 group"
         >
           <div className="flex items-center justify-center w-8 h-8 rounded-md bg-gradient-to-br from-primary/15 to-fuchsia-100 dark:from-primary/10 dark:to-transparent border border-primary/20 group-hover:border-primary/40 transition-all duration-300">
@@ -93,6 +77,11 @@ const MobileTopNav = () => {
 
         {/* Botão abrir/fechar */}
         <button
+          ref={triggerRef}
+          type="button"
+          aria-label={language === "pt" ? (isExpanded ? "Fechar menu" : "Abrir menu") : (isExpanded ? "Close menu" : "Open menu")}
+          aria-expanded={isExpanded}
+          aria-controls="mobile-navigation"
           onClick={() => setIsExpanded(v => !v)}
           className={`
             flex items-center justify-center w-9 h-9 rounded-xl
@@ -108,7 +97,11 @@ const MobileTopNav = () => {
       </div>
 
       {/* ── MENU EXPANDIDO (dropdown para baixo) ── */}
-      <div
+      <nav
+        id="mobile-navigation"
+        aria-label={language === "pt" ? "Navegação principal" : "Main navigation"}
+        aria-hidden={!isExpanded}
+        style={{ visibility: isExpanded ? "visible" : "hidden" }}
         className={`
           overflow-hidden transition-all duration-300 ease-out
           ${isExpanded ? "max-h-[400px] opacity-100 mt-3" : "max-h-0 opacity-0 mt-0"}
@@ -126,9 +119,14 @@ const MobileTopNav = () => {
             {menuGrid.map(({ id, icon: Icon, label }) => {
               const isActive = activeSection === id || (id === "top" && activeSection === "");
               return (
-                <button
+                <a
                   key={id}
-                  onClick={() => scrollTo(id)}
+                  href={id === "contact" ? CONTACT_URL : `#${id}`}
+                  target={id === "contact" ? "_blank" : undefined}
+                  rel={id === "contact" ? "noopener noreferrer" : undefined}
+                  aria-current={isActive && id !== "contact" ? "location" : undefined}
+                  tabIndex={isExpanded ? 0 : -1}
+                  onClick={() => { setIsExpanded(false); triggerRef.current?.focus(); }}
                   className={`
                     flex flex-col items-center gap-1.5 px-2 py-3 rounded-lg
                     transition-all duration-200 active:scale-95
@@ -140,7 +138,7 @@ const MobileTopNav = () => {
                 >
                   <Icon className={`h-5 w-5 ${isActive ? "text-primary" : "text-slate-500 dark:text-slate-400"}`} />
                   <span className="text-[11px] font-medium leading-none">{label}</span>
-                </button>
+                </a>
               );
             })}
           </div>
@@ -151,6 +149,8 @@ const MobileTopNav = () => {
           {/* Tema + Idioma */}
           <div className="flex gap-2">
             <button
+              tabIndex={isExpanded ? 0 : -1}
+              aria-label={language === "pt" ? "Switch to English" : "Mudar para Português"}
               onClick={toggleLanguage}
               className="flex-1 flex items-center justify-center gap-2 h-10 rounded-lg border border-[#E9E2F8] dark:border-white/10 bg-[#FCFAFF] dark:bg-white/[0.03] text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/5 hover:border-primary/20 active:scale-95 transition-all duration-200 text-xs font-medium shadow-sm"
             >
@@ -158,15 +158,17 @@ const MobileTopNav = () => {
               <span className="uppercase">{language}</span>
             </button>
             <button
+              tabIndex={isExpanded ? 0 : -1}
+              aria-label={language === "pt" ? "Alterar tema" : "Toggle theme"}
               onClick={toggleTheme}
               className="flex-1 flex items-center justify-center gap-2 h-10 rounded-lg border border-[#E9E2F8] dark:border-white/10 bg-[#FCFAFF] dark:bg-white/[0.03] text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-primary/5 hover:border-primary/20 active:scale-95 transition-all duration-200 text-xs font-medium shadow-sm"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4 text-slate-400" /> : <Moon className="h-4 w-4 text-slate-500" />}
-              <span>{theme === "dark" ? "Claro" : "Escuro"}</span>
+              {resolvedTheme === "dark" ? <Sun className="h-4 w-4 text-slate-400" /> : <Moon className="h-4 w-4 text-slate-500" />}
+              <span>{language === "pt" ? (resolvedTheme === "dark" ? "Claro" : "Escuro") : (resolvedTheme === "dark" ? "Light" : "Dark")}</span>
             </button>
           </div>
         </div>
-      </div>
+      </nav>
     </div>
   );
 };

@@ -1,6 +1,9 @@
-import { useState, useRef, useMemo, Suspense } from "react";
+import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
+import { Points } from "@react-three/drei/core/Points";
+import { PointMaterial } from "@react-three/drei/core/PointMaterial";
+import { useInView, usePageVisible } from "@/hooks/useVisible";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import * as THREE from "three";
 import { useTheme } from "@/contexts/theme-provider";
 interface StarsLayerProps {
@@ -8,10 +11,13 @@ interface StarsLayerProps {
   radius: number;
   color: string;
   size: number;
+  animate: boolean;
 }
 
-function StarsLayer({ count, radius, color, size }: StarsLayerProps) {
+function StarsLayer({ count, radius, color, size, animate }: StarsLayerProps) {
   const ref = useRef<THREE.Points>(null);
+  const baseRotation = useRef({ x: 0, y: 0 });
+  const pointerTilt = useRef({ x: 0, y: 0 });
   const { pointer } = useThree();
 
   // Gera as posições das estrelas em uma esfera 3D manualmente para evitar bugs do maath
@@ -30,16 +36,19 @@ function StarsLayer({ count, radius, color, size }: StarsLayerProps) {
     return p;
   }, [count, radius]);
 
-  // Animação de rotação e reação ao mouse (60fps)
+  // Mantém a rotação contínua separada da inclinação limitada pelo ponteiro.
   useFrame((_, delta) => {
-    if (ref.current) {
-      // Rotação contínua e suave
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+    if (ref.current && animate) {
+      const elapsed = Math.min(delta, 0.05);
+      baseRotation.current.x -= elapsed / 10;
+      baseRotation.current.y -= elapsed / 15;
 
-      // Reatividade sutil ao mouse
-      ref.current.rotation.x += pointer.x * 0.001;
-      ref.current.rotation.y += pointer.y * 0.001;
+      // A interpolação por tempo produz o mesmo movimento em 60 Hz e 120 Hz.
+      const response = 1 - Math.exp(-elapsed * 5);
+      pointerTilt.current.x += (pointer.x * 0.08 - pointerTilt.current.x) * response;
+      pointerTilt.current.y += (pointer.y * 0.08 - pointerTilt.current.y) * response;
+      ref.current.rotation.x = baseRotation.current.x + pointerTilt.current.x;
+      ref.current.rotation.y = baseRotation.current.y + pointerTilt.current.y;
     }
   });
 
@@ -58,14 +67,15 @@ function StarsLayer({ count, radius, color, size }: StarsLayerProps) {
   );
 }
 
-export default function StarBackground() {
-  const { theme } = useTheme();
-
-  // Verifica se é light mode (diretamente ou via system)
-  const isLightMode =
-    theme === "light" ||
-    (theme === "system" &&
-      !window.matchMedia("(prefers-color-scheme: dark)").matches);
+export default function StarBackground({ visible = true }: { visible?: boolean }) {
+  const { resolvedTheme } = useTheme();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef);
+  const pageVisible = usePageVisible();
+  const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const active = visible && inView && pageVisible;
+  const animate = active && !reduced;
+  const isLightMode = resolvedTheme === "light";
 
   // Cores dinâmicas dependendo do tema
   const starColor = isLightMode ? "#7c3aed" : "#fafafa"; // Roxo escuro no light, branco no dark
@@ -73,30 +83,36 @@ export default function StarBackground() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0 w-full h-full overflow-hidden"
+      ref={containerRef}
+      className="pointer-events-none absolute inset-0 z-0 w-full h-full overflow-hidden"
       aria-hidden="true"
       role="presentation"
     >
-      <Canvas
-        camera={{ position: [0, 0, 1] }}
-        gl={{
-          antialias: false, // Desativado para ganhar performance, já que são só pontos
-          powerPreference: "high-performance",
-        }}
-        dpr={[1, 2]} // Suporte para telas Retina (Mac/iPhones)
-      >
-        <Suspense fallback={null}>
-          {/* Camada 1: Muitas estrelas finas */}
-          <StarsLayer
-            count={4000}
-            radius={1.5}
-            color={starColor}
-            size={0.002}
-          />
-          {/* Camada 2: Estrelas de destaque, um pouco maiores para dar profundidade */}
-          <StarsLayer count={800} radius={1.5} color={neonColor} size={0.003} />
-        </Suspense>
-      </Canvas>
+      {(
+        <Canvas
+          frameloop={animate ? "always" : active ? "demand" : "never"}
+          fallback={null}
+          camera={{ position: [0, 0, 1] }}
+          gl={{
+            antialias: false, // Desativado para ganhar performance, já que são só pontos
+            powerPreference: "high-performance",
+          }}
+          dpr={[1, 2]} // Suporte para telas Retina (Mac/iPhones)
+        >
+          <Suspense fallback={null}>
+            {/* Camada 1: Muitas estrelas finas */}
+            <StarsLayer
+              count={3000} // Reduzido de 4000 para performance extra
+              radius={1.5}
+              color={starColor}
+              size={0.002}
+              animate={animate}
+            />
+            {/* Camada 2: Estrelas de destaque */}
+            <StarsLayer animate={animate} count={500} radius={1.5} color={neonColor} size={0.003} />
+          </Suspense>
+        </Canvas>
+      )}
     </div>
   );
 }
